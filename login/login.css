@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 #background {
     background-image: url('../img/backgroundimg.png');
-    position: fixed;
+    background-position: 50% 50%;
+    display: flex;
     background-attachment: fixed;
 
     left: 0;
@@ -55,15 +56,9 @@
     width: 16px;
     height: 16px;
   }
-  form .form-field {
-    /* display: -webkit-box;
-    display: -ms-flexbox; */
+  form .form-field {    
     display: flex;
-    /* -webkit-box-pack: justify;
-    -ms-flex-pack: justify; */
     justify-content: space-between;
-    /* -webkit-box-align: center;
-    -ms-flex-align: center; */
     align-items: center;
     margin-bottom: 1rem;
     position: relative;
