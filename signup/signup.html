@@ -4,56 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Sign In/Sign Up</title>
+    <title>Register</title>
     <link rel="stylesheet" href="signup.css" />
   </head>
   <body>
     <div id="background"></div>
-    <h2>Log in/Sign up to see full content</h2>
-    <div class="container" id="container">
-      <div class="form-container sign-up-container" id="sign-up">
-        <form action="#">
-          <h1 class="form-header">Create Account</h1>
 
-          <input type="text" placeholder="Name" required />
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Password" required />
-          <input type="password" placeholder="Re-type password" required />
-          <button>Sign Up</button>
-        </form>
+    <form>
+      <h1>Welcome to Insign!</h1>
+      <p>Enter your personal details and start journey with us</p>
+      <div class="form-field">
+        <input type="text" placeholder="Name" required />
       </div>
-      <div class="form-container sign-in-container" id="sign-in">
-        <form action="#">
-          <h1 class="form-header">Sign in</h1>
+      <div class="form-field">
+        <input type="email" placeholder="Email / Username" required />
+      </div>
 
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <a href="#">Forgot your password?</a>
-          <button>Sign In</button>
-        </form>
+      <div class="form-field">
+        <input type="password" placeholder="Password" required />
       </div>
-      <div class="overlay-container">
-        <div class="overlay">
-          <div class="overlay-panel overlay-left">
-            <h1>Welcome Back!</h1>
-            <p>
-              To keep connected with us please login with your personal info
-            </p>
-            <button class="ghost" id="signIn">Sign In</button>
-          </div>
-          <div class="overlay-panel overlay-right">
-            <h1>Hello, Friend!</h1>
-            <p>Enter your personal details and start journey with us</p>
-            <button class="ghost" id="signUp">Sign Up</button>
-          </div>
-        </div>
+      <div class="form-field">
+        <input type="password" placeholder="Retype-password" required />
       </div>
-    </div>
 
-    <footer>
-      <p>Created by Insign Team - Tamas Kralusz, Dung Tran, An Huynh</p>
-    </footer>
-    <script src="signup.js"></script>
+      <div class="form-field">
+        <button class="btn" type="submit">Register</button>
+      </div>
+      <div class="log-in">
+        <p>Have an account? <a href="#link">Log In</a></p>
+      </div>
+    </form>
   </body>
 </html>
