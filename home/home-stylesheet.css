@@ -1,0 +1,126 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1;
+    margin: 0;
+}
+
+.container {
+    background-image: url('../assets/background-home.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    display: flex;
+    object-fit: cover;
+    flex-direction: column;
+    justify-content: center;
+    height: 120vh;
+}
+
+.first {
+    display: flex;
+    width: 55%;
+    text-align: right;
+    padding-left: 10%;
+    font-size: 2em;
+    align-items: center;
+}
+
+.content {
+    padding-right: 20px;
+}
+
+.content p {
+    color: #fcfcfc;
+}
+
+.content button {
+    color: #606061;
+    padding: 7px 20px 7px 20px;
+    border: #fcfcfc 3px solid;
+    border-radius: 15px;
+    background-color: #fcfcfc;
+}
+
+.content button:hover{
+    cursor: pointer;
+    background-color: #606061;
+    border: #fcfcfc 3px solid;
+    color: white;
+}
+
+.line {
+    border-left: 4px solid #fcfcfc;
+    height: 500px;
+}
+
+.second {
+    display: flex;
+    color: #252525;
+    background-color: #fcfcfc;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    width: 100%;
+    height: 30vh;
+}
+
+.second button {
+    color: #252525;
+    border: #252525 3px solid;
+    padding: 7px 20px 7px 20px;
+    border-radius: 15px;
+    background-color: #fcfcfc;
+}
+
+.second button:hover{
+    cursor: pointer;
+    background-color: #5d5850;
+    border: #5d5850 3px solid;
+    color: white;
+}
+
+/* Tablet version */
+@media only screen and (max-width: 800px) {
+    .container {
+        align-items: center;
+    }
+
+    .first {
+        font-size: 30px;
+        width: 90%;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .line {
+        display: none;
+    }
+
+    .content button {
+        padding: 5px 13px 5px 13px;
+    }
+
+    .second {
+        font-size: 30px;
+    }
+
+    .second button {
+        padding: 5px 13px 5px 13px;
+        border: #252525 2px solid;
+    }
+}
+
+/* Mobile Version */
+@media only screen and (max-width: 600px) {
+    .first, .second {
+        font-size: 20px;
+    }
+}
