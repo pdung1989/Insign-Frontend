@@ -33,9 +33,6 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
-}
 .menu li {
     font-size: 16px;
     padding: 9px 5px;
@@ -52,10 +49,16 @@ a:hover {
     border-radius: 15px;
 }
 
-.nav-button:hover{
+.nav-button:hover {
     cursor: pointer;
     background-color: #5d5850;
     border: #fcfcfc 3px solid;
+    transition: background-color 1s;
+}
+
+.nav-button:hover:after {
+    background-color: #938c7f;
+    transition: background-color 1s;
 }
 
 .item a {
@@ -112,6 +115,7 @@ nav {
     width: 100%;
 }
 
+
 /* Desktop version */
 @media all and (min-width: 600px) {
     nav {
@@ -133,5 +137,30 @@ nav {
 
     .logo {
         margin-left: 0;
+    }
+
+    /* Nav bar animation */
+    .hover-underline-animation {
+        display: inline-block;
+        position: relative;
+        color: #252525;
+    }
+
+    .hover-underline-animation:after {
+        content: '';
+        position: absolute;
+        width: 69%;
+        transform: scaleX(0);
+        height: 1px;
+        bottom: 3px;
+        left: 2px;
+        background-color: #252525;
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+    }
+
+    .hover-underline-animation:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
     }
 }

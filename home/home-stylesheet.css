@@ -31,6 +31,7 @@ body {
     padding-left: 10%;
     font-size: 2em;
     align-items: center;
+
 }
 
 .content {
@@ -55,6 +56,8 @@ body {
     background-color: #606061;
     border: #fcfcfc 3px solid;
     color: white;
+    transform: translateY(-10%);
+    transition: all 1s ease;
 }
 
 .line {
@@ -75,11 +78,11 @@ body {
 }
 
 .second button {
-    color: #252525;
-    border: #252525 3px solid;
+    color: #fcfcfc;
+    border: #938c7f 3px solid;
     padding: 7px 20px 7px 20px;
     border-radius: 15px;
-    background-color: #fcfcfc;
+    background-color: #938c7f;
     margin-top: 20px;
 }
 
@@ -87,7 +90,9 @@ body {
     cursor: pointer;
     background-color: #5d5850;
     border: #5d5850 3px solid;
-    color: white;
+    color: #fcfcfc;
+    transform: translateY(-10%);
+    transition: all 1s ease;
 }
 
 /* Tablet version */
@@ -109,6 +114,11 @@ body {
 
     .content button {
         padding: 5px 13px 5px 13px;
+        border: #fcfcfc 2px solid;
+    }
+
+    .content button:hover{
+        border: #fcfcfc 2px solid;
     }
 
     .second {
@@ -117,7 +127,11 @@ body {
 
     .second button {
         padding: 5px 13px 5px 13px;
-        border: #252525 2px solid;
+        border: #938c7f 2px solid;
+    }
+
+    .second button:hover{
+        border: #5d5850 2px solid;
     }
 }
 
