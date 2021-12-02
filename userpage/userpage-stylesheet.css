@@ -10,7 +10,6 @@
 body {
     line-height: 1;
     margin: 0;
-    background-color: #fcfcfc;
 }
 
 main {
@@ -63,7 +62,7 @@ main {
 
 .follow-btn {
     background-color: #938c7f;
-    border: #fcfcfc 3px solid;
+    border: #938c7f 3px solid;
     border-radius: 15px;
     padding: 5px 0;
     margin-bottom: 15px;
@@ -72,7 +71,7 @@ main {
 .follow-btn:hover {
     cursor: pointer;
     background-color: #5d5850;
-    border: #fcfcfc 3px solid;
+    border: #5d5850 3px solid;
 }
 
 .follow-btn a {
@@ -82,13 +81,31 @@ main {
     margin: 20px;
 }
 
+.unfollow {
+    background-color: #fcfcfc;
+    border: #5d5850 3px solid;
+}
+
+.unfollow a {
+    color: #252525;
+}
+
+.unfollow:hover {
+    background-color: #5d5850;
+    border: #5d5850 3px solid;
+}
+
+.unfollow:hover a{
+    color: #fcfcfc;
+}
+
 .profile-stats {
     font-size: 20px;
     padding-bottom: 20px;
 }
 
 .profile-follower-count {
-    padding-right: 10px;
+    padding-right: 15px;
 }
 
 .follower-count, .following-count {
@@ -133,7 +150,7 @@ main {
 }
 
 .post-photo {
-    background-color: #f5f5f5;
+    background-color: #fcfcfc;
     width: 339px;
     height: 300px;
 }
