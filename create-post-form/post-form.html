@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../create-post-form/post-form.css" />
+    <title>Creat Post</title>
+  </head>
+
+  <body>
+    <div class="container">
+
+     
+        <div class="item" id="left">
+           <img src="https://images.unsplash.com/photo-1578503439976-f0c1f7daf1cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80" alt="">
+           
+        </div>
+        
+        
+     
+      <div class="item" id="right">
+        <h2>Create new post</h2>
+        <br />
+        <ul>
+        
+            <li> Created by
+                <form class="form">
+                    <input class="input" type="text" placeholder="Write author name" />
+              </li>
+          <li> Post Title
+            <form class="form">
+                <input class="input" type="text" placeholder="Post name" />
+          </li>
+          <li> Choose thumbnail
+            <form class="form">
+                <input class="light-border" type="file" name="image"  placeholder="Choose file">
+            </li>
+            <li> Description
+                <form class="form">
+                    <input class="input" type="text" id="description" placeholder="Write something about your post" />
+              </li>
+<li>Select category
+
+    <select class="light-border add-category" name="category">
+        <option value="">Select category</option>
+        <option value="">Other</option>
+        <option value="">Home Decor</option>
+        <option value="">Interior Design</option>
+        <option value="">Idea/Inspiration</option>
+    </select>
+</li>
+<li>Choose a Style
+
+    <select class="light-border add-category" name="category">
+        <option value="">Select Style</option>
+        <option value="">Other</option>
+        <option value="">Contemporary</option>
+        <option value="">Minimalist</option>
+        <option value="">Industrial</option>
+        <option value="">Scandinavian</option>
+        <option value="">Traditional</option>
+        <option value="">Modern</option>
+    </select>
+</li>
+            <li> Location
+                <form class="form">
+                    <input class="input" type="text" placeholder="Please provide location" />
+              </li>
+          <li>         
+              <button type="submit" class="submit"> Create post</button>
+          </li>
+        </form>
+        </ul>
+        <div class="item" id="part2"></div>
+        
+      </div>
+    
+      
+    </div>
+    
+  </body>
+</html>
