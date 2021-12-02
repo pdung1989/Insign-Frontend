@@ -121,6 +121,7 @@ main {
 .single-post {
     width: 340px;
     height: 380px;
+    margin-bottom: 30px;
 }
 
 .left {
@@ -132,8 +133,9 @@ main {
 }
 
 .post-photo {
-    height: 300px;
+    background-color: #f5f5f5;
     width: 339px;
+    height: 300px;
 }
 
 .post-photo img{
@@ -187,15 +189,59 @@ main {
 
 /* Tablet version */
 @media only screen and (max-width: 800px) {
-    .profile {
-        width: 590px;
+    .profile, .posts, .line {
+        width: 570px;
     }
-    .line {
-        width: 590px;
+
+    .left, .right {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .single-post {
+        width: 570px;
+        height: 610px;
+    }
+
+    .post-photo, .post-photo img {
+        width: 579px;
+        height: 530px;
     }
 }
 
 /* Mobile Version */
 @media only screen and (max-width: 600px) {
+    .profile, .posts, .line {
+        width: 90%;
+    }
 
+    .profile {
+        margin-top: 100px;
+        flex-direction: column;
+    }
+
+    .profile-data {
+        align-items: center;
+    }
+
+    .profile-photo {
+        padding-bottom: 10px;
+        margin: auto;
+    }
+
+    .single-post {
+        margin-bottom: 0;
+    }
+
+    .single-post, .post-photo, .post-photo img {
+        width: 100%;
+    }
+
+    .post-photo {
+        height: 80%;
+    }
+
+    .post-photo img {
+        height: 100%;
+    }
 }
