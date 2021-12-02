@@ -35,6 +35,9 @@
   background-color: #fcfcfc;
 }
 @media screen and (max-width: 600px) {
+  .title{
+    padding-top: 20%;
+  }
   .column {
     flex-direction: column;
     width: 100%;
