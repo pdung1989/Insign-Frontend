@@ -1,9 +1,13 @@
 * {
   font-family: "Roboto", sans-serif;
+ 
+}
+.body {
+    background-color: #fcfcfc;
 }
 .image {
   position: absolute;
-  top: 5vh;
+  top: 10vh;
   left: 3em;
   border-radius: 50%;
   width: 30%;
@@ -35,3 +39,20 @@
 h1 {
   text-align: center;
 }
+
+
+footer {
+    background-color: #252525;
+    color: #fcfcfc;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+  }
+  
+  footer p {
+    margin: 10px 0;
+  }
