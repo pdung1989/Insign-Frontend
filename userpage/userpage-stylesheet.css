@@ -156,13 +156,18 @@ main {
 }
 
 .post-photo img{
-    object-fit: contain;
+    object-fit: cover;
     height: 300px;
     width: 339px;
 }
 
+.post-title {
+    display: flex;
+    align-items: center;
+    height: 45px;
+}
+
 .post-title p{
-    height: 50px;
     overflow: hidden;
     font-size: 20px;
     padding-top: 10px;
