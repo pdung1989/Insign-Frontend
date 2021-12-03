@@ -8,93 +8,138 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../create-post-form/post-form.css" />
-    <link rel="stylesheet" href="../nav-anon/nav-anon-stylesheet.css">
+    <link rel="stylesheet" href="../nav-anon/nav-anon-stylesheet.css" />
     <title>Creat Post</title>
   </head>
 
   <body>
     <header>
-        <nav>
-            <ul class="menu">
-                <li class="logo"><a href="#">INSIGN</a></li>
-                <li class="item hover-underline-animation" id="home"><a href="#">Home</a></li>
-                <li class="item hover-underline-animation" id="register"><a href="#">Register</a></li>
-                <li class="item nav-button" id="signin"><a href="#">Sign In</a></li>
-                <li class="toggle">
-                    <div class="hamburger-icon"></div>
-                </li>
-            </ul>
-        </nav>
+      <nav>
+        <ul class="menu">
+          <li class="logo"><a href="#">INSIGN</a></li>
+          <li class="item hover-underline-animation" id="home">
+            <a href="#">Home</a>
+          </li>
+          <li class="item hover-underline-animation" id="register">
+            <a href="#">Register</a>
+          </li>
+          <li class="item nav-button" id="signin"><a href="#">Sign In</a></li>
+          <li class="toggle">
+            <div class="hamburger-icon"></div>
+          </li>
+        </ul>
+      </nav>
     </header>
     <div class="container">
+      <div class="item" id="left">
+        <img
+          src="https://images.unsplash.com/photo-1578503439976-f0c1f7daf1cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80"
+          alt=""
+        />
+      </div>
 
-     
-        <div class="item" id="left">
-           <img src="https://images.unsplash.com/photo-1578503439976-f0c1f7daf1cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80" alt="">
-           
-        </div>
-        
-        
-     
       <div class="item" id="right">
         <h2>Create new post</h2>
         <br />
-        <ul>
-        
-            <li> Created by
-                <form class="form">
-                    <input class="input" type="text" placeholder="Write author name" />
-              </li>
-          <li> Post Title
-            <form class="form">
-                <input class="input" type="text" placeholder="Post name" />
-          </li>
-          <li> Choose thumbnail
-            <form class="form">
+        <form action="/action_page.php">
+          <div class="row">
+            <div class="col-25">
+              <label for="fname">Created By</label>
+            </div>
+            <div class="col-75">
+              <input
+                type="text"
+                id="author"
+                name="author"
+                placeholder="Write your name"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="title">Blog Title</label>
+            </div>
+            <div class="col-75">
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Provide the title of your Post"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="thumbnail">Thumbnail</label>
+            </div>
+            <div class="col-75">
                 <input class="light-border" type="file" name="image"  placeholder="Choose file">
-            </li>
-            <li> Description
-                <form class="form">
-                    <input class="input" type="text" id="description" placeholder="Write something about your post" />
-              </li>
-<li>Select category
-
-    <select class="light-border add-category" name="category">
-        <option value="">Select category</option>
-        <option value="">Other</option>
-        <option value="">Home Decor</option>
-        <option value="">Interior Design</option>
-        <option value="">Idea/Inspiration</option>
-    </select>
-</li>
-<li>Choose a Style
-
-    <select class="light-border add-category" name="category">
-        <option value="">Select Style</option>
-        <option value="">Other</option>
-        <option value="">Contemporary</option>
-        <option value="">Minimalist</option>
-        <option value="">Industrial</option>
-        <option value="">Scandinavian</option>
-        <option value="">Traditional</option>
-        <option value="">Modern</option>
-    </select>
-</li>
-            <li> Location
-                <form class="form">
-                    <input class="input" type="text" placeholder="Please provide location" />
-              </li>
-          <li>         
-              <button type="submit" class="submit"> Create post</button>
-          </li>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="description">Description</label>
+            </div>
+            <div class="col-75">
+              <textarea
+                id="description"
+                name="description"
+                placeholder="Write something for your post"
+                style="height: 100px"
+              ></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="category">Select category</label>
+            </div>
+            <div class="col-75">
+              <select id="category" name="category">
+                <option value="other">Other</option>
+                <option value="homeDecor">Home Decor</option>
+                <option value="interiorDesign">Interior Design</option>
+                <option value="idea">Idea/Inspiration</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="syle">Select Style</label>
+            </div>
+            <div class="col-75">
+              <select id="category" name="category">
+                <option value="">Select Style</option>
+                <option value="">Contemporary</option>
+                <option value="">Minimalist</option>
+                <option value="">Industrial</option>
+                <option value="">Scandinavian</option>
+                <option value="">Traditional</option>
+                <option value="">Modern</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="location">Location</label>
+            </div>
+            <div class="col-75">
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Name a location"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <input type="submit" value="Submit" />
+          </div>
         </form>
-        </ul>
+
+
+
         <div class="item" id="part2"></div>
-        
       </div>
-    
-      
     </div>
-    
   </body>
 </html>
