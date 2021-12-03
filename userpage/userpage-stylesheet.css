@@ -164,15 +164,17 @@ main {
 .post-title {
     display: flex;
     align-items: center;
-    height: 45px;
+    height: 40px;
 }
 
 .post-title p{
-    overflow: hidden;
     font-size: 20px;
     padding-top: 10px;
     padding-left: 5px;
     padding-right: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .post-details {
@@ -265,5 +267,9 @@ main {
 
     .post-photo img {
         height: 100%;
+    }
+
+    .post-stats {
+        padding-top: 5px;
     }
 }
