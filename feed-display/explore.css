@@ -1,5 +1,6 @@
 * {
   font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
 }
 #name {
   padding-left: 40%;
@@ -8,17 +9,22 @@
   padding-right: 20%;
   font-size: xx-large;
 }
-* {
-  box-sizing: border-box;
-}
+a
 .column {
   display: flex;
   float: left;
+  justify-content: space-evenly ;
   width: 33%;
   padding: 5px 5px;
 }
 .title h1 {
   text-align: center;
+}
+#title {
+  text-align: center;
+  padding-top: 25%;
+  position: absolute;
+  margin-bottom:30px;
 }
 .blog {
   margin: 0 -5px;
@@ -30,7 +36,10 @@
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
+  padding: 18px;
+  margin-left: 1.5rem;
+  display: flex;
+  justify-content: space-around;
   text-align: center;
   background-color: #fcfcfc;
 }
@@ -44,24 +53,27 @@
     display: block;
     margin-bottom: 20px;
   }
-  img {
-    height: 400px;
-    width: 350px;
-  }
+ 
 }
 .about {
+  
   text-align: center;
+  margin-top: 15%;
   padding-top: 5%;
   padding-bottom: 5%;
 }
 
 #about {
+ 
   text-align: center;
   font-size: x-large;
 }
 
 #pic {
   border-radius: 50%;
+  position: relative;
+  
+ 
 }
 
 footer {
