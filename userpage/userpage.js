@@ -14,26 +14,27 @@ const createPosts = (posts) => {
         }
 
         postsDiv.innerHTML += `
-    <div class="single-post ${side}">
-                <div class="post-photo">
-                    <img src="${post.image}">
-                </div>
-                <div class="post-details">
-                    <div class="post-title">
-                        <p class="title">${post.title}</p>
+        <div class="single-post ${side}">
+                    <div class="post-photo">
+                        <img src="${post.image}">
                     </div>
-                    <div class="post-stats">
-                        <div class="post-likes">
-                            <img src="../assets/heart-icon-off.png">
-                            <p>${post.num_likes}</p>
+                    <div class="post-details">
+                        <div class="post-title">
+                            <p class="title"><a href="../post-details/post-details.html?id=${post.post_id}">${post.title}</a></p>
                         </div>
-                        <div class="post-comments">
-                            <img src="../assets/comment-icon.png">
-                            <p>${post.num_comments}</p>
+                        <div class="post-stats">
+                            <div class="post-likes">
+                                <img src="../assets/heart-icon-off.png">
+                                <p>${post.num_likes}</p>
+                            </div>
+                            <div class="post-comments">
+                                <img src="../assets/comment-icon.png">
+                                <p>${post.num_comments}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>`
+                </div>`
+
     });
 }
 

@@ -1,11 +1,17 @@
 'use strict';
+const url = 'http://localhost:3000';
 
-const url = 'http://localhost:3000'; // change url when uploading to server
-const post_id = 1;
+//Get query parameter
+const getQParam = (param) => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    console.log(urlParams.get(param));
+    return urlParams.get(param);
+};
 
+//Create post div
 const createPost = (post) => {
     const postDiv = document.querySelector('.post');
-    console.log(post);
     postDiv.innerHTML += `<div class="title">
                 <p>${post.title}</p>
             </div>
@@ -27,9 +33,9 @@ const createPost = (post) => {
             </div>`
 }
 
+//Create author div
 const addAuthor = (author) => {
     const postDiv = document.querySelector('.post');
-    console.log(author);
     postDiv.innerHTML += `<div class="author">
                 <img src="${author.profile_picture}">
                 <div class="author-details">
@@ -54,7 +60,7 @@ const addAuthor = (author) => {
 }
 
 // AJAX call
-const getPost = async () => {
+const getPost = async (post_id) => {
     try {
         const response = await fetch(url +'/post/' +  post_id);
         const post = await response.json();
@@ -69,4 +75,5 @@ const getPost = async () => {
         console.log(e.message);
     }
 };
-getPost();
+
+getPost(getQParam('id'));
