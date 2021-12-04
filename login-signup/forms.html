@@ -4,18 +4,34 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <title>Sign In/Sign Up</title>
     <link rel="stylesheet" href="forms.css" />
-
+    <link rel="stylesheet" href="../nav-anon/nav-anon-stylesheet.css">
   </head>
   <body>
-    
+    <header>
+      <nav>
+          <ul class="menu">
+              <li class="logo"><a href="#">INSIGN</a></li>
+              <li class="item hover-underline-animation" id="home"><a href="#">Home</a></li>
+              <li class="item hover-underline-animation" id="register"><a href="#">Register</a></li>
+              <li class="item nav-button" id="signin"><a href="#">Sign In</a></li>
+              <li class="toggle">
+                  <div class="hamburger-icon"></div>
+              </li>
+          </ul>
+      </nav>
+  </header>
+  <div class="forms">
     <div id="background"></div>
     <h2>Log in/Sign up to see full content</h2>
     <div class="container" id="container">
       <div class="form-container sign-up-container" id="sign-up">
-        <form >
+        <form>
           <h1 class="form-header">Create Account</h1>
 
           <input type="text" placeholder="Name" required />
@@ -26,7 +42,7 @@
         </form>
       </div>
       <div class="form-container sign-in-container" id="sign-in">
-        <form >
+        <form>
           <h1 class="form-header">Sign in</h1>
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
@@ -38,9 +54,7 @@
         <div class="overlay">
           <div class="overlay-panel overlay-left">
             <h1>Welcome Back!</h1>
-            <p>
-              Log In and see new posts
-            </p>
+            <p>Log In and see new posts</p>
             <button class="noshow" id="signIn">Sign In</button>
           </div>
           <div class="overlay-panel overlay-right">
@@ -51,12 +65,11 @@
         </div>
       </div>
     </div>
-
+  </div>
     <footer>
       <p>Created by Insign Team - Tamas Kralusz, Dung Tran, An Huynh</p>
     </footer>
-    
   </body>
   <script src="forms.js"></script>
-    <script src="../nav-anon/nav-anon.js"></script>
+  <script src="../nav-anon/nav-anon.js"></script>
 </html>
