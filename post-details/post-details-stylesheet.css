@@ -1,0 +1,140 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    box-sizing: border-box;
+    color: #252525;
+}
+
+body {
+    line-height: 1;
+    margin: 0;
+}
+
+main {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    font-size: 30px;
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 700px;
+    margin: 20px auto;
+}
+
+.image img {
+    object-fit: contain;
+    width: 700px;
+}
+
+.post-data {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.post-likes, .post-favorite {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.post-likes img, .post-favorite img {
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.post-data p{
+    font-size: 30px;
+}
+
+.post-favorite {
+    align-content: flex-end;
+}
+
+.description-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.description-text {
+    text-align: justify;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.author {
+    display: flex;
+    flex-direction: row;
+}
+
+.author img {
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.author-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.username {
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.follow-btn {
+    background-color: #938c7f;
+    border: #938c7f 3px solid;
+    border-radius: 15px;
+    padding: 5px 0;
+    margin-top: 5px;
+}
+
+.follow-btn:hover {
+    cursor: pointer;
+    background-color: #5d5850;
+    border: #5d5850 3px solid;
+}
+
+.follow-btn a {
+    font-size: 20px;
+    color: #fcfcfc;
+    text-decoration: none;
+    margin: 20px;
+}
+
+.unfollow {
+    background-color: #fcfcfc;
+    border: #5d5850 3px solid;
+}
+
+.unfollow a {
+    color: #252525;
+}
+
+.unfollow:hover {
+    background-color: #5d5850;
+    border: #5d5850 3px solid;
+}
+
+.unfollow:hover a{
+    color: #fcfcfc;
+}
