@@ -1,0 +1,264 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    box-sizing: border-box;
+    color: #252525;
+}
+
+body {
+    line-height: 1;
+    margin: 0;
+}
+
+main {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* PROFILE */
+.profile, .posts {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 700px;
+    margin: 20px auto;
+}
+
+.profile-photo {
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.profile-photo img {
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+}
+
+.profile-data {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.user-follow, .profile-stats {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.username {
+    font-size: 25px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.user-follow {
+    flex-wrap: wrap;
+}
+
+.follow-btn {
+    background-color: #938c7f;
+    border: #938c7f 3px solid;
+    border-radius: 15px;
+    padding: 5px 0;
+    margin-bottom: 15px;
+}
+
+.follow-btn:hover {
+    cursor: pointer;
+    background-color: #5d5850;
+    border: #5d5850 3px solid;
+}
+
+.follow-btn a {
+    font-size: 20px;
+    color: #fcfcfc;
+    text-decoration: none;
+    margin: 20px;
+}
+
+.unfollow {
+    background-color: #fcfcfc;
+    border: #5d5850 3px solid;
+}
+
+.unfollow a {
+    color: #252525;
+}
+
+.unfollow:hover {
+    background-color: #5d5850;
+    border: #5d5850 3px solid;
+}
+
+.unfollow:hover a{
+    color: #fcfcfc;
+}
+
+.profile-stats {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.profile-follower-count {
+    padding-right: 15px;
+}
+
+.follower-count, .following-count {
+    font-weight: bold;
+}
+
+.description {
+    word-break: break-all;
+}
+
+.description p {
+    line-height: 1.3;
+}
+
+.line {
+    width: 700px;
+    margin: auto;
+    border: 1px solid #938c7f;
+}
+
+/* POST FEED */
+
+.posts {
+    display: flex;
+    width: 700px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+.single-post {
+    width: 340px;
+    height: 380px;
+    margin-bottom: 30px;
+}
+
+.left {
+    margin-right: 10px;
+}
+
+.right {
+    margin-left: 10px;
+}
+
+.post-photo {
+    background-color: #fcfcfc;
+    width: 339px;
+    height: 300px;
+}
+
+.post-photo img{
+    object-fit: contain;
+    height: 300px;
+    width: 339px;
+}
+
+.post-title p{
+    height: 50px;
+    overflow: hidden;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.post-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-stats {
+    display: flex;
+    margin-top: 5px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.post-likes, .post-comments {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.post-likes img, .post-comments img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.post-likes p, .post-comments p{
+    font-size: 20px;
+}
+
+.post-comments {
+    margin-right: 5px;
+    align-content: flex-end;
+}
+
+/* Tablet version */
+@media only screen and (max-width: 800px) {
+    .profile, .posts, .line {
+        width: 570px;
+    }
+
+    .left, .right {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .single-post {
+        width: 570px;
+        height: 610px;
+    }
+
+    .post-photo, .post-photo img {
+        width: 579px;
+        height: 530px;
+    }
+}
+
+/* Mobile Version */
+@media only screen and (max-width: 600px) {
+    .profile, .posts, .line {
+        width: 90%;
+    }
+
+    .profile {
+        margin-top: 100px;
+        flex-direction: column;
+    }
+
+    .profile-data {
+        align-items: center;
+    }
+
+    .profile-photo {
+        padding-bottom: 10px;
+        margin: auto;
+    }
+
+    .single-post {
+        margin-bottom: 0;
+    }
+
+    .single-post, .post-photo, .post-photo img {
+        width: 100%;
+    }
+
+    .post-photo {
+        height: 80%;
+    }
+
+    .post-photo img {
+        height: 100%;
+    }
+}
