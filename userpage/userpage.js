@@ -1,7 +1,14 @@
 'use strict';
 
 const url = 'http://localhost:3000'; // change url when uploading to server
-const id = 1;
+
+//Get query parameter
+const getQParam = (param) => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    console.log(urlParams.get(param));
+    return urlParams.get(param);
+};
 
 const createPosts = (posts) => {
     const postsDiv = document.querySelector('.posts');
@@ -16,7 +23,9 @@ const createPosts = (posts) => {
         postsDiv.innerHTML += `
         <div class="single-post ${side}">
                     <div class="post-photo">
-                        <img src="${post.image}">
+                        <a href="../post-details/post-details.html?id=${post.post_id}">
+                            <img src="${post.image}" alt="post image">
+                        </a>
                     </div>
                     <div class="post-details">
                         <div class="post-title">
@@ -75,7 +84,7 @@ const addUserData = (user) => {
 }
 
 // AJAX calls
-const getPosts = async () => {
+const getPosts = async (id) => {
     try {
         const response = await fetch(url + '/user/' + id + '/post');
         const posts = await response.json();
@@ -84,9 +93,9 @@ const getPosts = async () => {
         console.log(e.message);
     }
 };
-getPosts();
+getPosts(getQParam('id'));
 
-const getUserData = async () => {
+const getUserData = async (id) => {
     try {
         const response = await fetch(url + '/user/' + id);
         const user = await response.json();
@@ -95,4 +104,4 @@ const getUserData = async () => {
         console.log(e.message);
     }
 };
-getUserData();
+getUserData(getQParam('id'));

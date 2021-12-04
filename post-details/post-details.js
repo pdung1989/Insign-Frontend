@@ -39,7 +39,7 @@ const addAuthor = (author) => {
     postDiv.innerHTML += `<div class="author">
                 <img src="${author.profile_picture}">
                 <div class="author-details">
-                    <p class="username">${author.username}</p>
+                    <a class="username" href="../userpage/userpage.html?id=${author.user_id}">${author.username}</a>
                     <button class="follow-btn"><a>Follow</a></button>
                 </div>
             </div>`
