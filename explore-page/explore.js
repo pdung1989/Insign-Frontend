@@ -1,6 +1,15 @@
 "use strict";
 const url = "http://localhost:3000";
 
+
+//Get query parameter
+const getQParam = (param) => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  console.log(urlParams.get(param));
+  return urlParams.get(param);
+};
+
 const createPostCard = (posts) => {
   const blogs = document.querySelector(".blogs");
   blogs.setAttribute("class", "blogs");
@@ -44,3 +53,14 @@ const getAllPosts = async () => {
 };
 getAllPosts();
 
+const getPost = async (postId) => {
+  try {
+    const response = await fetch(url + "/posts/" + postId );
+    const posts = await response.json();
+    console.log(posts);
+    createPostCard(posts);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+getPost(getQParam('postId'));
