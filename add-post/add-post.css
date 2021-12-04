@@ -94,7 +94,12 @@ input[type=submit]:hover {
 }
 
 
+input[type=submit]{
+  width: 20%;
+  margin-top: 2rem;
+  text-align: center;
 
+}
 
 img {
   display: flex;

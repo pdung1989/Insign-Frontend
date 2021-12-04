@@ -8,28 +8,24 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../add-post/add-post.css" />
-    <link rel="stylesheet" href="../nav-anon/nav-anon-stylesheet.css" />
-    <title>Creat Post</title>
+    <link rel="stylesheet" href="../nav-user/nav-user-stylesheet.css">
+    <title>Create Post</title>
   </head>
 
   <body>
     <header>
       <nav>
-        <ul class="menu">
-          <li class="logo"><a href="#">INSIGN</a></li>
-          <li class="item hover-underline-animation" id="home">
-            <a href="#">Home</a>
-          </li>
-          <li class="item hover-underline-animation" id="register">
-            <a href="#">Register</a>
-          </li>
-          <li class="item nav-button" id="signin"><a href="#">Sign In</a></li>
-          <li class="toggle">
-            <div class="hamburger-icon"></div>
-          </li>
-        </ul>
+          <ul class="menu">
+              <li class="logo"><a href="#">INSIGN</a></li>
+              <li class="item hover-underline-animation" id="home"><a href="#">Home</a></li>
+              <li class="item hover-underline-animation" id="explore"><a href="#">Explore</a></li>
+              <li class="item nav-button" id="myaccount"><a href="#">My Account</a></li>
+              <li class="toggle">
+                  <div class="hamburger-icon"></div>
+              </li>
+          </ul>
       </nav>
-    </header>
+  </header>
     <div class="container">
       <div class="item" id="left">
         <img
@@ -41,7 +37,7 @@
       <div class="item" id="right">
         <h2>Create new post</h2>
         <br />
-        <form action="/action_page.php">
+        <form action="http://localhost:3000/post" id="addPostForm">
           <div class="row">
             <div class="col-25">
               <label for="author">Created By</label>
@@ -141,5 +137,7 @@
         <div class="item" id="part2"></div>
       </div>
     </div>
+    <script src="add-post.js"></script>
+    <script src="../nav-user/nav-user.js"></script>
   </body>
 </html>
