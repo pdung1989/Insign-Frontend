@@ -9,7 +9,9 @@
   padding-right: 20%;
   font-size: xx-large;
 }
-
+a{
+  padding-bottom: 15%;
+}
 .column {
   display: flex;
   float: left;
@@ -19,6 +21,12 @@
 }
 .title h1 {
   text-align: center;
+}
+#title {
+  text-align: center;
+  padding-top: 25em;
+  position: absolute;
+  
 }
 .blog {
   margin: 0 -5px;
