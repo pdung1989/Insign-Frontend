@@ -109,6 +109,5 @@ dist
 # .idea folder
 .idea
 
-#.vscode
+#.vscode folder
 .vscode/
-
