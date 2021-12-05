@@ -3,68 +3,15 @@
   box-sizing: border-box;
   padding: 0;
 }
-/* main {
-  display: block;
-  margin-top: 5em;
-}
-
-@media screen and (max-width: 600px) {
-  main {
-    max-width: 700px;
-    margin: auto;
-  }
-}
-.feed-area {
-  display: flex;
-
-  width: 100%;
-}
-
-.post-area {
-  display: flex;
-  flex-wrap: wrap;
-  float: left;
-
-  margin-left: 15%;
-  justify-content: flex-start;
-  padding: 0 1em;
-}
-.post-suggestion {
-  width: 60%;
-  display: flex;
-  left: 900px;
-  justify-content: end;
-  position: relative;
-}
-.post {
-  width: 60%;
-  padding: 1em;
-  background-color: #fcfcfc;
-  margin: 1em 0;
-  border: 1px solid #000;
-  border-radius: 10px;
-  display: flex;
-  flex-shrink: 0;
-  padding: 1em;
-    right: 0;
-  position: relative;
-} */
 
 
-/* Add a gray background color with some padding */
+/* Add background color with some padding */
 body {
   font-family: Arial;
   padding: 20px;
   background: #f1f1f1;
 }
 
-/* Header/Blog Title */
-.header {
-  padding: 30px;
-  font-size: 40px;
-  text-align: center;
-  background: white;
-}
 
 /* Create two unequal columns that floats next to each other */
 /* Left column */
@@ -127,7 +74,7 @@ footer {
 footer p {
   margin: 10px 0;
 }
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .leftcolumn  {   
     width: 100%;
