@@ -15,6 +15,10 @@ const createPost = (post) => {
     postDiv.innerHTML += `<div class="title">
                 <p>${post.title}</p>
             </div>
+            <div class="location">
+            <img src="../assets/location-ping.png">
+            <p>${post.location}</p>
+            </div>
             <div class="image">
                 <img src="${post.image}">
             </div>
@@ -27,17 +31,23 @@ const createPost = (post) => {
                     <img src="../assets/favorites-icon.png">
                 </div>
             </div>
-            <div class="description">
-                <p class="description-title">Description</p>
-                <p class="description-text">${post.description}</p>
-            </div>`
+            <div class="description-with-decor">
+                <div class="description">
+                    <p class="description-title">Description</p>
+                    <p class="description-text">${post.description}</p>
+                </div>
+            </div>
+            `
 }
 
 //Create author div
 const addAuthor = (author) => {
     const postDiv = document.querySelector('.post');
-    postDiv.innerHTML += `<div class="author">
-                <img src="${author.profile_picture}">
+    postDiv.innerHTML += `
+                <div class="author">
+                <a href="../userpage/userpage.html?id=${author.user_id}">
+                    <img src="${author.profile_picture}"">
+                </a>
                 <div class="author-details">
                     <a class="username" href="../userpage/userpage.html?id=${author.user_id}">${author.username}</a>
                     <button class="follow-btn"><a>Follow</a></button>

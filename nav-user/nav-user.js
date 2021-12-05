@@ -1,7 +1,7 @@
 'use strict'
 
 const hamburgerButton = document.querySelector('.toggle');
-const home = document.querySelector('#userpage');
+const home = document.querySelector('#home');
 const explore = document.querySelector('#explore');
 const myAccount = document.querySelector('#myaccount');
 
