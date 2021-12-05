@@ -67,32 +67,116 @@ body {
 
 .second {
     display: flex;
-    color: #252525;
-    background-color: #fcfcfc;
-    flex-direction: column;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-bottom: 50px;
     align-items: center;
     justify-content: center;
-    font-size: 2em;
-    width: 100%;
-    height: 30vh;
 }
 
-.second button {
-    color: #fcfcfc;
-    border: #938c7f 3px solid;
-    padding: 7px 20px 7px 20px;
-    border-radius: 15px;
-    background-color: #938c7f;
-    margin-top: 20px;
+.second-text p {
+    font-size: 30px;
 }
 
-.second button:hover{
+/* Slideshow container */
+.slideshow-container {
+    width: 600px;
+    position: relative;
+    margin-left: 40px;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+    width: 600px;
+    object-fit: cover;
+}
+
+.mySlides img {
+    object-fit: cover;
+    width: 600px;
+    height: 450px;
+}
+
+/* Next & previous buttons */
+.prev, .next {
     cursor: pointer;
-    background-color: #5d5850;
-    border: #5d5850 3px solid;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
     color: #fcfcfc;
-    transform: translateY(-10%);
-    transition: all 1s ease;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+    color: #252525;
+    background-color: #fcfcfc;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    margin-bottom: 10px;
+    bottom: 18px;
+    width: 100%;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.dots {
+    text-align:center;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.activeSlide, .dot:hover {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 2s;
+    animation-name: fade;
+    animation-duration: 2s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
 }
 
 /* Tablet version */
@@ -125,19 +209,41 @@ body {
         font-size: 30px;
     }
 
-    .second button {
-        padding: 5px 13px 5px 13px;
-        border: #938c7f 2px solid;
+    .slideshow-container, .mySlides {
+        width: 500px;
     }
 
-    .second button:hover{
-        border: #5d5850 2px solid;
+    .mySlides img {
+        object-fit: cover;
+        width: 500px;
+        height: 375px;
     }
 }
 
 /* Mobile Version */
 @media only screen and (max-width: 600px) {
-    .first, .second {
+    .first, .second, .second-text p {
         font-size: 20px;
+    }
+
+    .slideshow-container, .mySlides, .mySlides img, .text, .dots {
+        width: 90%;
+    }
+
+    .next {
+        right: 10%;
+    }
+}
+
+/* Laptop Version Slideshow */
+@media only screen and (max-width: 1200px) {
+    .second {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .second-text {
+        margin-bottom: 30px;
     }
 }
