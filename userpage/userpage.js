@@ -20,8 +20,11 @@ const createPosts = (posts) => {
             side = 'right';
         }
 
-        postsDiv.innerHTML += `
-        <div class="single-post ${side}">
+        if(index > 0) {
+            postsDiv.innerHTML += '<div class="post-line"></div>';
+        }
+
+        postsDiv.innerHTML += `<div class="single-post ${side}">
                     <div class="post-photo">
                         <a href="../post-details/post-details.html?id=${post.post_id}">
                             <img src="${post.image}" alt="post image">
