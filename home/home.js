@@ -1,31 +1,33 @@
 'use strict';
 
-let slideIndex = 1;
+const url = 'http://localhost:3000'; // change url when uploading to server
 
-// Next/previous controls
-const plusSlides = (n) => {
-    showSlides(slideIndex += n);
+const createPosts = (posts) => {
+    const postsDiv = document.querySelector('.random-posts');
+
+    posts.forEach( (post) => {
+        console.log('foreach');
+        postsDiv.innerHTML += `
+                <div class="mySlides fade">
+                    <img src="${post.image}" style="width:100%">
+                    <div class="text">${post.title}</div>
+                </div>`
+    });
+
+    const slideshowScript = document.createElement('script')
+    slideshowScript.src = 'slideshow.js'
+    document.body.appendChild(slideshowScript);
 }
 
-// Thumbnail image controls
-const currentSlide = (n) => {
-    showSlides(slideIndex = n);
-}
-
-const showSlides = (n) => {
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+// AJAX calls
+const getPosts = async () => {
+    try {
+        const response = await fetch(url + '/post?limit=3');
+        const posts = await response.json();
+        await createPosts(posts);
+    } catch (e) {
+        console.log(e.message);
     }
-    for (let i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" activeSlide", "");
-    }
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " activeSlide";
-}
+};
 
-showSlides(slideIndex);
+getPosts();
