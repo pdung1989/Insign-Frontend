@@ -25,7 +25,7 @@ const createPost = (post) => {
             <div class="post-data">
                 <div class="post-likes">
                     <img src="../assets/heart-icon-off.png">
-                    <p>4</p>
+                    <p>${post.num_likes}</p>
                 </div>
                 <div class="post-favorite">
                     <img src="../assets/favorites-icon.png">
@@ -43,10 +43,10 @@ const createPost = (post) => {
 //Create author div
 const addAuthor = (author) => {
     const postDiv = document.querySelector('.post');
-    postDiv.innerHTML += `
+    postDiv.innerHTML += `<p class="author-title">Author</p>
                 <div class="author">
                 <a href="../userpage/userpage.html?id=${author.user_id}">
-                    <img src="${author.profile_picture}"">
+                    <img src="${author.profile_picture}">
                 </a>
                 <div class="author-details">
                     <a class="username" href="../userpage/userpage.html?id=${author.user_id}">${author.username}</a>
@@ -69,6 +69,26 @@ const addAuthor = (author) => {
     });
 }
 
+//Add comments
+const createComments = (comments) => {
+    const postDiv = document.querySelector('.post');
+
+    postDiv.innerHTML += '<p class="comments-title">Comments</p>';
+
+    comments.forEach((comment) => {
+        postDiv.innerHTML += `<div class="single-comment">
+                <div class="comment-image">
+                    <img src="${comment.profile_picture}">
+                </div>
+                <div class="comment-details">
+                    <p class="comment-author">${comment.username}</p>
+                    <p class="comment-text">${comment.content}</p>
+                    <p class="comment-date">2020.12.03. 14:35:12</p>
+                </div>
+            </div>`;
+    })
+}
+
 // AJAX call
 const getPost = async (post_id) => {
     try {
@@ -79,8 +99,12 @@ const getPost = async (post_id) => {
         const response_a = await fetch(url +'/user/' +  user_id);
         const author = await response_a.json();
 
+        const response_c = await fetch(url +'/post/' +  post_id + '/comment');
+        const comments = await response_c.json();
+
         createPost(post);
         addAuthor(author);
+        createComments(comments);
     } catch (e) {
         console.log(e.message);
     }

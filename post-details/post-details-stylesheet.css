@@ -87,7 +87,7 @@ main {
     flex-direction: row;
 }
 
-.description-title {
+.description-title, .comments-title, .author-title {
     font-size: 30px;
     margin-bottom: 10px;
 }
@@ -101,9 +101,14 @@ main {
 .author {
     display: flex;
     flex-direction: row;
-    background-color: #f8f8f8;
     padding: 10px;
-    border-radius: 20px;
+    background:linear-gradient(to right, #938c7f 2px, transparent 2px) 0 0%,
+            linear-gradient(to left, #938c7f 2px, transparent 2px) 100% 100%,
+            linear-gradient(to bottom, #938c7f 2px, transparent 2px) 0 0,
+            linear-gradient(to top, #938c7f 2px, transparent 2px) 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 70%;
+    background-color: #fcfcfc;
 }
 
 .author img {
@@ -165,9 +170,62 @@ main {
     color: #fcfcfc;
 }
 
+.comments-title {
+    margin-top: 10px;
+}
+
+.single-comment {
+    display: flex;
+    width: 700px;
+    margin-bottom: 20px;
+    background: rgb(248,248,248);
+    background: linear-gradient(90deg, rgba(248,248,248,1) 16%, rgba(252,252,252,1) 100%);
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.comment-image {
+    display: flex;
+}
+
+.comment-image img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.comment-details {
+    display: flex;
+    width: 700px;
+    flex-direction: column;
+}
+
+.comment-author {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comment-date {
+    text-align: right;
+    margin-right: 10px;
+    padding-top: 10px;
+    margin-top: auto;
+}
+
+p {
+    display: block;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
 /* Tablet version */
 @media only screen and (max-width: 800px) {
-     .post {
+     .post, .single-comment {
         width: 570px;
     }
 
@@ -183,17 +241,38 @@ main {
         margin-top: 100px;
     }
 
+    .single-comment {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    .comment-image img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .comment-author {
+        font-size: 15px;
+    }
+
+    .comment-date {
+        font-size: 12px;
+    }
+
     .image img {
         width: 100%;
     }
 
     .author {
-        flex-direction: column;
         align-items: center;
     }
 
+    .author img {
+        width: 80px;
+        height: 80px;
+    }
+
     .author-details {
-        margin-top: 10px;
         flex-direction: column;
     }
 
@@ -210,7 +289,7 @@ main {
         width: 20px;
     }
 
-    .title, .description-title, .author a {
+    .title, .description-title, .author a, .author-title {
         font-size: 25px;
     }
 
