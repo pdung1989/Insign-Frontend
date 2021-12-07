@@ -19,7 +19,7 @@ const createPost = (post) => {
                 <p>${post.title}</p>
             </div>
             <div class="location">
-            <img src="../assets/location-ping.png">
+            <img src="../assets/pin.svg">
             <p>${post.location}</p>
             </div>
             <div class="image">

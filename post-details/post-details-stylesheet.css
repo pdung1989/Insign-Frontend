@@ -204,6 +204,10 @@ main {
     flex-direction: column;
 }
 
+.comment-text {
+    word-break: break-all;
+}
+
 .comment-author {
     font-size: 20px;
     font-weight: bold;
@@ -266,6 +270,10 @@ p {
         width: 570px;
     }
 
+    .post {
+        margin-top: 100px;
+    }
+
     .image img {
         width: 570px;
     }
@@ -318,7 +326,7 @@ p {
         width: 20px;
     }
 
-    .title, .description-title {
+    .title, .description-title, .comments-title, .author-title {
         font-size: 25px;
     }
 

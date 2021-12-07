@@ -97,7 +97,7 @@ a {
 .hamburger-icon {
     cursor: pointer;
     position: absolute;
-    background-image: url('../assets/hamburger-icon.png');
+    background-image: url('../assets/menu.svg');
     background-size: 25px 25px;
     top: 35px;
     right: 20px;
@@ -117,7 +117,7 @@ nav {
 
 
 /* Desktop version */
-@media all and (min-width: 600px) {
+@media all and (min-width: 800px) {
     nav {
         position: static;
     }

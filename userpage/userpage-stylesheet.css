@@ -222,6 +222,10 @@ main {
         width: 570px;
     }
 
+    .profile {
+        margin-top: 100px;
+    }
+
     .left, .right {
         margin-right: 0;
         margin-left: 0;
