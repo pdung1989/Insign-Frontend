@@ -8,24 +8,30 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../add-post/add-post.css" />
-    <link rel="stylesheet" href="../nav-user/nav-user-stylesheet.css">
+    <link rel="stylesheet" href="../nav-user/nav-user-stylesheet.css" />
     <title>Create Post</title>
   </head>
 
   <body>
     <header>
       <nav>
-          <ul class="menu">
-              <li class="logo"><a href="#">INSIGN</a></li>
-              <li class="item hover-underline-animation" id="home"><a href="#">Home</a></li>
-              <li class="item hover-underline-animation" id="explore"><a href="#">Explore</a></li>
-              <li class="item nav-button" id="myaccount"><a href="#">My Account</a></li>
-              <li class="toggle">
-                  <div class="hamburger-icon"></div>
-              </li>
-          </ul>
+        <ul class="menu">
+          <li class="logo"><a href="#">INSIGN</a></li>
+          <li class="item hover-underline-animation" id="home">
+            <a href="#">Home</a>
+          </li>
+          <li class="item hover-underline-animation" id="explore">
+            <a href="#">Explore</a>
+          </li>
+          <li class="item nav-button" id="myaccount">
+            <a href="#">My Account</a>
+          </li>
+          <li class="toggle">
+            <div class="hamburger-icon"></div>
+          </li>
+        </ul>
       </nav>
-  </header>
+    </header>
     <div class="container">
       <div class="item" id="left">
         <img
@@ -46,6 +52,7 @@
               <input
                 type="text"
                 id="author"
+                required
                 name="author"
                 placeholder="Write your name"
               />
@@ -59,6 +66,7 @@
               <input
                 type="text"
                 id="title"
+                required
                 name="title"
                 placeholder="Provide the title of your Post"
               />
@@ -69,7 +77,14 @@
               <label for="thumbnail">Thumbnail</label>
             </div>
             <div class="col-75">
-                <input class="light-border" type="file" name="image"  placeholder="Choose file">
+              <input
+                class="light-border"
+                type="file"
+                required
+                name="image"
+                accept="image/*"
+                placeholder="Choose file"
+              />
             </div>
           </div>
           <div class="row">
@@ -80,6 +95,7 @@
               <textarea
                 id="description"
                 name="description"
+                required
                 placeholder="Write something for your post"
                 style="height: 100px"
               ></textarea>
@@ -131,8 +147,6 @@
             <input type="submit" value="Submit" />
           </div>
         </form>
-
-
 
         <div class="item" id="part2"></div>
       </div>
