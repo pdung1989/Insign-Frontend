@@ -18,10 +18,10 @@
         <ul class="menu">
           <li class="logo"><a href="#">INSIGN</a></li>
           <li class="item hover-underline-animation" id="home">
-            <a href="#">Home</a>
+            <a href="../home/home.html">Home</a>
           </li>
           <li class="item hover-underline-animation" id="explore">
-            <a href="#">Explore</a>
+            <a href="../explore-page/explore.html">Explore</a>
           </li>
           <li class="item nav-button" id="myaccount">
             <a href="#">My Account</a>
@@ -43,7 +43,7 @@
       <div class="item" id="right">
         <h2>Create new post</h2>
         <br />
-        <form action="http://localhost:3000/post" id="addPostForm">
+        <form onsubmit="return validationAddPost()" id="addPostForm">
           <div class="row">
             <div class="col-25">
               <label for="author">Created By</label>
@@ -106,11 +106,12 @@
               <label for="category">Select category</label>
             </div>
             <div class="col-75">
-              <select id="category" name="category" required>
-                <option value="other">Other</option>
-                <option value="homeDecor">Home Decor</option>
-                <option value="interiorDesign">Interior Design</option>
-                <option value="idea">Idea/Inspiration</option>
+              <select id="category" title="Please select a category" name="category" required>
+                <option value="">Select Category</option>
+                <option value="">Other</option>
+                <option value="">Home Decor</option>
+                <option value="">Interior Design</option>
+                <option value="">Idea/Inspiration</option>
               </select>
             </div>
           </div>
@@ -119,7 +120,7 @@
               <label for="syle">Select Style</label>
             </div>
             <div class="col-75">
-              <select id="category" name="category" required>
+              <select id="style" title="Please select a style" name="style" required>
                 <option value="">Select Style</option>
                 <option value="">Contemporary</option>
                 <option value="">Minimalist</option>

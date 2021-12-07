@@ -2,7 +2,7 @@
 const url = 'http://localhost:3000'; //TODO: change url to server
 
 // select existing html elements
-const addForm = document.querySelector('#addCatForm');
+const addForm = document.querySelector('#addPostForm');
 
 
 // submit add post form
@@ -14,8 +14,13 @@ addForm.addEventListener('submit', async (evt) => {
     body: fd,
   };
   console.log(fetchOptions);
-  const response = await fetch(url + '/posts', fetchOptions);
+  const response = await fetch(url + '/post', fetchOptions);
   const json = await response.json();
   alert(json.message);
   location.href = 'add-post.html';
 });
+const validationAddPost = () => {
+
+  document.write("Post has been created successfully");
+
+};
