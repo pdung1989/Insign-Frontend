@@ -1,5 +1,6 @@
 'use strict';
 const url = 'http://localhost:3000';
+let commentCount = 0;
 
 //Get query parameter
 const getQParam = (param) => {
@@ -11,6 +12,8 @@ const getQParam = (param) => {
 
 //Create post div
 const createPost = (post) => {
+    commentCount = post.num_comments;
+
     const postDiv = document.querySelector('.post');
     postDiv.innerHTML += `<div class="title">
                 <p>${post.title}</p>
@@ -24,11 +27,11 @@ const createPost = (post) => {
             </div>
             <div class="post-data">
                 <div class="post-likes">
-                    <img src="../assets/heart-icon-off.png">
+                    <img src="../assets/heart-icon-off.svg">
                     <p>${post.num_likes}</p>
                 </div>
                 <div class="post-favorite">
-                    <img src="../assets/favorites-icon.png">
+                    <img src="../assets/favorites-icon.svg">
                 </div>
             </div>
             <div class="description-with-decor">
@@ -70,10 +73,19 @@ const addAuthor = (author) => {
 }
 
 //Add comments
+//TODO - delete "user id" input when backend authentication is done
 const createComments = (comments) => {
     const postDiv = document.querySelector('.post');
 
-    postDiv.innerHTML += '<p class="comments-title">Comments</p>';
+    postDiv.innerHTML += `<p class="comments-title">${commentCount} comments</p>
+            <div class="form-wrapper">
+                <form method="post" action="http://localhost:3000/comment" enctype="application/x-www-form-urlencoded" id="addCommentForm">
+                    <textarea rows="10" cols="10" class="add-comment-content" required minlength="4" maxlength="500" name="content" placeholder="write your comment here"></textarea>
+                    <input type="hidden" name="post_id" value='${getQParam('id')}'>
+                    <input type="hidden" name="user_id" value="2">
+                    <button class="comment-add-btn" type="submit"><a>></a></button>
+                </form>
+            </div>`;
 
     comments.forEach((comment) => {
         postDiv.innerHTML += `<div class="single-comment">
@@ -88,6 +100,27 @@ const createComments = (comments) => {
             </div>`;
     })
 }
+
+const addCommentForm = (() => {
+    const addCommentForm = document.querySelector('#addCommentForm');
+    // AddComment
+    addCommentForm.addEventListener('submit', async (evt) => {
+        evt.preventDefault();
+        const fd = new FormData(addCommentForm);
+        const fetchOptions = {
+            method: 'POST',
+            body: new URLSearchParams({
+                'post_id': fd.get('post_id'),
+                'user_id': fd.get('user_id'),
+                'content': fd.get('content')
+            })
+        };
+        const response = await fetch(url + '/comment', fetchOptions);
+        const json = await response.json();
+        alert('Your comment was added successfully!');
+        location.reload();
+    });
+})
 
 // AJAX call
 const getPost = async (post_id) => {
@@ -105,6 +138,7 @@ const getPost = async (post_id) => {
         createPost(post);
         addAuthor(author);
         createComments(comments);
+        addCommentForm();
     } catch (e) {
         console.log(e.message);
     }

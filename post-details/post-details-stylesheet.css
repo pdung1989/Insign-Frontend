@@ -50,12 +50,13 @@ main {
     align-items: center;
 }
 
-.post-favorite img, .post-likes img {
-    width: 35px;
+.post-favorite img{
+    height: 30px;
+    margin-right: 5px;
 }
 
 .post-likes img {
-    height: 35px;
+    height: 30px;
     margin-right: 5px;
     margin-left: 5px;
 }
@@ -102,13 +103,12 @@ main {
     display: flex;
     flex-direction: row;
     padding: 10px;
-    background:linear-gradient(to right, #938c7f 2px, transparent 2px) 0 0%,
-            linear-gradient(to left, #938c7f 2px, transparent 2px) 100% 100%,
-            linear-gradient(to bottom, #938c7f 2px, transparent 2px) 0 0,
-            linear-gradient(to top, #938c7f 2px, transparent 2px) 100% 100%;
+    background:linear-gradient(to right, #e1dedb 2px, transparent 2px) 0 0%,
+            linear-gradient(to left, #e1dedb 2px, transparent 2px) 100% 100%,
+            linear-gradient(to bottom, #e1dedb 2px, transparent 2px) 0 0,
+            linear-gradient(to top, #e1dedb 2px, transparent 2px) 100% 100%;
     background-repeat: no-repeat;
     background-size: 100% 70%;
-    background-color: #fcfcfc;
 }
 
 .author img {
@@ -223,9 +223,46 @@ p {
     margin-block-end: 0;
 }
 
+.form-wrapper {
+    font-size: 30px;
+}
+
+.add-comment-content {
+    width: 700px;
+    height: 100px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 2px #938c7f solid;
+    padding: 5px;
+    word-break: break-word;
+}
+
+.comment-add-btn {
+    background-color: #938c7f;
+    border: #938c7f 3px solid;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    float: right;
+}
+
+.comment-add-btn:hover {
+    cursor: pointer;
+    background-color: #5d5850;
+    border: #5d5850 3px solid;
+}
+
+.comment-add-btn a {
+    font-size: 20px;
+    color: #fcfcfc;
+}
+
+
 /* Tablet version */
 @media only screen and (max-width: 800px) {
-     .post, .single-comment {
+     .post, .single-comment, .add-comment-content {
         width: 570px;
     }
 
@@ -241,7 +278,7 @@ p {
         margin-top: 100px;
     }
 
-    .single-comment {
+    .single-comment, .add-comment-content {
         width: 100%;
         font-size: 15px;
     }
@@ -263,17 +300,9 @@ p {
         width: 100%;
     }
 
-    .author {
-        align-items: center;
-    }
-
     .author img {
-        width: 80px;
-        height: 80px;
-    }
-
-    .author-details {
-        flex-direction: column;
+        width: 70px;
+        height: 70px;
     }
 
     .post-likes img, .post-favorite img {
@@ -281,7 +310,7 @@ p {
         height: 25px;
     }
 
-    .post-likes p {
+    .post-likes p, .author-details a {
         font-size: 20px;
     }
 
@@ -289,12 +318,12 @@ p {
         width: 20px;
     }
 
-    .title, .description-title, .author a, .author-title {
+    .title, .description-title {
         font-size: 25px;
     }
 
     .follow-btn a {
-        font-size: 17px;
+        font-size: 15px;
     }
 
     .post-favorite img {

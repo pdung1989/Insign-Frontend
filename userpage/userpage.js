@@ -36,11 +36,11 @@ const createPosts = (posts) => {
                         </div>
                         <div class="post-stats">
                             <div class="post-likes">
-                                <img src="../assets/heart-icon-off.png">
+                                <img src="../assets/heart-icon-off.svg">
                                 <p>${post.num_likes}</p>
                             </div>
                             <div class="post-comments">
-                                <img src="../assets/comment-icon.png">
+                                <img src="../assets/comment-icon.svg">
                                 <p>${post.num_comments}</p>
                             </div>
                         </div>
