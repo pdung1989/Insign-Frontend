@@ -42,7 +42,7 @@ const createPostCard = (posts) => {
 
 const getAllPosts = async () => {
   try {
-    const response = await fetch(url + "/post");
+    const response = await fetch(url + "/post?limit=9");
     const posts = await response.json();
     console.log(posts);
     createPostCard(posts);
