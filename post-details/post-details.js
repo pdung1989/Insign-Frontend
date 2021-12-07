@@ -89,15 +89,36 @@ const createComments = (comments) => {
 
     comments.forEach((comment) => {
         postDiv.innerHTML += `<div class="single-comment">
-                <div class="comment-image">
-                    <img src="${comment.profile_picture}">
-                </div>
-                <div class="comment-details">
-                    <p class="comment-author">${comment.username}</p>
-                    <p class="comment-text">${comment.content}</p>
-                    <p class="comment-date">2020.12.03. 14:35:12</p>
-                </div>
-            </div>`;
+                                    <div class="comment-image">
+                                        <img src="${comment.profile_picture}">
+                                    </div>
+                                    <div class="comment-details">
+                                        <p class="comment-author">${comment.username}</p>
+                                        <p class="comment-text">${comment.content}</p>
+                                        <p class="comment-date">2020.12.03. 14:35:12</p>
+                                    </div>
+                                </div>
+                        <div class="comment-buttons">
+                            <button class="comment-edit" id="edit${comment.comment_id}">Edit</button>
+                            <button class="comment-delete" id="delete${comment.comment_id}">Delete</button>
+                        </div>`;
+    })
+
+    comments.forEach((comment) =>  {
+        document.getElementById(`delete${comment.comment_id}`).addEventListener('click', async(evt) => {
+            const commentId = evt.target.id.replace(/\D/g, "");
+            const fetchOptions = {
+                method: 'DELETE'
+            };
+            try {
+                const response = await fetch(url + '/comment/' + commentId, fetchOptions);
+                const json = await response.json();
+                alert('Comment deleted successfully!');
+                location.reload();
+            } catch (e) {
+                console.log(e.message);
+            }
+        })
     })
 }
 

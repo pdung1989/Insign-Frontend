@@ -61,7 +61,7 @@ main {
     margin-left: 5px;
 }
 
-.post-likes img:hover, .post-favorite img:hover {
+.post-likes img:hover, .post-favorite img:hover, .comment-buttons button:hover {
     cursor: pointer;
 }
 
@@ -177,12 +177,31 @@ main {
 .single-comment {
     display: flex;
     width: 700px;
-    margin-bottom: 20px;
     background: rgb(248,248,248);
     background: linear-gradient(90deg, rgba(248,248,248,1) 16%, rgba(252,252,252,1) 100%);
     border-radius: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.comment-buttons {
+    display: flex;
+    width: 700px;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.comment-buttons button {
+    margin-right: 10px;
+    background-color: #938c7f;
+    padding: 7px 10px;
+    border-radius: 10px;
+    color: #fcfcfc;
+}
+
+.comment-buttons button:hover {
+    background-color: #5d5850;
 }
 
 .comment-image {
@@ -266,7 +285,7 @@ p {
 
 /* Tablet version */
 @media only screen and (max-width: 800px) {
-     .post, .single-comment, .add-comment-content {
+     .post, .single-comment, .add-comment-content, .comment-buttons {
         width: 570px;
     }
 
@@ -286,7 +305,7 @@ p {
         margin-top: 100px;
     }
 
-    .single-comment, .add-comment-content {
+    .single-comment, .add-comment-content, .comment-buttons {
         width: 100%;
         font-size: 15px;
     }
@@ -300,7 +319,7 @@ p {
         font-size: 15px;
     }
 
-    .comment-date {
+    .comment-date, .comment-buttons {
         font-size: 12px;
     }
 
@@ -330,11 +349,15 @@ p {
         font-size: 25px;
     }
 
-    .follow-btn a {
+    .follow-btn a, .comment-add-btn  {
         font-size: 15px;
     }
 
     .post-favorite img {
         width: 25px;
+    }
+
+    .comment-add-btn {
+        padding-bottom: 0;
     }
 }
