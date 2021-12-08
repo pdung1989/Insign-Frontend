@@ -2,10 +2,6 @@
 const url = 'http://localhost:3000';
 let commentCount = 0;
 
-const postDiv = document.querySelector('.post');
-const modal = document.getElementById("myModal");
-const modalContent = document.querySelector('.modal-content');
-
 //Get query parameter
 const getQParam = (param) => {
     const queryString = window.location.search;
@@ -13,6 +9,12 @@ const getQParam = (param) => {
     console.log(urlParams.get(param));
     return urlParams.get(param);
 };
+
+const post_id = getQParam('id')
+
+const postDiv = document.querySelector('.post');
+const modal = document.getElementById("myModal");
+const modalContent = document.querySelector('.modal-content');
 
 //Create post div
 const createPost = (post) => {
@@ -82,30 +84,39 @@ const createComments = (comments) => {
             <div class="form-wrapper">
                 <form method="post" action="http://localhost:3000/comment" enctype="application/x-www-form-urlencoded" id="addCommentForm">
                     <textarea rows="10" cols="10" class="add-comment-content" required minlength="4" maxlength="500" name="content" placeholder="write your comment here"></textarea>
-                    <input type="hidden" name="post_id" value='${getQParam('id')}'>
+                    <input type="hidden" name="post_id" value='${post_id}'>
                     <input type="hidden" name="user_id" value="2">
                     <button class="comment-add-btn" type="submit"><a>></a></button>
                 </form>
             </div>`;
 
     //Add all comments to the ui
+    //TODO add comment.author to profile photo and username hrefs
     comments.forEach((comment) => {
         const commentDate = comment.comment_date.slice(0, -5).replace('T', ' ');
 
         postDiv.innerHTML += `<div class="single-comment">
                                     <div class="comment-image">
+                                        <a href="../userpage/userpage.html?id=">
                                         <img src="${comment.profile_picture}">
+                                        </a>
                                     </div>
                                     <div class="comment-details${comment.comment_id}">
-                                        <p class="comment-author">${comment.username}</p>
+                                        <a href="../userpage/userpage.html?id=">
+                                            <p class="comment-author">${comment.username}</p>
+                                        </a>
                                         <p class="comment-text">${comment.content}</p>
                                         <p class="comment-date">${commentDate}</p>
                                     </div>
-                                </div>
-                        <div class="comment-buttons">
+                                </div> `;
+
+        //TODO - check if the user is admin OR if it's the user's own comment
+        if(true){
+            postDiv.innerHTML += `<div class="comment-buttons">
                             <button class="comment-edit" id="edit${comment.comment_id}">Edit</button>
                             <button class="comment-delete" id="delete${comment.comment_id}">Delete</button>
                         </div>`;
+        }
 
         //Add edited_date if available
         const commentDetailsDiv = document.querySelector(`.comment-details${comment.comment_id}`);
@@ -222,4 +233,4 @@ const getPost = async (post_id) => {
     }
 };
 
-getPost(getQParam('id'));
+getPost(post_id);
