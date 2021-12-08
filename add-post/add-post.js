@@ -96,11 +96,11 @@ addForm.addEventListener("submit", async (evt) => {
   }
 
   const style_response = await fetch(url + "/style/" + style_id, fetchOptions);
-  const json2 = await style_response.json();
-  if (json2.error) {
-    alert(json2.error.message);
+  const style_json = await style_response.json();
+  if (style_json.error) {
+    alert(style_json.error.message);
   } else {
-    alert(json2.message);
+    alert(style_json.message);
   }
   location.href = "add-post.html";
 });
