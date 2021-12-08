@@ -34,14 +34,14 @@
       <div id="background"></div>
       <h2>Log in/Sign up to see full content</h2>
       <div class="container" id="container">
-        <div class="form-container sign-up-container" id="sign-up">
+        <div class="form-container sign-up-container">
           <!-- <form
             novalidate
             action="http://localhost:3000/signup"
             method="post"
             id="addUser"
           > -->
-          <form onsubmit="return validationSignUpForm()">
+          <form id="sign-up">
             <h1 class="form-header">Create Account</h1>
             <input type="text" required minlength="5" placeholder="Name" />
             <input type="email" required name="email" placeholder="Email" />
@@ -70,7 +70,7 @@
           </form>
         </div>
         <div class="form-container sign-in-container" id="sign-in">
-          <form onsubmit="return validationSignInForm()">
+          <form id="logIn">
             <h1 class="form-header">Sign in</h1>
             <input type="email" required title= "Enter your email" placeholder="Email" />
             <input
@@ -80,7 +80,7 @@
               required
             />
             <a href="#">Forgot your password?</a>
-            <button>Sign In</button>
+            <button type="submit">Sign In</button>
           </form>
         </div>
         <div class="overlay-container">
@@ -103,6 +103,8 @@
       <p>Created by Insign Team - Tamas Kralusz, Dung Tran, An Huynh</p>
     </footer>
   </body>
-  <script src="forms.js"></script>
+  <!-- <script src="forms.js"></script> -->
+  <script src="login.js"></script>
+  <script src="serialize.js"></script>
   <script src="../nav-anon/nav-anon.js"></script>
 </html>
