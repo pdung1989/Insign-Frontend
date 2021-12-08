@@ -266,7 +266,7 @@ p {
     word-break: break-word;
 }
 
-.comment-add-btn {
+.comment-add-btn, button[class^='comment-edit-btn'] {
     background-color: #938c7f;
     border: #938c7f 3px solid;
     border-radius: 15px;
@@ -277,17 +277,71 @@ p {
     float: right;
 }
 
-.comment-add-btn:hover {
+.comment-add-btn:hover, button[class^='comment-edit-btn']:hover {
     cursor: pointer;
     background-color: #5d5850;
     border: #5d5850 3px solid;
 }
 
-.comment-add-btn a {
+.comment-add-btn a, button[class^='comment-edit-btn'] a {
     font-size: 20px;
     color: #fcfcfc;
 }
 
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 540px;
+    height: 220px;
+}
+
+/* The Close Button */
+.edit-close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+textarea[class^='edit-comment-area'] {
+    width: 500px;
+    height: 100px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 2px #938c7f solid;
+    padding: 5px;
+    word-break: break-word;
+}
+
+#editCommentForm {
+    width: 500px;
+    height: 200px;
+}
+
+#editForm {
+    width: 700px;
+    height: 200px;
+}
+
+.edit-close:hover, .edit-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 /* Tablet version */
 @media only screen and (max-width: 800px) {
@@ -355,7 +409,7 @@ p {
         font-size: 25px;
     }
 
-    .follow-btn a, .comment-add-btn  {
+    .follow-btn a, .comment-add-btn, .comment-edit-btn {
         font-size: 15px;
     }
 
