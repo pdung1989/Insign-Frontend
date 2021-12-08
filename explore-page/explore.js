@@ -40,7 +40,7 @@ const createPostCard = (posts) => {
   });
 };
 
-const getAllPosts = async () => {
+const getRandomPosts = async () => {
   try {
     const response = await fetch(url + "/post?limit=9");
     const posts = await response.json();
@@ -50,7 +50,7 @@ const getAllPosts = async () => {
     console.log(e.message);
   }
 };
-getAllPosts();
+getRandomPosts();
 
 const getPost = async (postId) => {
   try {
