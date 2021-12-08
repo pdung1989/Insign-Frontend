@@ -11,10 +11,12 @@ const getQParam = (param) => {
 };
 
 const createPostCard = (posts) => {
-  const blogs = document.querySelector(".post");
-  blogs.setAttribute("class", "card");
+  const blogs = document.querySelector(".leftcolumn");
+  blogs.setAttribute("class", "leftcolumn");
 
   posts.forEach((post) => {
+      const postDiv = document.createElement("div");
+      postDiv.setAttribute("class", "card");
     const title = document.createElement("h2");
     title.setAttribute("id", "title");
     const author = document.createElement("h5");
@@ -36,10 +38,11 @@ const createPostCard = (posts) => {
     
     postImg.appendChild(img);
     a.appendChild(postImg);
-    blogs.appendChild(title);
-    blogs.appendChild(author);
-    blogs.appendChild(a);
-    blogs.appendChild(postDescription);
+    postDiv.appendChild(title);
+    postDiv.appendChild(author);
+    postDiv.appendChild(a);
+    postDiv.appendChild(postDescription);
+    blogs.appendChild(postDiv);
   });
 };
 
