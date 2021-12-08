@@ -41,7 +41,7 @@
             method="post"
             id="addUser"
           > -->
-          <form id="sign-up">
+          <form id="signUpForm">
             <h1 class="form-header">Create Account</h1>
             <input type="text" required minlength="5" placeholder="Name" />
             <input type="email" required name="email" placeholder="Email" />
@@ -66,11 +66,11 @@
             />
             <br />
             <span id="message2" style="color: red"> </span><br />
-            <button>Sign Up</button>
+            <button id="submitRegistration">Sign Up</button>
           </form>
         </div>
         <div class="form-container sign-in-container" id="sign-in">
-          <form id="logIn">
+          <form id="logInForm">
             <h1 class="form-header">Sign in</h1>
             <input type="email" required title= "Enter your email" placeholder="Email" />
             <input
@@ -88,12 +88,12 @@
             <div class="overlay-panel overlay-left">
               <h1>Welcome Back!</h1>
               <p>Log In and see new posts</p>
-              <button class="noshow" id="signIn">Sign In</button>
+              <button class="noshow" id="signInBtn">Sign In</button>
             </div>
             <div class="overlay-panel overlay-right">
               <h1>Hello, Friend!</h1>
               <p>Enter your personal details and start journey with us</p>
-              <button class="noshow" id="signUp">Sign Up</button>
+              <button class="noshow" id="signUpBtn">Sign Up</button>
             </div>
           </div>
         </div>

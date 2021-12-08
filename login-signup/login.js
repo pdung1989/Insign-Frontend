@@ -1,12 +1,29 @@
 'use strict';
 const url = 'http://localhost:3000'; // change url when uploading to server
-const signUpButton = document.getElementById("signUp");
-const signInButton = document.getElementById("signIn");
+const signUpButton = document.getElementById("signUpBtn");
+const signInButton = document.getElementById("signInBtn");
 const container = document.getElementById("container");
+const submitRegistration = document.getElementById("submitRegistration")
 
 /* log in and sign up btn event listener*/
 signUpButton.addEventListener("click", () => {
   container.classList.add("right-panel-active");
+});
+submitRegistration.addEventListener("click", () => {
+    const pw1 = document.getElementById("pw1").value;
+    const pw2 = document.getElementById("pw2").value;
+    //check empty confirm password field
+    if (pw2 == "") {
+      document.getElementById("message2").innerHTML =
+        "**Enter the password please!";
+      return false;
+    }
+    if (pw1 != pw2) {
+      document.getElementById("message2").innerHTML = "Passwords do not match";
+      return false;
+    } else {
+      document.write("SignUp form has been submitted successfully");
+    }
 });
 
 signInButton.addEventListener("click", () => {
@@ -14,8 +31,8 @@ signInButton.addEventListener("click", () => {
 });
 
 // select existing html elements
-const loginForm = document.querySelector('#logIn');
-const addUserForm = document.querySelector('#signUp');
+const loginForm = document.querySelector('#logInForm');
+const addUserForm = document.querySelector('#signUpForm');
 
 // login
 loginForm.addEventListener('submit', async (evt) => {
