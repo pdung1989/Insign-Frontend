@@ -217,7 +217,7 @@ main {
     margin-left: 10px;
 }
 
-.comment-details {
+div[class^='comment-details'] {
     display: flex;
     width: 700px;
     flex-direction: column;
@@ -233,11 +233,17 @@ main {
     margin-bottom: 5px;
 }
 
-.comment-date {
+.comment-date, .comment-edit-date {
     text-align: right;
     margin-right: 10px;
     padding-top: 10px;
     margin-top: auto;
+}
+
+.comment-edit-date {
+    padding-top: 3px;
+    font-style: italic;
+    font-size: 15px;
 }
 
 p {

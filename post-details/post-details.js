@@ -1,6 +1,7 @@
 'use strict';
 const url = 'http://localhost:3000';
 let commentCount = 0;
+const postDiv = document.querySelector('.post');
 
 //Get query parameter
 const getQParam = (param) => {
@@ -14,7 +15,6 @@ const getQParam = (param) => {
 const createPost = (post) => {
     commentCount = post.num_comments;
 
-    const postDiv = document.querySelector('.post');
     postDiv.innerHTML += `<div class="title">
                 <p>${post.title}</p>
             </div>
@@ -45,7 +45,6 @@ const createPost = (post) => {
 
 //Create author div
 const addAuthor = (author) => {
-    const postDiv = document.querySelector('.post');
     postDiv.innerHTML += `<p class="author-title">Author</p>
                 <div class="author">
                 <a href="../userpage/userpage.html?id=${author.user_id}">
@@ -75,7 +74,6 @@ const addAuthor = (author) => {
 //Add comments
 //TODO - delete "user id" input when backend authentication is done
 const createComments = (comments) => {
-    const postDiv = document.querySelector('.post');
 
     postDiv.innerHTML += `<p class="comments-title">${commentCount} comments</p>
             <div class="form-wrapper">
@@ -88,20 +86,29 @@ const createComments = (comments) => {
             </div>`;
 
     comments.forEach((comment) => {
+        const commentDate = comment.comment_date.slice(0, -5).replace('T', ' ');
+
         postDiv.innerHTML += `<div class="single-comment">
                                     <div class="comment-image">
                                         <img src="${comment.profile_picture}">
                                     </div>
-                                    <div class="comment-details">
+                                    <div class="comment-details${comment.comment_id}">
                                         <p class="comment-author">${comment.username}</p>
                                         <p class="comment-text">${comment.content}</p>
-                                        <p class="comment-date">2020.12.03. 14:35:12</p>
+                                        <p class="comment-date">${commentDate}</p>
                                     </div>
                                 </div>
                         <div class="comment-buttons">
                             <button class="comment-edit" id="edit${comment.comment_id}">Edit</button>
                             <button class="comment-delete" id="delete${comment.comment_id}">Delete</button>
                         </div>`;
+
+        const commentDetailsDiv = document.querySelector(`.comment-details${comment.comment_id}`);
+        if (comment.edited_date !== null) {
+            const commentEditDate = comment.edited_date.slice(0, -5).replace('T', ' ');
+            commentDetailsDiv.innerHTML += `<p class="comment-edit-date">(edited ${commentEditDate})</p>`
+        }
+
     })
 
     comments.forEach((comment) =>  {
