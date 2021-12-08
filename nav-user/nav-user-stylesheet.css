@@ -39,10 +39,6 @@ a {
     white-space: nowrap;
 }
 
-.toggle a {
-    font-size: 20px;
-}
-
 .nav-button {
     background-color: #938c7f;
     border: #fcfcfc 3px solid;
@@ -90,7 +86,7 @@ a {
     display: block;
 }
 
-.toggle {
+.toggle, .upload-mobile {
     cursor: pointer;
 }
 
@@ -99,8 +95,19 @@ a {
     position: absolute;
     background-image: url('../assets/menu.svg');
     background-size: 25px 25px;
-    top: 35px;
+    top: 28px;
     right: 20px;
+    width: 25px;
+    height: 25px;
+}
+
+.plus-icon {
+    cursor: pointer;
+    position: absolute;
+    background-image: url('../assets/add-cicrle.svg');
+    background-size: 25px 25px;
+    top: 28px;
+    left: 20px;
     width: 25px;
     height: 25px;
 }
@@ -117,9 +124,7 @@ nav {
 
 
 /* Desktop version */
-
 @media all and (min-width: 800px) {
-
     nav {
         position: static;
     }
@@ -129,12 +134,16 @@ nav {
         width: auto;
     }
 
-    .toggle {
+    .toggle, .upload-mobile {
         display: none;
     }
 
-    #home, #register {
+    #home, #explore {
         padding-right: 30px;
+    }
+
+    #upload {
+        margin-right: 10px;
     }
 
     .logo {
