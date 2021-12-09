@@ -57,7 +57,7 @@ label {
   display: inline-block;
 }
 
-input[type=submit] {
+input[type=submit], .return-btn {
   background-color: #938c7f;
   color: #fcfcfc;
   padding: 12px 20px;
@@ -68,7 +68,7 @@ input[type=submit] {
   float: right;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, .return-btn:hover {
   background-color: #5d5850;
 }
 
@@ -135,6 +135,12 @@ p {
   font-family: monospace;
   font-size: 25px;
 }
+
+.return-btn {
+  position: fixed;
+  left: 20px;
+}
+
 @media screen and (max-width: 600px) {
   .col-25, .col-75 {
     width: 100%;
