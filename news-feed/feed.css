@@ -22,21 +22,57 @@ body {
   float: left;
   margin-left: 7%;
   width: 52%;
-  padding-top: 2em;
+  margin-top: 100px;
   margin-bottom: 5em;
 }
+#title{
+  text-align: center;
+}
 .author{
-  left: 70%;
   float: right;
+  font-size: 18px;
+  font-style: italic;
+}
+.author::before{
+  content: "Written by: ";
+}
+
+#pro-user {
+  float: right;
+}
+#pro-user::before {
+  content: "By: ";
+}
+#toProPost{
+  float: right;
+}
+#toProPost::before{
+  content: "See more >>";
+  font-style: italic;
+  text-decoration: underline;
+}
+#toProPost:hover{
+  color: #5d5850;
+  font-weight: bold;
+
+}
+h3{
   font-size: 20px;
+  text-decoration: underline;
   
+  margin-bottom: 0;
+}
+.h3 {
+  content: "From Professionals";
+ 
 }
 /* Right column */
 .rightcolumn {
   float: left;
-  width: 40%;
-  padding-top: 2em;
-  padding-left: 2em;
+  width: 35%;
+  margin-left: 20px;
+  margin-top: 76px;
+  margin-bottom: 5em;
 }
 
 /* Post image */
@@ -46,15 +82,33 @@ body {
   width: 100%;
   padding: 20px;
 }
+.feed-img {
+  height: 400px;
+  width: 90%;
+  margin-left: 1em;
+
+}
+.pro-img{
+  height: 250px;
+  width: 100%;
+  margin:auto;
+}
 
 /* Add a card effect for articles */
 .card {
    background-color: #fcfcfc;
    width: 100%;
    padding: 20px;
-   margin-top: 20px;
+   margin-top: 2em;
+   top: 10px;
 }
+.copyright{
+  margin-top: 2em;
+  text-decoration: overline;
+  
+  width: 100%;
 
+}
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -70,20 +124,8 @@ body {
   margin-top: 20px;
 }
 /* Footer */
-footer {
-  background-color: #252525;
-  color: #fcfcfc;
-  font-size: 14px;
-  bottom: 0;
-  position: fixed;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 999;
-}
-
-footer p {
-  margin: 10px 0;
+footer{
+  display: none;
 }
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
@@ -95,6 +137,26 @@ footer p {
     overflow: scroll;
   }
   .rightcolumn {
+    /* display: none; */
+    width: 100%;
+  }
+  .copyright{
     display: none;
+  }
+  footer {
+    display: inline;
+    background-color: #252525;
+    color: #fcfcfc;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+  }
+  
+  footer p {
+    margin: 10px 0;
   }
 }

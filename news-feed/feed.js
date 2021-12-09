@@ -28,8 +28,8 @@ const createPostCard = (posts) => {
     const postImg = document.createElement("div");
     postImg.setAttribute("class", "postImg");
     const img = document.createElement("img");
-    img.setAttribute("height", 450);
-    img.setAttribute("width", 400);
+    img.setAttribute("class", "feed-img")
+    
     const postDescription = document.createElement("p");
 
     title.innerHTML = post.title;
@@ -49,6 +49,45 @@ const createPostCard = (posts) => {
   });
 };
 
+const createRandomPosts = (randomPosts) => {
+  const randomPostsDiv = document.querySelector("#proPost");
+  randomPostsDiv.setAttribute("class", "card");
+
+  randomPosts.forEach((randomPost) => {
+    const card = document.createElement("div");
+    card.setAttribute("class", "card");
+    const title = document.createElement("h2");
+    title.setAttribute("id", "title");
+    const author = document.createElement("h5");
+    author.setAttribute("id", "pro-user");
+    const postImg = document.createElement("div");
+    postImg.setAttribute("class", "postImg");
+    const a = document.createElement("a");
+    const img = document.createElement("img");
+    img.setAttribute("class", "pro-img");
+
+    const link = document.createElement("a");
+    link.setAttribute("href", "See More")
+    link.setAttribute("id", "toProPost");
+
+    title.innerHTML = randomPost.title;
+    img.src = randomPost.image;
+    author.innerHTML = randomPost.author;
+   
+    console.log(`set random img src: ${img.src}`);
+    
+    //append elements
+    postImg.appendChild(img);
+    a.appendChild(postImg);
+    card.appendChild(title);
+    card.appendChild(a);
+    card.appendChild(author);
+    card.appendChild(postImg);
+    card.appendChild(link);
+    randomPostsDiv.appendChild(card);
+  });
+};
+
 // AJAX calls
 const getPosts = async () => {
   try {
@@ -60,6 +99,11 @@ const getPosts = async () => {
     const response = await fetch(url + "/post?limit=4", fetchOptions);
     const posts = await response.json();
     createPostCard(posts);
+
+    const randomPostResponse = await fetch(url + "/post?limit=2", fetchOptions);
+    const randomPosts = await randomPostResponse.json();
+    console.log("call random");
+    createRandomPosts(randomPosts);
   } catch (e) {
     console.log(e.message);
   }
