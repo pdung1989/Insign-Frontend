@@ -15,9 +15,11 @@ const createPostCard = (posts) => {
   blogs.setAttribute("class", "blogs");
 
   posts.forEach((post) => {
-    
+    //generate a number and provide to the image to generate randomly
+    //let number = Math.floor(Math.random() * posts.length);
     const a = document.createElement("a");
     const img = document.createElement("img");
+    a.setAttribute("href", `../post-details/post-details.html?id=${post.post_id}`);
     img.setAttribute("height", 450);
     img.setAttribute("width", 400);
     const card = document.createElement("div");
@@ -40,9 +42,9 @@ const createPostCard = (posts) => {
   });
 };
 
-const getAllPosts = async () => {
+const getRandomPosts = async () => {
   try {
-    const response = await fetch(url + "/post");
+    const response = await fetch(url + "/post?limit=9");
     const posts = await response.json();
     console.log(posts);
     createPostCard(posts);
@@ -50,11 +52,11 @@ const getAllPosts = async () => {
     console.log(e.message);
   }
 };
-getAllPosts();
+getRandomPosts();
 
 const getPost = async (postId) => {
   try {
-    const response = await fetch(url + "/post/" + postId );
+    const response = await fetch(url + "/posts/" + postId );
     const posts = await response.json();
     console.log(posts);
     createPostCard(posts);

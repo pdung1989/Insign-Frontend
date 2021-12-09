@@ -8,25 +8,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../add-post/add-post.css" />
-    <link rel="stylesheet" href="../nav-user/nav-user-stylesheet.css">
+    <link rel="stylesheet" href="../nav-user/nav-user-stylesheet.css" />
     <title>Create Post</title>
   </head>
 
   <body>
-    <header>
-      <nav>
-          <ul class="menu">
-              <li class="logo"><a href="#">INSIGN</a></li>
-              <li class="item hover-underline-animation" id="home"><a href="#">Home</a></li>
-              <li class="item hover-underline-animation" id="explore"><a href="#">Explore</a></li>
-              <li class="item nav-button" id="myaccount"><a href="#">My Account</a></li>
-              <li class="toggle">
-                  <div class="hamburger-icon"></div>
-              </li>
-          </ul>
-      </nav>
-  </header>
-    <div class="container">
+  <a href="javascript:history.back()"><button class="return-btn">< Go back</button></a>
+  <div class="container">
       <div class="item" id="left">
         <img
           src="https://images.unsplash.com/photo-1578503439976-f0c1f7daf1cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80"
@@ -37,7 +25,7 @@
       <div class="item" id="right">
         <h2>Create new post</h2>
         <br />
-        <form action="http://localhost:3000/post" id="addPostForm">
+        <form onsubmit="return validationAddPost()" id="addPostForm">
           <div class="row">
             <div class="col-25">
               <label for="author">Created By</label>
@@ -46,6 +34,7 @@
               <input
                 type="text"
                 id="author"
+                required
                 name="author"
                 placeholder="Write your name"
               />
@@ -59,6 +48,7 @@
               <input
                 type="text"
                 id="title"
+                required
                 name="title"
                 placeholder="Provide the title of your Post"
               />
@@ -69,7 +59,14 @@
               <label for="thumbnail">Thumbnail</label>
             </div>
             <div class="col-75">
-                <input class="light-border" type="file" name="image"  placeholder="Choose file">
+              <input
+                class="light-border"
+                type="file"
+                required
+                name="image"
+                accept="image/*"
+                placeholder="Choose file"
+              />
             </div>
           </div>
           <div class="row">
@@ -80,6 +77,7 @@
               <textarea
                 id="description"
                 name="description"
+                required
                 placeholder="Write something for your post"
                 style="height: 100px"
               ></textarea>
@@ -90,12 +88,12 @@
               <label for="category">Select category</label>
             </div>
             <div class="col-75">
-              <select id="category" name="category">
-                <option value="other">Other</option>
-                <option value="homeDecor">Home Decor</option>
-                <option value="interiorDesign">Interior Design</option>
-                <option value="idea">Idea/Inspiration</option>
-              </select>
+              <select
+                class="category"
+                title="Please select a category"
+                name="category"
+                required
+              ></select>
             </div>
           </div>
           <div class="row">
@@ -103,15 +101,12 @@
               <label for="syle">Select Style</label>
             </div>
             <div class="col-75">
-              <select id="category" name="category">
-                <option value="">Select Style</option>
-                <option value="">Contemporary</option>
-                <option value="">Minimalist</option>
-                <option value="">Industrial</option>
-                <option value="">Scandinavian</option>
-                <option value="">Traditional</option>
-                <option value="">Modern</option>
-              </select>
+              <select
+                class="style"
+                title="Please select a style"
+                name="style"
+                required
+              ></select>
             </div>
           </div>
           <div class="row">
@@ -122,6 +117,7 @@
               <input
                 type="text"
                 id="location"
+                required
                 name="location"
                 placeholder="Name a location"
               />
@@ -131,8 +127,6 @@
             <input type="submit" value="Submit" />
           </div>
         </form>
-
-
 
         <div class="item" id="part2"></div>
       </div>
