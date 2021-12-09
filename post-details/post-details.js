@@ -63,23 +63,14 @@ const addAuthor = (author) => {
                 </a>
                 <div class="author-details">
                     <a class="username" href="../userpage/userpage.html?id=${author.user_id}">${author.username}</a>
-                    <button class="follow-btn"><a>Follow</a></button>
+                    
                 </div>
             </div>`
 
-    //Follow button logic
-    const followBtn = document.querySelector('.follow-btn');
-    const followBtnText = document.querySelector('.follow-btn a');
-
-    followBtn.addEventListener('click', () => {
-        if(followBtn.classList.contains('unfollow')){
-            followBtn.classList.remove('unfollow');
-            followBtnText.textContent = "Follow";
-            return;
-        }
-        followBtn.classList.add('unfollow');
-        followBtnText.textContent = "Unfollow";
-    });
+    const authorDetails = document.querySelector('.author-details');
+    if(user.user_id === author.user_id){
+        authorDetails.innerHTML += `<button class="follow-btn"><a>My Profile ></a></button>`;
+    } 
 }
 
 //Add comments to the UI
@@ -103,12 +94,12 @@ const createComments = (comments) => {
 
             postDiv.innerHTML += `<div class="single-comment">
                                     <div class="comment-image">
-                                        <a href="../userpage/userpage.html?id=">
+                                        <a href="../userpage/userpage.html?id=${comment.user_id}">
                                         <img src="${comment.profile_picture}">
                                         </a>
                                     </div>
                                     <div class="comment-details${comment.comment_id}">
-                                        <a href="../userpage/userpage.html?id=">
+                                        <a href="../userpage/userpage.html?id=${comment.user_id}">
                                             <p class="comment-author">${comment.username}</p>
                                         </a>
                                         <p class="comment-text">${comment.content}</p>
