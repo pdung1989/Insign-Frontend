@@ -14,10 +14,9 @@
     <header>
         <nav>
             <ul class="menu">
-                <li class="logo"><a href="#">INSIGN</a></li>
-                <li class="item hover-underline-animation" id="home"><a href="../home/home.html">Home</a></li>
-                <li class="item hover-underline-animation" id="register"><a href="../login-signup/forms.html">Register</a></li>
-                <li class="item nav-button" id="signin"><a href="../login-signup/forms.html">Sign In</a></li>
+                <li class="logo"><a href="home.html">INSIGN</a></li>
+                <li class="item hover-underline-animation" id="home"><a href="home.html">Home</a></li>
+                <li class="item nav-button" id="signin"><a href="../login-signup/forms.html">Register/Sign In</a></li>
                 <li class="toggle">
                     <div class="hamburger-icon"></div>
                 </li>
@@ -29,16 +28,38 @@
         <div class="first">
             <div class="content">
                 <p>Interested in interior design? Share your own ideas or get inspired by other creative designers</p>
-                <button>Register ></button>
+                <a href="../login-signup/forms.html">
+                    <button>Register ></button>
+                </a>
             </div>
             <div class="line"></div>
         </div>
     </div>
     <div class="second">
-        <h2>Already a member?</h2>
-        <button>Sign In ></button>
+        <div class="second-text">
+            <p>See what our users are sharing</p>
+        </div>
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+
+            <div class="random-posts"></div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            <!-- The dots/circles -->
+            <div class="dots">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+            </div>
+        </div>
+
     </div>
 </body>
-<script src="home.js"></script>
 <script src="../nav-anon/nav-anon.js"></script>
+<script src="home.js"></script>
 </html>
