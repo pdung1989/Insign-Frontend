@@ -5,7 +5,7 @@
 
 #background {
   background-image: url("../assets/backgroundimg.png");
-  position: absolute;
+  position: fixed;
   display: flex;
   background-attachment: fixed;
   left: 0;

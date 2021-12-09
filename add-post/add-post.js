@@ -106,7 +106,8 @@ addForm.addEventListener("submit", async (evt) => {
 });
 
 const validationAddPost = () => {
-  document.write("Post has been created successfully");
+  alert("Post has been created successfully");
+  location.href = "../userpage/userpage.html"
 };
 getCategories();
 getStyles();
