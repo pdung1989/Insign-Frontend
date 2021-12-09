@@ -1,5 +1,12 @@
 'use strict';
 const url = 'http://localhost:3000'; // change url when uploading to server
+
+// get user data
+const user = JSON.parse(sessionStorage.getItem("user"));
+if(user) {
+  window.location.replace("../news-feed/feed.html");
+}
+
 // select existing html elements
 const loginForm = document.querySelector('#logInForm');
 const signUpForm = document.querySelector('#signUpForm');
