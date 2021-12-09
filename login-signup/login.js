@@ -12,22 +12,7 @@ const submitRegistration = document.getElementById("submitRegistration")
 signUpButton.addEventListener("click", () => {
   container.classList.add("right-panel-active");
 });
-submitRegistration.addEventListener("click", () => {
-    const pw1 = document.getElementById("pw1").value;
-    const pw2 = document.getElementById("pw2").value;
-    //check empty confirm password field
-    if (pw2 == "") {
-      document.getElementById("message2").innerHTML =
-        "**Enter the password please!";
-      return false;
-    }
-    if (pw1 != pw2) {
-      document.getElementById("message2").innerHTML = "Passwords do not match";
-      return false;
-    } else {
-      location.href = "../explore-page/explore.html"
-    }
-});
+
 
 signInButton.addEventListener("click", () => {
   container.classList.remove("right-panel-active");
@@ -59,9 +44,24 @@ loginForm.addEventListener('submit', async (evt) => {
     location.href = '../news-feed/feed.html';
   }
 });
-
+submitRegistration.addEventListener("click", ()=>{
+  const pw1 = document.getElementById("pw1").value;
+  const pw2 = document.getElementById("pw2").value;
+  //check empty confirm password field
+  if (pw2 == "") {
+    document.getElementById("message2").innerHTML =
+      "**Enter the password please!";
+    return false;
+  }
+  if (pw1 != pw2) {
+    document.getElementById("message2").innerHTML = "Passwords do not match";
+    return false;
+  } 
+});
 // submit register form
 signUpForm.addEventListener('submit', async (evt) => {
+  
+    
   evt.preventDefault();
   const data = serializeJson(signUpForm);
   const fetchOptions = {
@@ -73,5 +73,5 @@ signUpForm.addEventListener('submit', async (evt) => {
   };
   const response = await fetch(url + '/auth/register', fetchOptions);
   const json = await response.json();
-  alert(json.message);
+  // alert(json.message);
 });
