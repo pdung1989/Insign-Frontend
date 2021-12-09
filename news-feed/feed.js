@@ -23,6 +23,7 @@ const createPostCard = (posts) => {
     const title = document.createElement("h2");
     title.setAttribute("id", "title");
     const author = document.createElement("h5");
+    author.setAttribute("class", "author");
     const a = document.createElement("a");
     const postImg = document.createElement("div");
     postImg.setAttribute("class", "postImg");

@@ -25,7 +25,12 @@ body {
   padding-top: 2em;
   margin-bottom: 5em;
 }
-
+.author{
+  left: 70%;
+  float: right;
+  font-size: 20px;
+  
+}
 /* Right column */
 .rightcolumn {
   float: left;
@@ -36,6 +41,7 @@ body {
 
 /* Post image */
 .postImg {
+  margin-top: 30px;
   background-color: #fcfcfc;
   width: 100%;
   padding: 20px;
@@ -44,17 +50,11 @@ body {
 /* Add a card effect for articles */
 .card {
    background-color: #fcfcfc;
+   width: 100%;
    padding: 20px;
    margin-top: 20px;
 }
 
-/* .post{
-  
-    background-color: #fcfcfc;
-    padding: 20px;
-    margin-top: 20px;
- 
-} */
 /* Clear floats after the columns */
 .row:after {
   content: "";
