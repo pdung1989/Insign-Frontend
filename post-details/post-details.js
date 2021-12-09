@@ -38,7 +38,7 @@ const createPost = (post) => {
             </div>
             <div class="post-data">
                 <div class="post-likes">
-                    <img src="../assets/heart-icon-off.svg">
+                    <img class="unliked">
                     <p>${post.num_likes}</p>
                 </div>
                 <div class="post-favorite">

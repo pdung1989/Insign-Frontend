@@ -343,6 +343,14 @@ textarea[class^='edit-comment-area'] {
     cursor: pointer;
 }
 
+.unliked {
+    content: url("../assets/heart-icon-off.svg");
+}
+
+.liked {
+    content: url("../assets/heart-icon-full.svg");
+}
+
 /* Tablet version */
 @media only screen and (max-width: 800px) {
      .post, .single-comment, .add-comment-content, div[class^='comment-buttons'] {

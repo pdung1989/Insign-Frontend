@@ -42,7 +42,7 @@ const createPosts = (posts) => {
                         </div>
                         <div class="post-stats">
                             <div class="post-likes">
-                                <img src="../assets/heart-icon-off.svg">
+                                <img class="unliked">
                                 <p>${post.num_likes}</p>
                             </div>
                             <div class="post-comments">
@@ -52,7 +52,6 @@ const createPosts = (posts) => {
                         </div>
                     </div>
                 </div>`
-
     });
 }
 
