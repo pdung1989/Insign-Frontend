@@ -18,6 +18,7 @@ const createPostCard = (posts) => {
     
     const a = document.createElement("a");
     const img = document.createElement("img");
+    a.setAttribute("href", `../post-details/post-details.html?id=${post.post_id}`);
     img.setAttribute("height", 450);
     img.setAttribute("width", 400);
     const card = document.createElement("div");
