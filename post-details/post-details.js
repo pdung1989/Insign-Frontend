@@ -10,6 +10,12 @@ const getQParam = (param) => {
     return urlParams.get(param);
 };
 
+// get user data
+const user = JSON.parse(sessionStorage.getItem("user"));
+
+const myAccountBtn = document.querySelector('#myaccount a');
+myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`);
+
 const post_id = getQParam('id')
 
 const postDiv = document.querySelector('.post');
@@ -149,6 +155,9 @@ const createComments = (comments) => {
                 const fd = new FormData(editCommentForm);
                 const fetchOptions = {
                     method: 'PUT',
+                    headers: {
+                        Authorization: "Bearer " + sessionStorage.getItem("token"),
+                    },
                     body: new URLSearchParams({
                         'content': fd.get('content')
                     })
@@ -174,7 +183,10 @@ const createComments = (comments) => {
         document.getElementById(`delete${comment.comment_id}`).addEventListener('click', async(evt) => {
             const commentId = evt.target.id.replace(/\D/g, "");
             const fetchOptions = {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem("token"),
+                },
             };
             try {
                 const response = await fetch(url + '/comment/' + commentId, fetchOptions);
@@ -189,7 +201,6 @@ const createComments = (comments) => {
 }
 
 //Add comment to database, when the add button is clicked
-//TODO - delete "user id" input when backend authentication is done
 const addCommentForm = (() => {
     const addCommentForm = document.querySelector('#addCommentForm');
     // AddComment
@@ -198,9 +209,11 @@ const addCommentForm = (() => {
         const fd = new FormData(addCommentForm);
         const fetchOptions = {
             method: 'POST',
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
             body: new URLSearchParams({
                 'post_id': fd.get('post_id'),
-                'user_id': fd.get('user_id'),
                 'content': fd.get('content')
             })
         };
@@ -214,14 +227,19 @@ const addCommentForm = (() => {
 // AJAX calls
 const getPost = async (post_id) => {
     try {
-        const response = await fetch(url +'/post/' +  post_id);
+        const fetchOptions = {
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
+        };
+        const response = await fetch(url +'/post/' +  post_id, fetchOptions);
         const post = await response.json();
 
         const user_id = post.author;
-        const response_a = await fetch(url +'/user/' +  user_id);
+        const response_a = await fetch(url +'/user/' +  user_id, fetchOptions);
         const author = await response_a.json();
 
-        const response_c = await fetch(url +'/post/' +  post_id + '/comment');
+        const response_c = await fetch(url +'/post/' +  post_id + '/comment', fetchOptions);
         const comments = await response_c.json();
 
         createPost(post);

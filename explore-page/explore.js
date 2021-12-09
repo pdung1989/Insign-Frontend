@@ -10,6 +10,12 @@ const getQParam = (param) => {
   return urlParams.get(param);
 };
 
+// get user data
+const user = JSON.parse(sessionStorage.getItem("user"));
+
+const myAccountBtn = document.querySelector('#myaccount a');
+myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`);
+
 const createPostCard = (posts) => {
   const blogs = document.querySelector(".blogs");
   blogs.setAttribute("class", "blogs");
