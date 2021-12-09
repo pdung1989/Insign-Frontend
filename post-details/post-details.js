@@ -97,11 +97,11 @@ const createComments = (comments) => {
             </div>`;
 
     //Add all comments to the ui
-    //TODO add comment.author to profile photo and username hrefs
-    comments.forEach((comment) => {
-        const commentDate = comment.comment_date.slice(0, -5).replace('T', ' ');
+    if(comments.message !== 'Comments not found'){
+        comments.forEach((comment) => {
+            const commentDate = comment.comment_date.slice(0, -5).replace('T', ' ');
 
-        postDiv.innerHTML += `<div class="single-comment">
+            postDiv.innerHTML += `<div class="single-comment">
                                     <div class="comment-image">
                                         <a href="../userpage/userpage.html?id=">
                                         <img src="${comment.profile_picture}">
@@ -116,33 +116,33 @@ const createComments = (comments) => {
                                     </div>
                                 </div> `;
 
-        postDiv.innerHTML += `<div class="comment-buttons${comment.comment_id}"></div>`;
-        const commentButtonsDiv = document.querySelector(`.comment-buttons${comment.comment_id}`);
+            postDiv.innerHTML += `<div class="comment-buttons${comment.comment_id}"></div>`;
+            const commentButtonsDiv = document.querySelector(`.comment-buttons${comment.comment_id}`);
 
-        if(user.role_id === 0){
-            commentButtonsDiv.innerHTML = `<button class="comment-delete" id="delete${comment.comment_id}">Delete</button>`;
-        }
+            if(user.role_id === 0){
+                commentButtonsDiv.innerHTML = `<button class="comment-delete" id="delete${comment.comment_id}">Delete</button>`;
+            }
 
-        if(user.user_id === comment.user_id){
-            commentButtonsDiv.innerHTML = `<button class="comment-edit" id="edit${comment.comment_id}">Edit</button>
+            if(user.user_id === comment.user_id){
+                commentButtonsDiv.innerHTML = `<button class="comment-edit" id="edit${comment.comment_id}">Edit</button>
                                     <button class="comment-delete" id="delete${comment.comment_id}">Delete</button>`;
-        }
+            }
 
-        //Add edited_date if available
-        const commentDetailsDiv = document.querySelector(`.comment-details${comment.comment_id}`);
-        if (comment.edited_date !== null) {
-            const commentEditDate = comment.edited_date.slice(0, -5).replace('T', ' ');
-            commentDetailsDiv.innerHTML += `<p class="comment-edit-date">(edited ${commentEditDate})</p>`
-        }
+            //Add edited_date if available
+            const commentDetailsDiv = document.querySelector(`.comment-details${comment.comment_id}`);
+            if (comment.edited_date !== null) {
+                const commentEditDate = comment.edited_date.slice(0, -5).replace('T', ' ');
+                commentDetailsDiv.innerHTML += `<p class="comment-edit-date">(edited ${commentEditDate})</p>`
+            }
 
-    })
+        })
 
-    //Open modal to edit comment when Edit button is clicked
-    comments.forEach((comment) => {
-        if(user.user_id === comment.user_id){
-            document.getElementById(`edit${comment.comment_id}`).addEventListener('click', async() => {
+        //Open modal to edit comment when Edit button is clicked
+        comments.forEach((comment) => {
+            if(user.user_id === comment.user_id){
+                document.getElementById(`edit${comment.comment_id}`).addEventListener('click', async() => {
 
-                modalContent.innerHTML = `<span class="edit-close">&times;</span>
+                    modalContent.innerHTML = `<span class="edit-close">&times;</span>
                     <div class="form-wrapper" id="editForm">
                     <form id="editCommentForm">
                         <textarea class="edit-comment-area${comment.comment_id}" rows="10" cols="10" required minlength="4" maxlength="500" name="content" placeholder="write your comment here">${comment.content}</textarea>
@@ -151,40 +151,40 @@ const createComments = (comments) => {
                     </form>
                 </div>`
 
-                modal.style.display = "flex";
+                    modal.style.display = "flex";
 
-                //Edit comment in db
-                document.getElementById('editCommentForm').addEventListener('submit', async(event) => {
-                    event.preventDefault()
-                    const editCommentForm = document.querySelector('#editCommentForm');
-                    const fd = new FormData(editCommentForm);
-                    const fetchOptions = {
-                        method: 'PUT',
-                        headers: {
-                            Authorization: "Bearer " + sessionStorage.getItem("token"),
-                        },
-                        body: new URLSearchParams({
-                            'content': fd.get('content')
-                        })
-                    };
-                    try {
-                        const response = await fetch(url + '/comment/' + fd.get('comment_id'), fetchOptions);
-                        const json = await response.json();
-                        alert('Comment updated successfully!');
-                        location.reload();
-                    } catch (e) {
-                        console.log(e.message);
-                    }
+                    //Edit comment in db
+                    document.getElementById('editCommentForm').addEventListener('submit', async(event) => {
+                        event.preventDefault()
+                        const editCommentForm = document.querySelector('#editCommentForm');
+                        const fd = new FormData(editCommentForm);
+                        const fetchOptions = {
+                            method: 'PUT',
+                            headers: {
+                                Authorization: "Bearer " + sessionStorage.getItem("token"),
+                            },
+                            body: new URLSearchParams({
+                                'content': fd.get('content')
+                            })
+                        };
+                        try {
+                            const response = await fetch(url + '/comment/' + fd.get('comment_id'), fetchOptions);
+                            const json = await response.json();
+                            alert('Comment updated successfully!');
+                            location.reload();
+                        } catch (e) {
+                            console.log(e.message);
+                        }
+                    })
+
+                    document.getElementsByClassName("edit-close")[0].addEventListener('click', () => {
+                        modal.style.display = "none";
+                    })
                 })
+            }
+        })
 
-                document.getElementsByClassName("edit-close")[0].addEventListener('click', () => {
-                    modal.style.display = "none";
-                })
-            })
-        }
-    })
-
-    //Delete comment from database when the Delete button is clicked
+        //Delete comment from database when the Delete button is clicked
         comments.forEach((comment) =>  {
             if(user.user_id === comment.user_id || user.role_id === 0) {
                 document.getElementById(`delete${comment.comment_id}`).addEventListener('click', async (evt) => {
@@ -206,6 +206,7 @@ const createComments = (comments) => {
                 })
             }
         })
+    }
 }
 
 //Add comment to database, when the add button is clicked
