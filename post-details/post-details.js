@@ -116,12 +116,16 @@ const createComments = (comments) => {
                                     </div>
                                 </div> `;
 
-        //TODO - check if the user is admin OR if it's the user's own comment
-        if(true){
-            postDiv.innerHTML += `<div class="comment-buttons">
-                            <button class="comment-edit" id="edit${comment.comment_id}">Edit</button>
-                            <button class="comment-delete" id="delete${comment.comment_id}">Delete</button>
-                        </div>`;
+        postDiv.innerHTML += `<div class="comment-buttons${comment.comment_id}"></div>`;
+        const commentButtonsDiv = document.querySelector(`.comment-buttons${comment.comment_id}`);
+
+        if(user.role_id === 0){
+            commentButtonsDiv.innerHTML = `<button class="comment-delete" id="delete${comment.comment_id}">Delete</button>`;
+        }
+
+        if(user.user_id === comment.user_id){
+            commentButtonsDiv.innerHTML = `<button class="comment-edit" id="edit${comment.comment_id}">Edit</button>
+                                    <button class="comment-delete" id="delete${comment.comment_id}">Delete</button>`;
         }
 
         //Add edited_date if available
@@ -135,9 +139,10 @@ const createComments = (comments) => {
 
     //Open modal to edit comment when Edit button is clicked
     comments.forEach((comment) => {
-        document.getElementById(`edit${comment.comment_id}`).addEventListener('click', async() => {
+        if(user.user_id === comment.user_id){
+            document.getElementById(`edit${comment.comment_id}`).addEventListener('click', async() => {
 
-            modalContent.innerHTML = `<span class="edit-close">&times;</span>
+                modalContent.innerHTML = `<span class="edit-close">&times;</span>
                     <div class="form-wrapper" id="editForm">
                     <form id="editCommentForm">
                         <textarea class="edit-comment-area${comment.comment_id}" rows="10" cols="10" required minlength="4" maxlength="500" name="content" placeholder="write your comment here">${comment.content}</textarea>
@@ -146,58 +151,61 @@ const createComments = (comments) => {
                     </form>
                 </div>`
 
-            modal.style.display = "flex";
+                modal.style.display = "flex";
 
-            //Edit comment in db
-            document.getElementById('editCommentForm').addEventListener('submit', async(event) => {
-                event.preventDefault()
-                const editCommentForm = document.querySelector('#editCommentForm');
-                const fd = new FormData(editCommentForm);
-                const fetchOptions = {
-                    method: 'PUT',
-                    headers: {
-                        Authorization: "Bearer " + sessionStorage.getItem("token"),
-                    },
-                    body: new URLSearchParams({
-                        'content': fd.get('content')
-                    })
-                };
-                try {
-                    const response = await fetch(url + '/comment/' + fd.get('comment_id'), fetchOptions);
-                    const json = await response.json();
-                    alert('Comment updated successfully!');
-                    location.reload();
-                } catch (e) {
-                    console.log(e.message);
-                }
-            })
+                //Edit comment in db
+                document.getElementById('editCommentForm').addEventListener('submit', async(event) => {
+                    event.preventDefault()
+                    const editCommentForm = document.querySelector('#editCommentForm');
+                    const fd = new FormData(editCommentForm);
+                    const fetchOptions = {
+                        method: 'PUT',
+                        headers: {
+                            Authorization: "Bearer " + sessionStorage.getItem("token"),
+                        },
+                        body: new URLSearchParams({
+                            'content': fd.get('content')
+                        })
+                    };
+                    try {
+                        const response = await fetch(url + '/comment/' + fd.get('comment_id'), fetchOptions);
+                        const json = await response.json();
+                        alert('Comment updated successfully!');
+                        location.reload();
+                    } catch (e) {
+                        console.log(e.message);
+                    }
+                })
 
-            document.getElementsByClassName("edit-close")[0].addEventListener('click', () => {
-                modal.style.display = "none";
+                document.getElementsByClassName("edit-close")[0].addEventListener('click', () => {
+                    modal.style.display = "none";
+                })
             })
-        })
+        }
     })
 
     //Delete comment from database when the Delete button is clicked
-    comments.forEach((comment) =>  {
-        document.getElementById(`delete${comment.comment_id}`).addEventListener('click', async(evt) => {
-            const commentId = evt.target.id.replace(/\D/g, "");
-            const fetchOptions = {
-                method: 'DELETE',
-                headers: {
-                    Authorization: "Bearer " + sessionStorage.getItem("token"),
-                },
-            };
-            try {
-                const response = await fetch(url + '/comment/' + commentId, fetchOptions);
-                const json = await response.json();
-                alert('Comment deleted successfully!');
-                location.reload();
-            } catch (e) {
-                console.log(e.message);
+        comments.forEach((comment) =>  {
+            if(user.user_id === comment.user_id || user.role_id === 0) {
+                document.getElementById(`delete${comment.comment_id}`).addEventListener('click', async (evt) => {
+                    const commentId = evt.target.id.replace(/\D/g, "");
+                    const fetchOptions = {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: "Bearer " + sessionStorage.getItem("token"),
+                        },
+                    };
+                    try {
+                        const response = await fetch(url + '/comment/' + commentId, fetchOptions);
+                        const json = await response.json();
+                        alert('Comment deleted successfully!');
+                        location.reload();
+                    } catch (e) {
+                        console.log(e.message);
+                    }
+                })
             }
         })
-    })
 }
 
 //Add comment to database, when the add button is clicked
