@@ -10,12 +10,12 @@ const submitRegistration = document.getElementById("submitRegistration")
 
 /* log in and sign up btn event listener*/
 signUpButton.addEventListener("click", () => {
-  container.classList.add("right-panel-active");
+  container.classList.add("panel-active");
 });
 
 
 signInButton.addEventListener("click", () => {
-  container.classList.remove("right-panel-active");
+  container.classList.remove("panel-active");
 });
 
 
