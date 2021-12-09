@@ -72,9 +72,10 @@
         <div class="form-container sign-in-container" id="sign-in">
           <form id="logInForm" action="http://localhost:3000/auth/login" method="post">
             <h1 class="form-header">Sign in</h1>
-            <input type="email" required title= "Enter your email" placeholder="Email" />
+            <input type="email" required title= "Enter your email" placeholder="Email" name="username" />
             <input
               type="password"
+              name="password"
               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
               placeholder="Password"
               required
