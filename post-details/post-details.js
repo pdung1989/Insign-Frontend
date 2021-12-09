@@ -63,14 +63,8 @@ const addAuthor = (author) => {
                 </a>
                 <div class="author-details">
                     <a class="username" href="../userpage/userpage.html?id=${author.user_id}">${author.username}</a>
-                    
                 </div>
             </div>`
-
-    const authorDetails = document.querySelector('.author-details');
-    if(user.user_id === author.user_id){
-        authorDetails.innerHTML += `<button class="follow-btn"><a>My Profile ></a></button>`;
-    } 
 }
 
 //Add comments to the UI
