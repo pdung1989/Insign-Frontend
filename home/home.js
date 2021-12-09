@@ -22,8 +22,9 @@ const createPosts = (posts) => {
 // AJAX calls
 const getPosts = async () => {
     try {
-        const response = await fetch(url + '/post?limit=3');
+        const response = await fetch(url + '/post?limit=5');
         const posts = await response.json();
+        console.log(posts);
         await createPosts(posts);
     } catch (e) {
         console.log(e.message);
