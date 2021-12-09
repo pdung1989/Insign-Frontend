@@ -60,18 +60,18 @@ loginForm.addEventListener('submit', async (evt) => {
   }
 });
 
-// // submit register form
-// signUpForm.addEventListener('submit', async (evt) => {
-//   evt.preventDefault();
-//   const data = serializeJson(signUpForm);
-//   const fetchOptions = {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(data),
-//   };
-//   const response = await fetch(url + '/auth/register', fetchOptions);
-//   const json = await response.json();
-//   alert(json.message);
-// });
+// submit register form
+signUpForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const data = serializeJson(signUpForm);
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  };
+  const response = await fetch(url + '/auth/register', fetchOptions);
+  const json = await response.json();
+  alert(json.message);
+});
