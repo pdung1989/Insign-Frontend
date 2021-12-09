@@ -122,6 +122,14 @@ nav {
     width: 100%;
 }
 
+.dropdown-menu {
+    display: block;
+    margin-top: 10px;
+}
+
+.dropdown-menu p{
+    margin-top: 10px;
+}
 
 /* Desktop version */
 @media all and (min-width: 800px) {
@@ -173,5 +181,39 @@ nav {
     .hover-underline-animation:hover:after {
         transform: scaleX(1);
         transform-origin: bottom left;
+    }
+
+    .drop {
+        position: relative;
+    }
+
+    .dropdown-menu {
+        margin-top: 10px;
+        display: none;
+        position: absolute;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+    .dropdown-menu p {
+        font-size: 16px;
+        padding: 9px 5px;
+        margin-top: 0;
+    }
+
+    .nav-button:hover > .dropdown-menu {
+        display: block;
+        background-color: #938c7f;
+        transition: background-color 1s;
+    }
+
+    #myaccount:hover {
+        background-color: #938c7f;
+        transition: background-color 1s;
+    }
+
+    .dropdown-menu p:hover {
+        background-color: #5d5850;
+        transition: background-color 1s;
     }
 }
