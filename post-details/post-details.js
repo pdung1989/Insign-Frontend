@@ -1,6 +1,7 @@
 'use strict';
 const url = 'http://localhost:3000';
 let commentCount = 0;
+let likeCount = 0;
 
 //Get query parameter
 const getQParam = (param) => {
@@ -25,6 +26,12 @@ const modalContent = document.querySelector('.modal-content');
 //Create post div
 const createPost = (post) => {
     commentCount = post.num_comments;
+    likeCount = post.num_likes;
+
+    let isLiked = 'unliked';
+    if(post.self_like === 1) {
+        isLiked = 'liked';
+    }
 
     postDiv.innerHTML += `<div class="title">
                 <p>${post.title}</p>
@@ -38,7 +45,7 @@ const createPost = (post) => {
             </div>
             <div class="post-data">
                 <div class="post-likes">
-                    <img class="unliked">
+                       <img class="${isLiked}">
                     <p>${post.num_likes}</p>
                 </div>
                 <div class="post-favorite">
@@ -50,8 +57,7 @@ const createPost = (post) => {
                     <p class="description-title">Description</p>
                     <p class="description-text">${post.description}</p>
                 </div>
-            </div>
-            `
+            </div>`
 }
 
 //Create author div
@@ -218,6 +224,52 @@ const addCommentForm = (() => {
     });
 })
 
+//Check when the user likes/unlikes a post
+const likeUnlike = (() => {
+    const likeButton = document.querySelector('.post-likes img');
+    likeButton.addEventListener('click', async () => {
+        const likeCountP = document.querySelector('.post-likes p');
+
+        if(likeButton.className === 'unliked'){
+            likeButton.setAttribute('class', 'liked')
+
+            try {
+                const fetchOptions = {
+                    method: 'POST',
+                    headers: {
+                        Authorization: "Bearer " + sessionStorage.getItem("token"),
+                    },
+                };
+                const response = await fetch(url +'/post/' +  post_id + '/likes', fetchOptions);
+                const like = await response.json();
+
+                likeCount++;
+                likeCountP.innerHTML = `${likeCount}`;
+            }catch(e) {
+                console.log(e.message);
+            }
+        } else {
+            likeButton.setAttribute('class', 'unliked');
+
+            try {
+                const fetchOptions = {
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: "Bearer " + sessionStorage.getItem("token"),
+                    },
+                };
+                const response = await fetch(url +'/post/' +  post_id + '/likes', fetchOptions);
+                const unLike = await response.json();
+
+                likeCount--;
+                likeCountP.innerHTML = `${likeCount}`;
+            }catch(e) {
+                console.log(e.message);
+            }
+        }
+    })
+})
+
 // AJAX calls
 const getPost = async (post_id) => {
     try {
@@ -240,6 +292,7 @@ const getPost = async (post_id) => {
         addAuthor(author);
         createComments(comments);
         addCommentForm();
+        likeUnlike();
     } catch (e) {
         console.log(e.message);
     }
