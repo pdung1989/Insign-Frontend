@@ -15,10 +15,17 @@
         <nav>
             <ul class="menu">
                 <li class="logo"><a href="#">INSIGN</a></li>
-                <li class="item hover-underline-animation" id="home"><a href="#">Home</a></li>
+                <li class="item hover-underline-animation" id="home"><a href="../news-feed/feed.html">Home</a></li>
                 <li class="item hover-underline-animation" id="explore"><a href="../explore-page/explore.html">Explore</a></li>
                 <li class="item nav-button" id="upload"><a href="../add-post/add-post.html">Upload</a></li>
-                <li class="item nav-button" id="myaccount"><a href="#">My Account</a></li>
+                <li class="item nav-button drop" id="myaccount">
+                    <a href="#">My Account</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <p><a class="dropdown-item" id="drop-top" href="#">Edit Profile</a></p>
+                        <p><a class="dropdown-item" href="#">Favorites</a></p>
+                        <p><a class="dropdown-item" id="logout" href="#">Log out</a></p>
+                    </div>
+                </li>
                 <li class="toggle">
                     <div class="hamburger-icon"></div>
                 </li>

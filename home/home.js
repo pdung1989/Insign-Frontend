@@ -2,6 +2,12 @@
 
 const url = 'http://localhost:3000'; // change url when uploading to server
 
+// get user data
+const user = JSON.parse(sessionStorage.getItem("user"));
+if(user) {
+    window.location.replace("../news-feed/feed.html");
+}
+
 const createPosts = (posts) => {
     const postsDiv = document.querySelector('.random-posts');
 
@@ -22,7 +28,7 @@ const createPosts = (posts) => {
 // AJAX calls
 const getPosts = async () => {
     try {
-        const response = await fetch(url + '/post?limit=5');
+        const response = await fetch(url + '/home');
         const posts = await response.json();
         console.log(posts);
         await createPosts(posts);

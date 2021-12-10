@@ -216,6 +216,14 @@ main {
     align-content: flex-end;
 }
 
+.unliked {
+    content: url("../assets/heart-icon-off.svg");
+}
+
+.liked {
+    content: url("../assets/heart-icon-full.svg");
+}
+
 /* Tablet version */
 @media only screen and (max-width: 800px) {
     .profile, .posts, .line, .single-post, .post-photo, .post-photo img {
