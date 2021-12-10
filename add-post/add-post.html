@@ -13,7 +13,6 @@
   </head>
 
   <body>
-  <a href="javascript:history.back()"><button class="return-btn">< Go back</button></a>
   <div class="container">
       <div class="item" id="left">
         <img
@@ -23,23 +22,10 @@
       </div>
 
       <div class="item" id="right">
+        <a href="javascript:history.back()"><button class="return-btn">< Go back</button></a>
         <h2>Create new post</h2>
         <br />
         <form onsubmit="return validationAddPost()" id="addPostForm">
-          <div class="row">
-            <div class="col-25">
-              <label for="author">Created By</label>
-            </div>
-            <div class="col-75">
-              <input
-                type="text"
-                id="author"
-                required
-                name="author"
-                placeholder="Write your name"
-              />
-            </div>
-          </div>
           <div class="row">
             <div class="col-25">
               <label for="title">Blog Title</label>
