@@ -33,6 +33,11 @@ const createPost = (post) => {
         isLiked = 'liked';
     }
 
+    let isFavorite = 'unfavorite';
+    if(post.self_favorite === 1) {
+        isFavorite = 'favorite';
+    }
+
     postDiv.innerHTML += `<div class="title">
                 <p>${post.title}</p>
             </div>
@@ -49,7 +54,7 @@ const createPost = (post) => {
                     <p>${post.num_likes}</p>
                 </div>
                 <div class="post-favorite">
-                    <img src="../assets/favorites-icon.svg">
+                    <img class="${isFavorite}"">
                 </div>
             </div>
             <div class="description-with-decor">
@@ -270,6 +275,45 @@ const likeUnlike = (() => {
     })
 })
 
+//Check when the user favorites/unfavorites a post
+const favoriteUnfavorite = (() => {
+    const favoriteButton = document.querySelector('.post-favorite img');
+    favoriteButton.addEventListener('click', async () => {
+
+        if(favoriteButton.className === 'unfavorite'){
+            favoriteButton.setAttribute('class', 'favorite')
+
+            try {
+                const fetchOptions = {
+                    method: 'POST',
+                    headers: {
+                        Authorization: "Bearer " + sessionStorage.getItem("token"),
+                    },
+                };
+                const response = await fetch(url +'/post/' +  post_id + '/favorites', fetchOptions);
+                const favorite = await response.json();
+            }catch(e) {
+                console.log(e.message);
+            }
+        } else {
+            favoriteButton.setAttribute('class', 'unfavorite');
+
+            try {
+                const fetchOptions = {
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: "Bearer " + sessionStorage.getItem("token"),
+                    },
+                };
+                const response = await fetch(url +'/post/' +  post_id + '/favorites', fetchOptions);
+                const unFavorite = await response.json();
+            }catch(e) {
+                console.log(e.message);
+            }
+        }
+    })
+})
+
 // AJAX calls
 const getPost = async (post_id) => {
     try {
@@ -293,6 +337,7 @@ const getPost = async (post_id) => {
         createComments(comments);
         addCommentForm();
         likeUnlike();
+        favoriteUnfavorite();
     } catch (e) {
         console.log(e.message);
     }

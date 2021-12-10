@@ -30,7 +30,6 @@ const createPosts = (posts) => {
             postsDiv.innerHTML += '<div class="post-line"></div>';
         }
 
-        //TODO - check for self_like in fetch
         let isLiked = 'unliked';
         if(post.self_like === 1) {
             isLiked = 'liked';

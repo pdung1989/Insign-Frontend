@@ -88,8 +88,13 @@ main {
     flex-direction: row;
 }
 
-.description-title, .comments-title, .author-title {
-    font-size: 30px;
+.description-title, .author-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.comments-title {
+    font-size: 22px;
     margin-bottom: 10px;
 }
 
@@ -127,7 +132,7 @@ main {
 }
 
 .username {
-    font-size: 25px;
+    font-size: 24px;
     margin-right: 10px;
 }
 
@@ -259,7 +264,7 @@ p {
 .add-comment-content {
     width: 700px;
     height: 100px;
-    font-size: 20px;
+    font-size: 17px;
     border-radius: 10px;
     border: 2px #938c7f solid;
     padding: 5px;
@@ -351,6 +356,14 @@ textarea[class^='edit-comment-area'] {
     content: url("../assets/heart-icon-full.svg");
 }
 
+.unfavorite {
+    content: url("../assets/favorites-icon.svg");
+}
+
+.favorite {
+    content: url("../assets/favorites-icon-full.svg");
+}
+
 /* Tablet version */
 @media only screen and (max-width: 800px) {
      .post, .single-comment, .add-comment-content, div[class^='comment-buttons'] {
@@ -402,6 +415,10 @@ textarea[class^='edit-comment-area'] {
 
     .post-likes img, .post-favorite img {
         width: 25px;
+
+    }
+
+    .post-likes img {
         height: 25px;
     }
 
@@ -414,7 +431,7 @@ textarea[class^='edit-comment-area'] {
     }
 
     .title, .description-title, .comments-title, .author-title {
-        font-size: 25px;
+        font-size: 22px;
     }
 
     .follow-btn a, .comment-add-btn, .comment-edit-btn {
