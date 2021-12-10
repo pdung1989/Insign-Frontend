@@ -22,7 +22,7 @@
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  margin: -20px 0 50px;
+  margin: -20px 0 80px;
 }
 .form-header {
   color: #252525;
@@ -33,7 +33,8 @@ h1 {
 }
 
 h2 {
-  /* text-align: center; */
+  text-align: center;
+  margin: 0 auto;
 }
 
 p {
@@ -277,7 +278,10 @@ button {
     margin-left: 4em;
     flex-shrink: 0;
   }
-
+  .forms {
+   
+    margin-bottom: 7em;
+  }
   .container {
     max-width: 100%;
     height: 650px;
