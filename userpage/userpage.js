@@ -14,7 +14,9 @@ const getQParam = (param) => {
 const user = JSON.parse(sessionStorage.getItem("user"));
 
 const myAccountBtn = document.querySelector('#myaccount a');
-myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`);
+myAccountBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
+const favoritesBtn = document.querySelector('#favorites');
+favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
 const createPosts = (posts) => {
     const postsDiv = document.querySelector('.posts');
