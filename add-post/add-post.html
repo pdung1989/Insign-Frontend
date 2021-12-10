@@ -26,20 +26,7 @@
         <h2>Create new post</h2>
         <br />
         <form onsubmit="return validationAddPost()" id="addPostForm">
-          <div class="row">
-            <div class="col-25">
-              <label for="author">Created By</label>
-            </div>
-            <div class="col-75">
-              <input
-                type="text"
-                id="author"
-                required
-                name="author"
-                placeholder="Write your name"
-              />
-            </div>
-          </div>
+       
           <div class="row">
             <div class="col-25">
               <label for="title">Blog Title</label>
@@ -79,7 +66,7 @@
                 name="description"
                 required
                 placeholder="Write something for your post"
-                style="height: 100px"
+                style="height: 200px"
               ></textarea>
             </div>
           </div>
@@ -132,8 +119,8 @@
       </div>
     </div>
     
-    <script src="../login-signup/check-login.js"></script>
-    <script src="../login-signup/serialize.js"></script>
+    <!-- <script src="../login-signup/check-login.js"></script>
+    <script src="../login-signup/serialize.js"></script> -->
     <script src="add-post.js"></script>
     <script src="../nav-user/nav-user.js"></script>
   </body>

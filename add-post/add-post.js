@@ -38,6 +38,7 @@ const getCategories = async () => {
     };
     const response = await fetch(url + "/category", options);
     const categories = await response.json();
+    console.log(categories);
     createCategoryOptions(categories);
   } catch (e) {
     console.log(e.message);
@@ -88,7 +89,7 @@ addForm.addEventListener("submit", async (evt) => {
 
   console.log(fetchOptions);
   const category_response = await fetch(
-    url + "/category/" + category_id,
+    url + "/category/",
     fetchOptions
   );
   const json = await category_response.json();
@@ -98,7 +99,7 @@ addForm.addEventListener("submit", async (evt) => {
     alert(json.message);
   }
 
-  const style_response = await fetch(url + "/style/" + style_id, fetchOptions);
+  const style_response = await fetch(url + "/style/", fetchOptions);
   const style_json = await style_response.json();
   if (style_json.error) {
     alert(style_json.error.message);
