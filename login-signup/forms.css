@@ -33,7 +33,7 @@ h1 {
 }
 
 h2 {
-  text-align: center;
+  /* text-align: center; */
 }
 
 p {
@@ -250,9 +250,10 @@ footer p {
   left: 20px;
 }
 .main-container h2 {
-  position: fixed;
-  top: 100px;
-  left: 35%;
+  position: absolute;
+  top: 5em;
+  
+  transform: translateX(60%);
 }
 .main-container {
   padding-top: 15%;
@@ -268,7 +269,7 @@ button {
 #signUpForm h1 {
   margin-top: 2em;
 }
-@media all and (max-width: 600px) {
+@media all and (max-width: 700px) {
   .main-container {
     margin-top: 0;
     max-width: 70%;
@@ -281,27 +282,31 @@ button {
     max-width: 100%;
     height: 650px;
     margin: auto;
-    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom:30px;
   }
   #submitRegistration {
     margin-top: -15px;
     margin-bottom: 50px;
     
   }
+  #btn {
+    display: flex;
+  }
   .return-btn {
+   align-self: center;
     z-index: 999;
     position: relative;
-    float: right;
-    left: 20%;
-    margin-bottom: 40px;
-    margin-top: 40px;
+    left: 0;
+    margin-bottom: 15px;
+    margin-top: 5rem; 
   }
 
   footer {
     display: none;
   }
   .main-container h2 {
-    transform: translate(-27%);
+   
     display: none;
   }
   .sign-in-container {
