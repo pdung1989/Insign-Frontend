@@ -22,8 +22,8 @@ body {
   float: left;
   margin-left: 7%;
   width: 52%;
-  margin-top: 100px;
-  margin-bottom: 5em;
+  margin-top: 80px;
+  margin-bottom: 3em;
 }
 #title{
   text-align: center;
@@ -71,7 +71,7 @@ h3{
   float: left;
   width: 35%;
   margin-left: 20px;
-  margin-top: 76px;
+  margin-top: 56px;
   margin-bottom: 5em;
 }
 
