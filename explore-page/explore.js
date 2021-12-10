@@ -50,7 +50,12 @@ const createPostCard = (posts) => {
 
 const getRandomPosts = async () => {
   try {
-    const response = await fetch(url + "/post?limit=9");
+    const fetchOptions = {
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    };
+    const response = await fetch(url + "/post?limit=9", fetchOptions);
     const posts = await response.json();
     console.log(posts);
     createPostCard(posts);
@@ -62,7 +67,12 @@ getRandomPosts();
 
 const getPost = async (postId) => {
   try {
-    const response = await fetch(url + "/posts/" + postId );
+    const fetchOptions = {
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    };
+    const response = await fetch(url + "/posts/" + postId, fetchOptions);
     const posts = await response.json();
     console.log(posts);
     createPostCard(posts);
