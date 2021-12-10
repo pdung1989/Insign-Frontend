@@ -30,6 +30,12 @@ const createPosts = (posts) => {
             postsDiv.innerHTML += '<div class="post-line"></div>';
         }
 
+        //TODO - check for self_like in fetch
+        let isLiked = 'unliked';
+        if(post.self_like === 1) {
+            isLiked = 'liked';
+        }
+
         postsDiv.innerHTML += `<div class="single-post ${side}">
                     <div class="post-photo">
                         <a href="../post-details/post-details.html?id=${post.post_id}">
@@ -42,7 +48,7 @@ const createPosts = (posts) => {
                         </div>
                         <div class="post-stats">
                             <div class="post-likes">
-                                <img class="unliked">
+                                <img class="${isLiked}">
                                 <p>${post.num_likes}</p>
                             </div>
                             <div class="post-comments">
@@ -96,7 +102,6 @@ const addUserData = (userProfile) => {
             followBtnText.textContent = "Unfollow";
         });
     }
-
 }
 
 // AJAX calls
