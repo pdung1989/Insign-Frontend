@@ -15,13 +15,11 @@ const createPostCard = (posts) => {
   blogs.setAttribute("class", "blogs");
 
   posts.forEach((post) => {
-    //generate a number and provide to the image to generate randomly
-    //let number = Math.floor(Math.random() * posts.length);
+   
     const a = document.createElement("a");
     const img = document.createElement("img");
     a.setAttribute("href", `../post-details/post-details.html?id=${post.post_id}`);
-    img.setAttribute("height", 450);
-    img.setAttribute("width", 400);
+    img.setAttribute("class","img");
     const card = document.createElement("div");
     card.setAttribute("class", "card");
     const column = document.createElement("div");
