@@ -51,13 +51,13 @@ const createPostCard = (posts) => {
 
 const createRandomPosts = (randomPosts) => {
   const randomPostsDiv = document.querySelector("#proPost");
-  randomPostsDiv.setAttribute("class", "card");
+  randomPostsDiv.setAttribute("class", "proUserCard");
 
   randomPosts.forEach((randomPost) => {
     const card = document.createElement("div");
-    card.setAttribute("class", "card");
+    card.setAttribute("class", "procard");
     const title = document.createElement("h2");
-    title.setAttribute("id", "title");
+    title.setAttribute("id", "rightTitle");
     const author = document.createElement("h5");
     author.setAttribute("id", "pro-user");
     const postImg = document.createElement("div");
