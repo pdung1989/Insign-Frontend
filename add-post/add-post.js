@@ -87,7 +87,10 @@ addForm.addEventListener("submit", async (evt) => {
   };
 
   console.log(fetchOptions);
-  const category_response = await fetch(url + "/category/" + category_id, fetchOptions);
+  const category_response = await fetch(
+    url + "/category/" + category_id,
+    fetchOptions
+  );
   const json = await category_response.json();
   if (json.error) {
     alert(json.error.message);
@@ -102,11 +105,13 @@ addForm.addEventListener("submit", async (evt) => {
   } else {
     alert(style_json.message);
   }
-  location.href = "add-post.html";
+
+  location.href = "../userpage/userpage.html";
 });
 
 const validationAddPost = () => {
-  document.write("Post has been created successfully");
+  alert("Post has been created successfully");
+  location.href = "../userpage/userpage.html";
 };
 getCategories();
 getStyles();

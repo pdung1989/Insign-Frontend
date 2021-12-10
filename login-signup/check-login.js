@@ -4,7 +4,7 @@
   
     // check sessionStorage
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-      location.href = '../userpage/userpage.html';
+      location.href = 'forms.html';
       return;
     }
     // check if token valid
@@ -16,7 +16,7 @@
       };
       const response = await fetch(url + '/user/token', fetchOptions);
       if (!response.ok) {
-        location.href = '../home/home.html';
+        location.href = '../news-feed/feed.html';
       } else {
         const json = await response.json();
         sessionStorage.setItem('user', JSON.stringify(json.user));
