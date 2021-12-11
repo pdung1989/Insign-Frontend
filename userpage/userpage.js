@@ -40,7 +40,7 @@ const createPosts = (posts) => {
         postsDiv.innerHTML += `<div class="single-post ${side}">
                     <div class="post-photo">
                         <a href="../post-details/post-details.html?id=${post.post_id}">
-                            <img src="${post.image}" alt="post image">
+                            <img src="${url + '/uploads/' + post.image}" alt="post image">
                         </a>
                     </div>
                     <div class="post-details">
