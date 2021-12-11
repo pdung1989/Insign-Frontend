@@ -37,7 +37,7 @@ const createPostCard = (posts) => {
     const h3 = document.createElement("h3");
     h3.setAttribute("id", "title");
 
-    img.src = post.image;
+    img.src = url + '/uploads/' + post.image;
     h3.innerHTML = post.title;
 
     console.log(`set img src: ${img.src}`);

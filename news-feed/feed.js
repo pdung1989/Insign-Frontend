@@ -39,7 +39,7 @@ const createPostCard = (posts) => {
 
     title.innerHTML = post.title;
     author.innerHTML = post.author;
-    img.src = post.image;
+    img.src = url + '/uploads/' + post.image;
     postDescription.innerHTML = post.description;
 
     console.log(`set img src: ${img.src}`);
