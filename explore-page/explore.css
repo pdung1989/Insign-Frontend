@@ -8,6 +8,7 @@
   margin: 0 auto;
   margin-top: 5%;
   text-align: center;
+  
 }
 #searchInput {
   margin: auto;
@@ -33,6 +34,24 @@
 #searchBtn:hover{
   background-color: #5d5850;
 }
+
+#search_posts_area {
+  overflow: none;
+  background-color: #5d5850;
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-flow: column;
+  /* display: flex;
+  flex-flow: column;
+  align-items: center;
+  overflow-y: scroll; */
+}
+
+
+
 
 /* link to post */
 a {
