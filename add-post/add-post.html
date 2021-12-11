@@ -8,116 +8,28 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../add-post/add-post.css" />
-    <link rel="stylesheet" href="../nav-user/nav-user-stylesheet.css" />
     <title>Create Post</title>
   </head>
 
   <body>
-  <div class="container">
-      <div class="item" id="left">
-        <img
-          src="https://images.unsplash.com/photo-1578503439976-f0c1f7daf1cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80"
-          alt=""
-        />
-      </div>
-
-      <div class="item" id="right">
-        <a href="javascript:history.back()"><button class="return-btn">< Go back</button></a>
-        <h2>Create new post</h2>
-        <br />
-        <form onsubmit="return validationAddPost()" id="addPostForm">
-          <div class="row">
-            <div class="col-25">
-              <label for="title">Blog Title</label>
-            </div>
-            <div class="col-75">
-              <input
-                type="text"
-                id="title"
-                required
-                name="title"
-                placeholder="Provide the title of your Post"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-25">
-              <label for="thumbnail">Thumbnail</label>
-            </div>
-            <div class="col-75">
-              <input
-                class="light-border"
-                type="file"
-                required
-                name="image"
-                accept="image/*"
-                placeholder="Choose file"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-25">
-              <label for="description">Description</label>
-            </div>
-            <div class="col-75">
-              <textarea
-                id="description"
-                name="description"
-                required
-                placeholder="Write something for your post"
-                style="height: 100px"
-              ></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-25">
-              <label for="category">Select category</label>
-            </div>
-            <div class="col-75">
-              <select
-                class="category"
-                title="Please select a category"
-                name="category"
-                required
-              ></select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-25">
-              <label for="syle">Select Style</label>
-            </div>
-            <div class="col-75">
-              <select
-                class="style"
-                title="Please select a style"
-                name="style"
-                required
-              ></select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-25">
-              <label for="location">Location</label>
-            </div>
-            <div class="col-75">
-              <input
-                type="text"
-                id="location"
-                required
-                name="location"
-                placeholder="Name a location"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <input type="submit" value="Submit" />
-          </div>
-        </form>
-
-        <div class="item" id="part2"></div>
-      </div>
+  <div class="forms">
+    <div class="form-wrapper">
+      <h3>Upload post</h3>
+      <form action="http://localhost:3000/post/" method="post" enctype="multipart/form-data" id="addPostForm">
+        <input class="light-border" type="text" required minlength="3" name="title" placeholder="Title">
+        <textarea class="light-border" type="text" required name="description" placeholder="add description here"></textarea>
+        <input class="light-border" type="file" required name="image" accept="image/*" placeholder="Choose file">
+        <select class="light-border add-style" required name="style_id">
+          <option value="" selected disabled hidden>Select style</option>
+        </select>
+        <select class="light-border add-category" required name="category_id">
+          <option value="" selected disabled hidden>Select category</option>
+        </select>
+        <input class="light-border" type="text" required minlength="3" name="location" placeholder="Location">
+        <button class="light-border" type="submit">Upload</button>
+      </form>
     </div>
-
-    <script src="add-post.js"></script>
+  </div>
   </body>
+  <script src="add-post.js"></script>
 </html>

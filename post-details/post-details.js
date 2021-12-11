@@ -48,7 +48,7 @@ const createPost = (post) => {
             <p>${post.location}</p>
             </div>
             <div class="image">
-                <img src="${post.image}">
+                <img src="${url + '/uploads/' + post.image}">
             </div>
             <div class="post-data">
                 <div class="post-likes">
