@@ -2,56 +2,6 @@
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
 }
-/* search area */
-.search {
-  width: 100%;
-  margin: 0 auto;
-  margin-top: 5%;
-  text-align: center;
-  
-}
-#searchInput {
-  margin: auto;
-  width: 35%;
-  padding: 10px;
-  border-radius: 7px;
-  border: 2px solid #938c7f;
-  margin-bottom: 2rem;
-}
-#searchBtn {
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 5px 10px;
-  width: 7em;
-  margin-left: 2%;
-  background-color: #938c7f;
-  border: 2px solid #938c7f;
-  color: #fcfcfc;
-  font-size: 15px;
-  
-}
-#searchBtn:hover{
-  background-color: #5d5850;
-}
-
-#search_posts_area {
-  overflow: none;
-  background-color: #5d5850;
-  height: 80%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex: 1;
-  flex-flow: column;
-  /* display: flex;
-  flex-flow: column;
-  align-items: center;
-  overflow-y: scroll; */
-}
-
-
-
 
 /* link to post */
 a {
@@ -96,18 +46,7 @@ a {
 
 /* responsive at 800px*/
 @media only screen and (max-width: 800px) {
-  .search{
-    
-    margin-top: 25%;
-    position: relative;
-  }
-  .button-text{
-    display: none;
-  }
-  #searchInput{
-    width: 200px;
-  }
- 
+
   .card {
     margin-top: 30px;
   }
@@ -124,24 +63,7 @@ a {
 }
 /* responsive at 600px*/
 @media screen and (max-width: 600px) {
-  .search{
-    
-    margin-top: 35%;
-    width: 100%;
-  }
-  .button-text{
-    display: none;
-
-  }
-  #searchInput{
-    margin-left: 10px;
-    width: 100px;
-    padding: 5px;
-  }
-  #searchBtn{
-    width: 40px;
-    padding: 2px;
-  }
+ 
   #title {
     margin-top: 16em;
     align-items: center;
