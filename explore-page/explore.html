@@ -9,6 +9,11 @@
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
     <link rel="stylesheet" href="explore.css" />
     <link rel="stylesheet" href="../nav-user/nav-user-stylesheet.css" />
   </head>
@@ -17,13 +22,21 @@
       <nav>
         <ul class="menu">
           <li class="logo"><a href="#">INSIGN</a></li>
-          <li class="item hover-underline-animation" id="home"><a href="../news-feed/feed.html">Home</a></li>
-          <li class="item hover-underline-animation" id="explore"><a href="../explore-page/explore.html">Explore</a></li>
-          <li class="item nav-button" id="upload"><a href="../add-post/add-post.html">Upload</a></li>
+          <li class="item hover-underline-animation" id="home">
+            <a href="../news-feed/feed.html">Home</a>
+          </li>
+          <li class="item hover-underline-animation" id="explore">
+            <a href="../explore-page/explore.html">Explore</a>
+          </li>
+          <li class="item nav-button" id="upload">
+            <a href="../add-post/add-post.html">Upload</a>
+          </li>
           <li class="item nav-button drop" id="myaccount">
             <a href="#">My Account</a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <p><a class="dropdown-item" id="drop-top" href="#">Edit Profile</a></p>
+              <p>
+                <a class="dropdown-item" id="drop-top" href="#">Edit Profile</a>
+              </p>
               <p><a class="dropdown-item" href="#">Favorites</a></p>
               <p><a class="dropdown-item" id="logout" href="#">Log out</a></p>
             </div>
@@ -43,19 +56,20 @@
       <br />
       <div class="search">
         <input
-          id="searchPost"
+          id="searchInput"
           type="text"
           placeholder="Search Post"
           value=""
           name="search"
         />
-        <button id="searchBtn">
-          SEARCH <i class="fas fa-search" aria-hidden="true"></i>
+        <button type="submit" id="searchBtn">
+          <span class="button-text">SEARCH</span>
+          <i class="fa fa-search"></i>
         </button>
       </div>
       <br />
 
-      <h1>Explore posts</h1>
+      <h1>Explore</h1>
 
       <br />
     </div>

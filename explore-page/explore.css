@@ -2,26 +2,27 @@
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
 }
+/* search area */
 .search {
   width: 100%;
   margin: 0 auto;
   margin-top: 5%;
   text-align: center;
 }
-#searchPost {
+#searchInput {
   margin: auto;
-  width: 40%;
+  width: 35%;
   padding: 10px;
   border-radius: 7px;
   border: 2px solid #938c7f;
+  margin-bottom: 2rem;
 }
 #searchBtn {
   text-align: center;
   border-radius: 5px;
-  padding: 15px 0 15px 20px;
   cursor: pointer;
   padding: 5px 10px;
-  width: 6em;
+  width: 7em;
   margin-left: 2%;
   background-color: #938c7f;
   border: 2px solid #938c7f;
@@ -29,17 +30,15 @@
   font-size: 15px;
   
 }
-#name {
-  padding-left: 40%;
-  padding-top: 10%;
-  padding-bottom: 40%;
-  padding-right: 20%;
-  font-size: xx-large;
+#searchBtn:hover{
+  background-color: #5d5850;
 }
+
+/* link to post */
 a {
   padding-bottom: 10%;
 }
-
+ /* post title */
 .title h1 {
   text-align: center;
 }
@@ -49,6 +48,7 @@ a {
   position: absolute;
 }
 
+/* card/post holder*/
 .column {
   display: flex;
   float: left;
@@ -77,6 +77,18 @@ a {
 
 /* responsive at 800px*/
 @media only screen and (max-width: 800px) {
+  .search{
+    
+    margin-top: 25%;
+    position: relative;
+  }
+  .button-text{
+    display: none;
+  }
+  #searchInput{
+    width: 200px;
+  }
+ 
   .card {
     margin-top: 30px;
   }
@@ -88,19 +100,36 @@ a {
   #title {
     align-items: center;
     margin-top: 18em;
-    /* position: absolute; */
     font-size: 18px;
   }
 }
 /* responsive at 600px*/
 @media screen and (max-width: 600px) {
+  .search{
+    
+    margin-top: 35%;
+    width: 100%;
+  }
+  .button-text{
+    display: none;
+
+  }
+  #searchInput{
+    margin-left: 10px;
+    width: 100px;
+    padding: 5px;
+  }
+  #searchBtn{
+    width: 40px;
+    padding: 2px;
+  }
   #title {
     margin-top: 16em;
     align-items: center;
     font-size: 20px;
   }
   .blogs {
-    /* margin-top: 2em; */
+   
     margin-left: 1em;
     align-items: center;
   }
