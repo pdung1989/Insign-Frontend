@@ -10,6 +10,18 @@
 body {
   line-height: 1;
   margin: 0;
+  background: url('../assets/background-upload.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.upload-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .form-wrapper {
@@ -28,4 +40,132 @@ body {
 
 #addPostForm > * {
   margin-bottom: 10px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.form-field p{
+  width: 150px;
+}
+
+.light-border {
+  width: 550px;
+  border: 1px solid #252525;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.light-border-button {
+  width: 150px;
+  background-color: #938c7f;
+  border: #938c7f 3px solid;
+  border-radius: 15px;
+  padding: 10px 10px 10px;
+  color: #fcfcfc;
+  margin: auto auto;
+}
+
+.back-button {
+  width: 100px;
+  margin-top: 10px;
+  margin-left: 10px;
+  float: left;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.light-border-button:hover {
+  cursor: pointer;
+  background-color: #5d5850;
+  border: #5d5850 3px solid;
+}
+
+.img-form-field {
+  width: 550px;
+  padding: 10px;
+}
+
+.img-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 550px;
+  margin: auto;
+  border: 1px solid #252525;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+#show-img {
+  margin-top: 5px;
+  max-height: 350px;
+  max-width: 540px;
+  height: auto;
+}
+
+.form-field textarea{
+  min-width: 550px;
+  max-width: 550px;
+  min-height: 80px;
+  max-height: 200px;
+}
+
+.back-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+  .form-wrapper, #addPostForm {
+    width: 95%;
+    margin: auto;
+  }
+
+  .upload-title {
+    font-size: 20px;
+  }
+
+  #show-img {
+    margin-top: 5px;
+    max-height: 90%;
+    max-width: 60%;
+    height: auto;
+  }
+
+  .form-field textarea{
+    min-width: 79%;
+    max-width: 79%;
+    min-height: 60px;
+    max-height: 150px;
+  }
+
+  .back-button {
+    position: static;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .form-field {
+    flex-direction: column;
+  }
+
+  #addPostForm, .light-border, .img-form {
+    width: 100%;
+  }
+
+  .form-field textarea{
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 60px;
+    max-height: 150px;
+  }
+
+  #imgInp {
+    margin-left: 15px;
+  }
 }

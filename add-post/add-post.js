@@ -58,6 +58,15 @@ const getCategories = async () => {
 getStyles();
 getCategories();
 
+const imgInp = document.querySelector('#imgInp');
+const showImg = document.querySelector('#show-img');
+imgInp.onchange = evt => {
+    const [file] = imgInp.files
+    if (file) {
+        showImg.src = URL.createObjectURL(file)
+    }
+}
+
 //Submit add cat form
 addPostForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
@@ -71,6 +80,6 @@ addPostForm.addEventListener('submit', async (evt) => {
   };
   const response = await fetch(url + '/post', fetchOptions);
   const json = await response.json();
-  alert(json.message);
+  alert('Post uploaded successfully!');
   location.href = `../userpage/userpage.html?id=${user.user_id}`;
 });
