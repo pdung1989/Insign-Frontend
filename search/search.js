@@ -32,25 +32,32 @@ const getSearchPost = async (searchInput) => {
 const createSearchCards = (posts) => {
   posts.forEach((post) => {
     const displaySearchedPost = document.createElement("div");
+    displaySearchedPost.setAttribute("class", "foundPost")
+    
+    const row = document.createElement("div");
+    row.setAttribute("class", "row");
+
     const a = document.createElement("a");
     a.setAttribute("href", `../post-details/post-details.html?id=${post.post_id}`);
 
     const img = document.createElement("img");
     img.setAttribute("class", "searchImg");
-    const title = document.createElement("h4");
+    const title = document.createElement("h3");
+    title.setAttribute("id", "searchTitle");
     const description = document.createElement("p");
-
+    description.setAttribute("class", "postDesc");
     img.src = post.image;
     title.innerHTML = post.title;
-    console.log(`title: ${post.title}`);
+
     description.innerHTML = post.description;
 
     a.appendChild(img);
-    displaySearchedPost.appendChild(a);
     displaySearchedPost.appendChild(title);
+    displaySearchedPost.appendChild(a);  
     displaySearchedPost.appendChild(description);
+    row.appendChild(displaySearchedPost);
 
-    searchedPost.appendChild(displaySearchedPost);
+    searchedPost.appendChild(row);
   });
   
 };
