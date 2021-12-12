@@ -25,27 +25,6 @@ main {
   margin-top: 20px;
 }
 
-.side {
-  position: sticky;
-  top: 20px;
-  align-self: flex-start;
-  margin-left: 20px;
-}
-
-.pro-feed {
-  width: 400px;
-  box-sizing: border-box;
-  border: 1px solid #d7d7d7;
-  background-color: #fcfcfc;
-  padding: 20px;
-}
-
-.copyright {
-  font-size: 10px;
-  margin-left: 5px;
-  margin-top: 5px;
-}
-
 .line {
   width: 700px;
   margin: auto;
@@ -64,7 +43,7 @@ main {
 .single-post {
   box-sizing: content-box;
   width: 570px;
-  height: 610px;
+  height: 690px;
   margin-bottom: 30px;
   padding: 10px 20px;
   border: 1px solid #d7d7d7;
@@ -144,6 +123,79 @@ main {
 
 .liked {
   content: url("../assets/heart-icon-full.svg");
+}
+
+/* AUTHOR */
+
+.author {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.author img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.username {
+  font-size: 17px;
+  margin-right: 10px;
+}
+
+/* PRO FEED */
+
+.pro-feed-title {
+  margin-bottom: 10px;
+}
+
+.pro-title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.pro-feed img {
+  width: 250px;
+  max-height: 250px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  align-content: center;
+}
+
+.one {
+  margin-bottom: 20px;
+}
+
+.side {
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  margin-left: 10px;
+}
+
+.pro-feed {
+  width: 300px;
+  box-sizing: border-box;
+  border: 1px solid #d7d7d7;
+  background-color: #fcfcfc;
+  padding: 20px;
+}
+
+.copyright {
+  font-size: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
 }
 
 @media only screen and (max-width: 1100px) {
