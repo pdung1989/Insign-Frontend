@@ -52,7 +52,7 @@
       display: none;
     }
     #searchInput{
-      width: 200px;
+      width: 30%;
     }
 }
 @media screen and (max-width: 600px) {
@@ -67,11 +67,11 @@
     }
     #searchInput{
       margin-left: 10px;
-      width: 100px;
-      padding: 5px;
+      width: 40%;
+      padding: 7px;
     }
     #searchBtn{
-      width: 40px;
-      padding: 2px;
+      width: 50px;
+      padding: 4px;
     }
 }
