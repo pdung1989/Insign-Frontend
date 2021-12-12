@@ -74,8 +74,8 @@ const addUserData = (userProfile) => {
                     <p class="username">${userProfile.username}</p>
                 </div>
                 <div class="profile-stats">
-                    <p class="profile-follower-count"><span class="follower-count">${userProfile.followerCount ? 'TODO' : 0}</span> followers</p>
-                    <p class="profile-following-count"><span class="following-count">${userProfile.followingCount ? 'TODO' : 0}</span> following</p>
+                    <p class="profile-follower-count"><span class="follower-count">${userProfile.num_follower}</span> followers</p>
+                    <p class="profile-following-count"><span class="following-count">${userProfile.num_following}</span> following</p>
                 </div>
                 <div class="description">
                     <p>${userProfile.bio ? userProfile.bio : ''}</p>
