@@ -329,31 +329,32 @@ const favoriteUnfavorite = (() => {
     })
 })
 
-const editDeletePost = ((post_id) => {
-    document.querySelector('.post-edit-btn').addEventListener('click', (() => {
-        //TODO - edit post page
-        alert('GO DO EDIT PAGE');
-    }))
+const editDeletePost = ((post_id, author) => {
+    if(user.user_id === author.user_id) {
+        document.querySelector('.post-edit-btn').addEventListener('click', (() => {
+            //TODO - edit post page
+        }))
 
-    document.querySelector('.post-delete-btn').addEventListener('click', (async () => {
-        const answer = confirm("Are you sure you'd like to delete this post?");
-        if(answer){
-            try {
-                const fetchOptions = {
-                    method: 'DELETE',
-                    headers: {
-                        Authorization: "Bearer " + sessionStorage.getItem("token"),
-                    },
-                };
-                const response = await fetch(url + "/post/" + post_id, fetchOptions);
-                const deleted = await response.json();
-                window.location.replace(`../userpage/userpage.html?id=${user.user_id}`);
-            } catch (e) {
-                console.log(e.message);
-                alert('Error deleting post');
+        document.querySelector('.post-delete-btn').addEventListener('click', (async () => {
+            const answer = confirm("Are you sure you'd like to delete this post?");
+            if(answer){
+                try {
+                    const fetchOptions = {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: "Bearer " + sessionStorage.getItem("token"),
+                        },
+                    };
+                    const response = await fetch(url + "/post/" + post_id, fetchOptions);
+                    const deleted = await response.json();
+                    window.location.replace(`../userpage/userpage.html?id=${user.user_id}`);
+                } catch (e) {
+                    console.log(e.message);
+                    alert('Error deleting post');
+                }
             }
-        }
-    }))
+        }))
+    }
 })
 
 // AJAX calls
@@ -380,7 +381,7 @@ const getPost = async (post_id) => {
         addCommentForm();
         likeUnlike();
         favoriteUnfavorite();
-        editDeletePost(post_id);
+        editDeletePost(post_id, author);
     } catch (e) {
         console.log(e.message);
     }

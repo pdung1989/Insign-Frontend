@@ -82,7 +82,7 @@ const getPosts = async () => {
     const posts = await response.json();
     createPostCard(posts);
 
-    const professionalPostResponse = await fetch(url + "/post?limit=2", fetchOptions);
+    const professionalPostResponse = await fetch(url + "/post/professional", fetchOptions);
     const professionalPosts = await professionalPostResponse.json();
     console.log("call professional posts");
     createProfessionalPosts(professionalPosts);

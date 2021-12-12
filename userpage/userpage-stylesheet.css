@@ -60,7 +60,7 @@ main {
     flex-wrap: wrap;
 }
 
-.follow-btn, .empty-favorites button {
+.follow-btn, .empty-favorites button, .edit-profile-btn {
     background-color: #938c7f;
     border: #938c7f 3px solid;
     border-radius: 15px;
@@ -68,13 +68,13 @@ main {
     margin-bottom: 15px;
 }
 
-.follow-btn:hover, .empty-favorites button:hover {
+.follow-btn:hover, .empty-favorites button:hover, .edit-profile-btn:hover {
     cursor: pointer;
     background-color: #5d5850;
     border: #5d5850 3px solid;
 }
 
-.follow-btn a, .empty-favorites button a {
+.follow-btn a, .empty-favorites button a, .edit-profile-btn a {
     font-size: 20px;
     color: #fcfcfc;
     text-decoration: none;
@@ -337,7 +337,7 @@ main {
         padding-top: 5px;
     }
 
-    .follow-btn a, .profile-stats {
+    .follow-btn a, .profile-stats, .edit-profile-btn a {
         font-size: 17px;
     }
 
