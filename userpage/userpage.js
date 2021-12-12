@@ -10,6 +10,14 @@ const getQParam = (param) => {
     return urlParams.get(param);
 };
 
+// get user data
+const user = JSON.parse(sessionStorage.getItem("user"));
+
+const myAccountBtn = document.querySelector('#myaccount a');
+myAccountBtn.setAttribute("href", `userpage.html?id=${user.user_id}`);
+const favoritesBtn = document.querySelector('#favorites');
+favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
+
 const createPosts = (posts) => {
     const postsDiv = document.querySelector('.posts');
 
@@ -24,10 +32,15 @@ const createPosts = (posts) => {
             postsDiv.innerHTML += '<div class="post-line"></div>';
         }
 
+        let isLiked = 'unliked';
+        if(post.self_like === 1) {
+            isLiked = 'liked';
+        }
+       
         postsDiv.innerHTML += `<div class="single-post ${side}">
                     <div class="post-photo">
                         <a href="../post-details/post-details.html?id=${post.post_id}">
-                            <img src="${post.image}" alt="post image">
+                            <img src="${url + '/uploads/' + post.image}" alt="post image">
                         </a>
                     </div>
                     <div class="post-details">
@@ -36,7 +49,7 @@ const createPosts = (posts) => {
                         </div>
                         <div class="post-stats">
                             <div class="post-likes">
-                                <img src="../assets/heart-icon-off.svg">
+                                <img class="${isLiked}">
                                 <p>${post.num_likes}</p>
                             </div>
                             <div class="post-comments">
@@ -46,50 +59,61 @@ const createPosts = (posts) => {
                         </div>
                     </div>
                 </div>`
-
     });
 }
 
 //TODO - add followers and following count to backend
-const addUserData = (user) => {
+const addUserData = (userProfile) => {
     const profileDiv = document.querySelector('.profile');
 
     profileDiv.innerHTML += `<div class="profile-photo">
-                <img class="profile-photo" src="${user.profile_picture}">
+                <img class="profile-photo" src="${userProfile.profile_picture}">
             </div>
             <div class="profile-data">
                 <div class="user-follow">
-                    <p class="username">${user.username}</p>
-                    <button class="follow-btn"><a>Follow</a></button>
+                    <p class="username">${userProfile.username}</p>
                 </div>
                 <div class="profile-stats">
-                    <p class="profile-follower-count"><span class="follower-count">${user.followerCount ? 'TODO' : 0}</span> followers</p>
-                    <p class="profile-following-count"><span class="following-count">${user.followingCount ? 'TODO' : 0}</span> following</p>
+                    <p class="profile-follower-count"><span class="follower-count">${userProfile.followerCount ? 'TODO' : 0}</span> followers</p>
+                    <p class="profile-following-count"><span class="following-count">${userProfile.followingCount ? 'TODO' : 0}</span> following</p>
                 </div>
                 <div class="description">
-                    <p>${user.bio ? user.bio : ''}</p>
+                    <p>${userProfile.bio ? userProfile.bio : ''}</p>
                 </div>
             </div>`;
 
-    //Follow button logic
-    const followBtn = document.querySelector('.follow-btn');
-    const followBtnText = document.querySelector('.follow-btn a');
+    const userFollowBtn = document.querySelector('.user-follow');
+    if(user.user_id === userProfile.user_id){
+        //TODO - add href
+        userFollowBtn.innerHTML += `<button class="follow-btn"><a>Edit Profile</a></button>`;
+    } else {
+        userFollowBtn.innerHTML += `<button class="follow-btn"><a>Follow</a></button>`;
 
-    followBtn.addEventListener('click', () => {
-        if(followBtn.classList.contains('unfollow')){
-            followBtn.classList.remove('unfollow');
-            followBtnText.textContent = "Follow";
-            return;
-        }
-        followBtn.classList.add('unfollow');
-        followBtnText.textContent = "Unfollow";
-    });
+        //Follow button logic
+        const followBtn = document.querySelector('.follow-btn');
+        const followBtnText = document.querySelector('.follow-btn a');
+
+        followBtn.addEventListener('click', () => {
+            if(followBtn.classList.contains('unfollow')){
+                followBtn.classList.remove('unfollow');
+                followBtnText.textContent = "Follow";
+                return;
+            }
+            followBtn.classList.add('unfollow');
+            followBtnText.textContent = "Unfollow";
+        });
+    }
 }
 
 // AJAX calls
 const getPosts = async (id) => {
     try {
-        const response = await fetch(url + '/user/' + id + '/post');
+        const fetchOptions = {
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
+        };
+        const response = await fetch(url + '/user/' + id + '/post', fetchOptions);
         const posts = await response.json();
         createPosts(posts);
     } catch (e) {
@@ -100,7 +124,12 @@ getPosts(getQParam('id'));
 
 const getUserData = async (id) => {
     try {
-        const response = await fetch(url + '/user/' + id);
+        const fetchOptions = {
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
+        };
+        const response = await fetch(url + '/user/' + id, fetchOptions);
         const user = await response.json();
         addUserData(user);
     } catch (e) {

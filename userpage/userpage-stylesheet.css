@@ -60,7 +60,7 @@ main {
     flex-wrap: wrap;
 }
 
-.follow-btn {
+.follow-btn, .empty-favorites button {
     background-color: #938c7f;
     border: #938c7f 3px solid;
     border-radius: 15px;
@@ -68,13 +68,13 @@ main {
     margin-bottom: 15px;
 }
 
-.follow-btn:hover {
+.follow-btn:hover, .empty-favorites button:hover {
     cursor: pointer;
     background-color: #5d5850;
     border: #5d5850 3px solid;
 }
 
-.follow-btn a {
+.follow-btn a, .empty-favorites button a {
     font-size: 20px;
     color: #fcfcfc;
     text-decoration: none;
@@ -124,6 +124,35 @@ main {
     width: 700px;
     margin: auto;
     border-top: 2px solid #938c7f;
+}
+
+/* FAVORITES */
+
+.fav, .empty-favorites {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 700px;
+    margin: 20px auto;
+}
+
+.empty-favorites {
+    display: none;
+    width: 300px;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.empty-favorites p {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.fav-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 /* POST FEED */
@@ -216,13 +245,21 @@ main {
     align-content: flex-end;
 }
 
+.unliked {
+    content: url("../assets/heart-icon-off.svg");
+}
+
+.liked {
+    content: url("../assets/heart-icon-full.svg");
+}
+
 /* Tablet version */
 @media only screen and (max-width: 800px) {
-    .profile, .posts, .line, .single-post, .post-photo, .post-photo img {
+    .profile, .posts, .line, .single-post, .post-photo, .post-photo img, .fav {
         width: 570px;
     }
 
-    .profile {
+    .profile, .fav {
         margin-top: 100px;
     }
 
@@ -242,11 +279,19 @@ main {
 
 /* Mobile Version */
 @media only screen and (max-width: 600px) {
-    .profile, .posts, .line {
+    .profile, .posts, .line, .fav {
         width: 90%;
     }
 
-    .profile {
+    .fav-title {
+        font-size: 25px;
+    }
+
+    .fav-content {
+        font-size: 15px;
+    }
+
+    .profile, .fav {
         margin-top: 100px;
         flex-direction: column;
     }

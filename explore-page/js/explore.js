@@ -15,14 +15,11 @@ const user = JSON.parse(sessionStorage.getItem("user"));
 
 const myAccountBtn = document.querySelector('#myaccount a');
 myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`);
-const favoritesBtn = document.querySelector('#favorites');
-favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
 const createPostCard = (posts) => {
   const blogs = document.querySelector(".blogs");
   blogs.setAttribute("class", "blogs");
-  const searchArea = document.getElementById("searched_posts_area");
-  searchArea.style.display = 'none';
+
   posts.forEach((post) => {
    
     const a = document.createElement("a");
@@ -36,9 +33,10 @@ const createPostCard = (posts) => {
     const h3 = document.createElement("h3");
     h3.setAttribute("id", "title");
 
-    img.src = url + '/uploads/' + post.image;
+    img.src = post.image;
     h3.innerHTML = post.title;
 
+    console.log(`set img src: ${img.src}`);
 
     a.appendChild(img);
     card.appendChild(h3);
@@ -57,6 +55,7 @@ const getRandomPosts = async () => {
     };
     const response = await fetch(url + "/post?limit=9", fetchOptions);
     const posts = await response.json();
+    console.log(posts);
     createPostCard(posts);
   } catch (e) {
     console.log(e.message);
@@ -73,8 +72,8 @@ const getPost = async (postId) => {
     };
     const response = await fetch(url + "/posts/" + postId, fetchOptions);
     const posts = await response.json();
+    console.log(posts);
     createPostCard(posts);
-   
   } catch (e) {
     console.log(e.message);
   }

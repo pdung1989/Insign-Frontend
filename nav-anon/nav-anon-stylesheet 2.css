@@ -39,6 +39,10 @@ a {
     white-space: nowrap;
 }
 
+.toggle a {
+    font-size: 20px;
+}
+
 .nav-button {
     background-color: #938c7f;
     border: #fcfcfc 3px solid;
@@ -86,28 +90,17 @@ a {
     display: block;
 }
 
-.toggle, .upload-mobile {
+.toggle {
     cursor: pointer;
 }
 
 .hamburger-icon {
     cursor: pointer;
     position: absolute;
-    background-image: url('../assets/menu.svg');
+    background-image: url('../assets/hamburger-icon.png');
     background-size: 25px 25px;
-    top: 28px;
+    top: 35px;
     right: 20px;
-    width: 25px;
-    height: 25px;
-}
-
-.plus-icon {
-    cursor: pointer;
-    position: absolute;
-    background-image: url('../assets/add-cicrle.svg');
-    background-size: 25px 25px;
-    top: 28px;
-    left: 20px;
     width: 25px;
     height: 25px;
 }
@@ -122,17 +115,9 @@ nav {
     width: 100%;
 }
 
-.dropdown-menu {
-    display: block;
-    margin-top: 10px;
-}
-
-.dropdown-menu p{
-    margin-top: 10px;
-}
 
 /* Desktop version */
-@media all and (min-width: 800px) {
+@media all and (min-width: 600px) {
     nav {
         position: static;
     }
@@ -142,16 +127,12 @@ nav {
         width: auto;
     }
 
-    .toggle, .upload-mobile {
+    .toggle {
         display: none;
     }
 
-    #home, #explore {
+    #home, #register {
         padding-right: 30px;
-    }
-
-    #upload {
-        margin-right: 10px;
     }
 
     .logo {
@@ -181,39 +162,5 @@ nav {
     .hover-underline-animation:hover:after {
         transform: scaleX(1);
         transform-origin: bottom left;
-    }
-
-    .drop {
-        position: relative;
-    }
-
-    .dropdown-menu {
-        margin-top: 10px;
-        display: none;
-        position: absolute;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-    }
-
-    .dropdown-menu p {
-        font-size: 16px;
-        padding: 9px 5px;
-        margin-top: 0;
-    }
-
-    .nav-button:hover > .dropdown-menu {
-        display: block;
-        background-color: #938c7f;
-        transition: background-color 1s;
-    }
-
-    #myaccount:hover {
-        background-color: #938c7f;
-        transition: background-color 1s;
-    }
-
-    .dropdown-menu p:hover {
-        background-color: #5d5850;
-        transition: background-color 1s;
     }
 }

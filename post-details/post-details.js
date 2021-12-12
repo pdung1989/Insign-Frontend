@@ -1,6 +1,7 @@
 'use strict';
 const url = 'http://localhost:3000';
 let commentCount = 0;
+let likeCount = 0;
 
 //Get query parameter
 const getQParam = (param) => {
@@ -9,6 +10,14 @@ const getQParam = (param) => {
     console.log(urlParams.get(param));
     return urlParams.get(param);
 };
+
+// get user data
+const user = JSON.parse(sessionStorage.getItem("user"));
+
+const myAccountBtn = document.querySelector('#myaccount a');
+myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`);
+const favoritesBtn = document.querySelector('#favorites');
+favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
 const post_id = getQParam('id')
 
@@ -19,6 +28,17 @@ const modalContent = document.querySelector('.modal-content');
 //Create post div
 const createPost = (post) => {
     commentCount = post.num_comments;
+    likeCount = post.num_likes;
+
+    let isLiked = 'unliked';
+    if(post.self_like === 1) {
+        isLiked = 'liked';
+    }
+
+    let isFavorite = 'unfavorite';
+    if(post.self_favorite === 1) {
+        isFavorite = 'favorite';
+    }
 
     postDiv.innerHTML += `<div class="title">
                 <p>${post.title}</p>
@@ -28,15 +48,15 @@ const createPost = (post) => {
             <p>${post.location}</p>
             </div>
             <div class="image">
-                <img src="${post.image}">
+                <img src="${url + '/uploads/' + post.image}">
             </div>
             <div class="post-data">
                 <div class="post-likes">
-                    <img src="../assets/heart-icon-off.svg">
+                       <img class="${isLiked}">
                     <p>${post.num_likes}</p>
                 </div>
                 <div class="post-favorite">
-                    <img src="../assets/favorites-icon.svg">
+                    <img class="${isFavorite}"">
                 </div>
             </div>
             <div class="description-with-decor">
@@ -44,8 +64,7 @@ const createPost = (post) => {
                     <p class="description-title">Description</p>
                     <p class="description-text">${post.description}</p>
                 </div>
-            </div>
-            `
+            </div>`
 }
 
 //Create author div
@@ -57,23 +76,8 @@ const addAuthor = (author) => {
                 </a>
                 <div class="author-details">
                     <a class="username" href="../userpage/userpage.html?id=${author.user_id}">${author.username}</a>
-                    <button class="follow-btn"><a>Follow</a></button>
                 </div>
             </div>`
-
-    //Follow button logic
-    const followBtn = document.querySelector('.follow-btn');
-    const followBtnText = document.querySelector('.follow-btn a');
-
-    followBtn.addEventListener('click', () => {
-        if(followBtn.classList.contains('unfollow')){
-            followBtn.classList.remove('unfollow');
-            followBtnText.textContent = "Follow";
-            return;
-        }
-        followBtn.classList.add('unfollow');
-        followBtnText.textContent = "Unfollow";
-    });
 }
 
 //Add comments to the UI
@@ -91,18 +95,18 @@ const createComments = (comments) => {
             </div>`;
 
     //Add all comments to the ui
-    //TODO add comment.author to profile photo and username hrefs
-    comments.forEach((comment) => {
-        const commentDate = comment.comment_date.slice(0, -5).replace('T', ' ');
+    if(comments.message !== 'Comments not found'){
+        comments.forEach((comment) => {
+            const commentDate = comment.comment_date.slice(0, -5).replace('T', ' ');
 
-        postDiv.innerHTML += `<div class="single-comment">
+            postDiv.innerHTML += `<div class="single-comment">
                                     <div class="comment-image">
-                                        <a href="../userpage/userpage.html?id=">
+                                        <a href="../userpage/userpage.html?id=${comment.user_id}">
                                         <img src="${comment.profile_picture}">
                                         </a>
                                     </div>
                                     <div class="comment-details${comment.comment_id}">
-                                        <a href="../userpage/userpage.html?id=">
+                                        <a href="../userpage/userpage.html?id=${comment.user_id}">
                                             <p class="comment-author">${comment.username}</p>
                                         </a>
                                         <p class="comment-text">${comment.content}</p>
@@ -110,28 +114,33 @@ const createComments = (comments) => {
                                     </div>
                                 </div> `;
 
-        //TODO - check if the user is admin OR if it's the user's own comment
-        if(true){
-            postDiv.innerHTML += `<div class="comment-buttons">
-                            <button class="comment-edit" id="edit${comment.comment_id}">Edit</button>
-                            <button class="comment-delete" id="delete${comment.comment_id}">Delete</button>
-                        </div>`;
-        }
+            postDiv.innerHTML += `<div class="comment-buttons${comment.comment_id}"></div>`;
+            const commentButtonsDiv = document.querySelector(`.comment-buttons${comment.comment_id}`);
 
-        //Add edited_date if available
-        const commentDetailsDiv = document.querySelector(`.comment-details${comment.comment_id}`);
-        if (comment.edited_date !== null) {
-            const commentEditDate = comment.edited_date.slice(0, -5).replace('T', ' ');
-            commentDetailsDiv.innerHTML += `<p class="comment-edit-date">(edited ${commentEditDate})</p>`
-        }
+            if(user.role_id === 0){
+                commentButtonsDiv.innerHTML = `<button class="comment-delete" id="delete${comment.comment_id}">Delete</button>`;
+            }
 
-    })
+            if(user.user_id === comment.user_id){
+                commentButtonsDiv.innerHTML = `<button class="comment-edit" id="edit${comment.comment_id}">Edit</button>
+                                    <button class="comment-delete" id="delete${comment.comment_id}">Delete</button>`;
+            }
 
-    //Open modal to edit comment when Edit button is clicked
-    comments.forEach((comment) => {
-        document.getElementById(`edit${comment.comment_id}`).addEventListener('click', async() => {
+            //Add edited_date if available
+            const commentDetailsDiv = document.querySelector(`.comment-details${comment.comment_id}`);
+            if (comment.edited_date !== null) {
+                const commentEditDate = comment.edited_date.slice(0, -5).replace('T', ' ');
+                commentDetailsDiv.innerHTML += `<p class="comment-edit-date">(edited ${commentEditDate})</p>`
+            }
 
-            modalContent.innerHTML = `<span class="edit-close">&times;</span>
+        })
+
+        //Open modal to edit comment when Edit button is clicked
+        comments.forEach((comment) => {
+            if(user.user_id === comment.user_id){
+                document.getElementById(`edit${comment.comment_id}`).addEventListener('click', async() => {
+
+                    modalContent.innerHTML = `<span class="edit-close">&times;</span>
                     <div class="form-wrapper" id="editForm">
                     <form id="editCommentForm">
                         <textarea class="edit-comment-area${comment.comment_id}" rows="10" cols="10" required minlength="4" maxlength="500" name="content" placeholder="write your comment here">${comment.content}</textarea>
@@ -140,56 +149,65 @@ const createComments = (comments) => {
                     </form>
                 </div>`
 
-            modal.style.display = "flex";
+                    modal.style.display = "flex";
 
-            //Edit comment in db
-            document.getElementById('editCommentForm').addEventListener('submit', async(event) => {
-                event.preventDefault()
-                const editCommentForm = document.querySelector('#editCommentForm');
-                const fd = new FormData(editCommentForm);
-                const fetchOptions = {
-                    method: 'PUT',
-                    body: new URLSearchParams({
-                        'content': fd.get('content')
+                    //Edit comment in db
+                    document.getElementById('editCommentForm').addEventListener('submit', async(event) => {
+                        event.preventDefault()
+                        const editCommentForm = document.querySelector('#editCommentForm');
+                        const fd = new FormData(editCommentForm);
+                        const fetchOptions = {
+                            method: 'PUT',
+                            headers: {
+                                Authorization: "Bearer " + sessionStorage.getItem("token"),
+                            },
+                            body: new URLSearchParams({
+                                'content': fd.get('content')
+                            })
+                        };
+                        try {
+                            const response = await fetch(url + '/comment/' + fd.get('comment_id'), fetchOptions);
+                            const json = await response.json();
+                            alert('Comment updated successfully!');
+                            location.reload();
+                        } catch (e) {
+                            console.log(e.message);
+                        }
                     })
-                };
-                try {
-                    const response = await fetch(url + '/comment/' + fd.get('comment_id'), fetchOptions);
-                    const json = await response.json();
-                    alert('Comment updated successfully!');
-                    location.reload();
-                } catch (e) {
-                    console.log(e.message);
-                }
-            })
 
-            document.getElementsByClassName("edit-close")[0].addEventListener('click', () => {
-                modal.style.display = "none";
-            })
-        })
-    })
-
-    //Delete comment from database when the Delete button is clicked
-    comments.forEach((comment) =>  {
-        document.getElementById(`delete${comment.comment_id}`).addEventListener('click', async(evt) => {
-            const commentId = evt.target.id.replace(/\D/g, "");
-            const fetchOptions = {
-                method: 'DELETE'
-            };
-            try {
-                const response = await fetch(url + '/comment/' + commentId, fetchOptions);
-                const json = await response.json();
-                alert('Comment deleted successfully!');
-                location.reload();
-            } catch (e) {
-                console.log(e.message);
+                    document.getElementsByClassName("edit-close")[0].addEventListener('click', () => {
+                        modal.style.display = "none";
+                    })
+                })
             }
         })
-    })
+
+        //Delete comment from database when the Delete button is clicked
+        comments.forEach((comment) =>  {
+            if(user.user_id === comment.user_id || user.role_id === 0) {
+                document.getElementById(`delete${comment.comment_id}`).addEventListener('click', async (evt) => {
+                    const commentId = evt.target.id.replace(/\D/g, "");
+                    const fetchOptions = {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: "Bearer " + sessionStorage.getItem("token"),
+                        },
+                    };
+                    try {
+                        const response = await fetch(url + '/comment/' + commentId, fetchOptions);
+                        const json = await response.json();
+                        alert('Comment deleted successfully!');
+                        location.reload();
+                    } catch (e) {
+                        console.log(e.message);
+                    }
+                })
+            }
+        })
+    }
 }
 
 //Add comment to database, when the add button is clicked
-//TODO - delete "user id" input when backend authentication is done
 const addCommentForm = (() => {
     const addCommentForm = document.querySelector('#addCommentForm');
     // AddComment
@@ -198,9 +216,11 @@ const addCommentForm = (() => {
         const fd = new FormData(addCommentForm);
         const fetchOptions = {
             method: 'POST',
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
             body: new URLSearchParams({
                 'post_id': fd.get('post_id'),
-                'user_id': fd.get('user_id'),
                 'content': fd.get('content')
             })
         };
@@ -211,23 +231,115 @@ const addCommentForm = (() => {
     });
 })
 
+//Check when the user likes/unlikes a post
+const likeUnlike = (() => {
+    const likeButton = document.querySelector('.post-likes img');
+    likeButton.addEventListener('click', async () => {
+        const likeCountP = document.querySelector('.post-likes p');
+
+        if(likeButton.className === 'unliked'){
+            likeButton.setAttribute('class', 'liked')
+
+            try {
+                const fetchOptions = {
+                    method: 'POST',
+                    headers: {
+                        Authorization: "Bearer " + sessionStorage.getItem("token"),
+                    },
+                };
+                const response = await fetch(url +'/post/' +  post_id + '/likes', fetchOptions);
+                const like = await response.json();
+
+                likeCount++;
+                likeCountP.innerHTML = `${likeCount}`;
+            }catch(e) {
+                console.log(e.message);
+            }
+        } else {
+            likeButton.setAttribute('class', 'unliked');
+
+            try {
+                const fetchOptions = {
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: "Bearer " + sessionStorage.getItem("token"),
+                    },
+                };
+                const response = await fetch(url +'/post/' +  post_id + '/likes', fetchOptions);
+                const unLike = await response.json();
+
+                likeCount--;
+                likeCountP.innerHTML = `${likeCount}`;
+            }catch(e) {
+                console.log(e.message);
+            }
+        }
+    })
+})
+
+//Check when the user favorites/unfavorites a post
+const favoriteUnfavorite = (() => {
+    const favoriteButton = document.querySelector('.post-favorite img');
+    favoriteButton.addEventListener('click', async () => {
+
+        if(favoriteButton.className === 'unfavorite'){
+            favoriteButton.setAttribute('class', 'favorite')
+
+            try {
+                const fetchOptions = {
+                    method: 'POST',
+                    headers: {
+                        Authorization: "Bearer " + sessionStorage.getItem("token"),
+                    },
+                };
+                const response = await fetch(url +'/post/' +  post_id + '/favorites', fetchOptions);
+                const favorite = await response.json();
+            }catch(e) {
+                console.log(e.message);
+            }
+        } else {
+            favoriteButton.setAttribute('class', 'unfavorite');
+
+            try {
+                const fetchOptions = {
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: "Bearer " + sessionStorage.getItem("token"),
+                    },
+                };
+                const response = await fetch(url +'/post/' +  post_id + '/favorites', fetchOptions);
+                const unFavorite = await response.json();
+            }catch(e) {
+                console.log(e.message);
+            }
+        }
+    })
+})
+
 // AJAX calls
 const getPost = async (post_id) => {
     try {
-        const response = await fetch(url +'/post/' +  post_id);
+        const fetchOptions = {
+            headers: {
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
+        };
+        const response = await fetch(url +'/post/' +  post_id, fetchOptions);
         const post = await response.json();
 
         const user_id = post.author;
-        const response_a = await fetch(url +'/user/' +  user_id);
+        const response_a = await fetch(url +'/user/' +  user_id, fetchOptions);
         const author = await response_a.json();
 
-        const response_c = await fetch(url +'/post/' +  post_id + '/comment');
+        const response_c = await fetch(url +'/post/' +  post_id + '/comment', fetchOptions);
         const comments = await response_c.json();
 
         createPost(post);
         addAuthor(author);
         createComments(comments);
         addCommentForm();
+        likeUnlike();
+        favoriteUnfavorite();
     } catch (e) {
         console.log(e.message);
     }

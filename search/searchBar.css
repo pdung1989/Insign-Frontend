@@ -1,0 +1,112 @@
+* {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
+/* search area */
+.search {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 5%;
+  text-align: center;
+}
+#searchInput {
+  margin: auto;
+  width: 35%;
+  padding: 10px;
+  border-radius: 7px;
+  border: 2px solid #938c7f;
+  margin-bottom: 2rem;
+}
+#searchBtn {
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  width: 7em;
+  margin-left: 2%;
+  background-color: #938c7f;
+  border: 2px solid #938c7f;
+  color: #fcfcfc;
+  font-size: 15px;
+}
+#searchBtn:hover {
+  background-color: #5d5850;
+}
+
+/* Searched post display*/
+#searched_posts_area {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 3em;
+}
+#searchTitle {
+  padding: 25px;
+}
+.searchImg {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+.foundPost {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding-bottom: 0em;
+  align-items: center;
+  width: 60%;
+  background-color: #fcfcfc;
+  height: fit-content;
+}
+.row {
+  display: flex;
+
+  width: 100%;
+  margin: auto 20px;
+  padding: 20px;
+  text-align: center;
+  justify-content: space-evenly;
+}
+.postDesc {
+  padding-top: 10px;
+  margin-bottom: 30px;
+  display: inline-block;
+  height: fit-content;
+  width: fit-content;
+}
+
+/* If post not found*/
+#not-found {
+  text-align: center;
+  font-size: 20px;
+  font-style: oblique;
+}
+@media only screen and (max-width: 800px) {
+  .search {
+    margin-top: 25%;
+    position: relative;
+  }
+  .button-text {
+    display: none;
+  }
+  #searchInput {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .search {
+    margin-top: 35%;
+    width: 100%;
+  }
+  .button-text {
+    display: none;
+  }
+  #searchInput {
+    margin-left: 10px;
+    width: 40%;
+    padding: 7px;
+  }
+  #searchBtn {
+    width: 50px;
+    padding: 4px;
+  }
+}

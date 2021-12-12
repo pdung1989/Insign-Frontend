@@ -3,7 +3,12 @@
 const url = "http://localhost:3000"; // change url when uploading to server
 
 // get user data
-// const user = JSON.parse(sessionStorage.getItem("user"));
+const user = JSON.parse(sessionStorage.getItem("user"));
+
+const myAccountBtn = document.querySelector('#myaccount a');
+myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`);
+const favoritesBtn = document.querySelector('#favorites');
+favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
 //Get query parameter
 const getQParam = (param) => {
@@ -34,7 +39,7 @@ const createPostCard = (posts) => {
 
     title.innerHTML = post.title;
     author.innerHTML = post.author;
-    img.src = post.image;
+    img.src = url + '/uploads/' + post.image;
     postDescription.innerHTML = post.description;
 
     console.log(`set img src: ${img.src}`);
@@ -51,13 +56,13 @@ const createPostCard = (posts) => {
 
 const createRandomPosts = (randomPosts) => {
   const randomPostsDiv = document.querySelector("#proPost");
-  randomPostsDiv.setAttribute("class", "card");
+  randomPostsDiv.setAttribute("class", "proUserCard");
 
   randomPosts.forEach((randomPost) => {
     const card = document.createElement("div");
-    card.setAttribute("class", "card");
+    card.setAttribute("class", "procard");
     const title = document.createElement("h2");
-    title.setAttribute("id", "title");
+    title.setAttribute("id", "rightTitle");
     const author = document.createElement("h5");
     author.setAttribute("id", "pro-user");
     const postImg = document.createElement("div");
