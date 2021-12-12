@@ -28,7 +28,7 @@ const createPostCard = (posts) => {
             </div>
           </div>
           <div class="post-photo">
-            <a href="#">
+            <a href="../post-details/post-details.html?id=${post.post_id}">
               <img src="${url + '/uploads/' + post.image}" alt="post image">
             </a>
           </div>
