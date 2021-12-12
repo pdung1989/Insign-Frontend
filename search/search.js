@@ -46,7 +46,7 @@ const createSearchCards = (post) => {
   title.setAttribute("id", "searchTitle");
   const description = document.createElement("p");
   description.setAttribute("class", "postDesc");
-  img.src = post.image;
+  img.src = url + '/uploads/' + post.image;
   title.innerHTML = post.title;
 
   description.innerHTML = post.description;
