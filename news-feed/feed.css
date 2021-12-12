@@ -30,10 +30,20 @@ main {
   top: 20px;
   align-self: flex-start;
   margin-left: 20px;
+}
+
+.pro-feed {
+  width: 400px;
   box-sizing: border-box;
   border: 1px solid #d7d7d7;
   background-color: #fcfcfc;
   padding: 20px;
+}
+
+.copyright {
+  font-size: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
 }
 
 .line {
