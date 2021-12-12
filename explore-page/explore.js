@@ -21,7 +21,8 @@ favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id
 const createPostCard = (posts) => {
   const blogs = document.querySelector(".blogs");
   blogs.setAttribute("class", "blogs");
-
+  const searchArea = document.getElementById("searched_posts_area");
+  searchArea.style.display = 'none';
   posts.forEach((post) => {
    
     const a = document.createElement("a");
