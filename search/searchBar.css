@@ -32,9 +32,9 @@
   }
   
   #search_posts_area {
-    background-color: #5d5850;
+    background-color: #fcfcfc;
     height: 80%;
-    width: 100%;
+    width: 50%;
     display: flex;
     align-items: center;
     flex: 1;
