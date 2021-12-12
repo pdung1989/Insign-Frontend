@@ -44,6 +44,10 @@ a {
   padding-top: 1rem;
 }
 
+.blogs{
+  width: 100%;
+  margin: auto;
+}
 /* responsive at 800px*/
 @media only screen and (max-width: 800px) {
   .blogs{

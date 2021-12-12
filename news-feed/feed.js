@@ -7,6 +7,8 @@ const user = JSON.parse(sessionStorage.getItem("user"));
 
 const myAccountBtn = document.querySelector('#myaccount a');
 myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`);
+const favoritesBtn = document.querySelector('#favorites');
+favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
 //Get query parameter
 const getQParam = (param) => {
@@ -37,7 +39,7 @@ const createPostCard = (posts) => {
 
     title.innerHTML = post.title;
     author.innerHTML = post.author;
-    img.src = post.image;
+    img.src = url + '/uploads/' + post.image;
     postDescription.innerHTML = post.description;
 
     console.log(`set img src: ${img.src}`);

@@ -14,7 +14,9 @@ const getQParam = (param) => {
 const user = JSON.parse(sessionStorage.getItem("user"));
 
 const myAccountBtn = document.querySelector('#myaccount a');
-myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`);
+myAccountBtn.setAttribute("href", `userpage.html?id=${user.user_id}`);
+const favoritesBtn = document.querySelector('#favorites');
+favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
 const createPosts = (posts) => {
     const postsDiv = document.querySelector('.posts');
@@ -30,7 +32,6 @@ const createPosts = (posts) => {
             postsDiv.innerHTML += '<div class="post-line"></div>';
         }
 
-        //TODO - check for self_like in fetch
         let isLiked = 'unliked';
         if(post.self_like === 1) {
             isLiked = 'liked';
@@ -39,7 +40,7 @@ const createPosts = (posts) => {
         postsDiv.innerHTML += `<div class="single-post ${side}">
                     <div class="post-photo">
                         <a href="../post-details/post-details.html?id=${post.post_id}">
-                            <img src="${post.image}" alt="post image">
+                            <img src="${url + '/uploads/' + post.image}" alt="post image">
                         </a>
                     </div>
                     <div class="post-details">

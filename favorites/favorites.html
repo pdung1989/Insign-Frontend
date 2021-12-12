@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="userpage-stylesheet.css">
+    <link rel="stylesheet" href="../userpage/userpage-stylesheet.css">
     <link rel="stylesheet" href="../nav-user/nav-user-stylesheet.css">
 </head>
 <body>
@@ -38,13 +38,23 @@
     </nav>
 </header>
 
-    <main>
-        <div class="profile"></div>
-        <div class="line"></div>
-        <div class="posts"></div>
-    </main>
+<main>
+    <div class="fav">
+        <div class="fav-one">
+            <p class="fav-title">My Favorites</p>
+        </div>
+        <div class="fav-two">
+            <p class="fav-content">Here are all the posts that you have added as a favorite</p>
+        </div>
+    </div>
+    <div class="posts"></div>
+    <div class="empty-favorites">
+        <p>You haven't added any posts to your favorites</p>
+        <button><a href="../explore-page/explore.html">Browse here ></a></button>
+    </div>
+</main>
 
 </body>
-<script src="userpage.js"></script>
+<script src="favorites.js"></script>
 <script src="../nav-user/nav-user.js"></script>
 </html>

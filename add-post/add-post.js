@@ -1,42 +1,53 @@
-"use strict";
+'use strict';
 const url = "http://localhost:3000"; //TODO: change url to server
 
-//Get query parameter
-const getQParam = (param) => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  console.log(urlParams.get(param));
-  return urlParams.get(param);
+const styleList = document.querySelector('.add-style');
+const categoryList = document.querySelector('.add-category');
+const addPostForm = document.querySelector('#addPostForm');
+
+// get user data
+const user = JSON.parse(sessionStorage.getItem("user"));
+
+//Create style options to <select>
+const createStyleOptions = (styles) => {
+    //styleList.innerHTML = '';
+    styles.forEach((style) => {
+        styleList.innerHTML += `<option value="${style.style_id}">${style.style_name}</option>`;
+    });
 };
 
-// select existing html elements
-const addForm = document.querySelector("#addPostForm");
-const categoryList = document.querySelector(".category");
-const styleList = document.querySelector(".style");
+//Get styles to form options
+const getStyles = async () => {
+    try {
+      const fetchOptions = {
+          headers: {
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
+          },
+      };
+      const response = await fetch(url + '/style', fetchOptions);
+      const styles = await response.json();
+      createStyleOptions(styles);
+    } catch (e) {
+      console.log(e.message);
+    }
+};
 
-//create category options
+//Create style options to <select>
 const createCategoryOptions = (categories) => {
-  // clear category list
-  categoryList.innerHTML = "";
   categories.forEach((category) => {
-    // create options with DOM methods
-    const option = document.createElement("option");
-    option.value = category.category_id;
-    option.innerHTML = category.category_name;
-    option.classList.add("light-border");
-    categoryList.appendChild(option);
+    categoryList.innerHTML += `<option value="${category.category_id}">${category.category_name}</option>`;
   });
 };
 
-// get category to make options
+//Get styles to form options
 const getCategories = async () => {
   try {
-    const options = {
+    const fetchOptions = {
       headers: {
         Authorization: "Bearer " + sessionStorage.getItem("token"),
       },
     };
-    const response = await fetch(url + "/category", options);
+    const response = await fetch(url + '/category', fetchOptions);
     const categories = await response.json();
     console.log(categories);
     createCategoryOptions(categories);
@@ -45,74 +56,31 @@ const getCategories = async () => {
   }
 };
 
-//create style options
-const createStyleOptions = (styles) => {
-  // clear style list
-  styleList.innerHTML = "";
-  styles.forEach((style) => {
-    // create options with DOM methods
-    const option = document.createElement("option");
-    option.value = style.style_id;
-    option.innerHTML = style.style_name;
-    option.classList.add("light-border");
-    styleList.appendChild(option);
-  });
-};
+getStyles();
+getCategories();
 
-// get style to make options
-const getStyles = async () => {
-  try {
-    const options = {
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-      },
-    };
-    const response = await fetch(url + "/style", options);
-    const styles = await response.json();
-    createStyleOptions(styles);
-  } catch (e) {
-    console.log(e.message);
-  }
-};
+const imgInp = document.querySelector('#imgInp');
+const showImg = document.querySelector('#show-img');
+imgInp.onchange = evt => {
+    const [file] = imgInp.files
+    if (file) {
+        showImg.src = URL.createObjectURL(file)
+    }
+}
 
-// submit add post form
-addForm.addEventListener("submit", async (evt) => {
+//Submit add cat form
+addPostForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  const fd = new FormData(addForm);
+  const fd = new FormData(addPostForm);
   const fetchOptions = {
-    method: "POST",
+    method: 'POST',
     headers: {
       Authorization: "Bearer " + sessionStorage.getItem("token"),
     },
     body: fd,
   };
-
-  console.log(fetchOptions);
-  const category_response = await fetch(
-    url + "/category/",
-    fetchOptions
-  );
-  const json = await category_response.json();
-  if (json.error) {
-    alert(json.error.message);
-  } else {
-    alert(json.message);
-  }
-
-  const style_response = await fetch(url + "/style/", fetchOptions);
-  const style_json = await style_response.json();
-  if (style_json.error) {
-    alert(style_json.error.message);
-  } else {
-    alert(style_json.message);
-  }
-
-  location.href = "../userpage/userpage.html";
+  const response = await fetch(url + '/post', fetchOptions);
+  const json = await response.json();
+  alert('Post uploaded successfully!');
+  location.href = `../userpage/userpage.html?id=${user.user_id}`;
 });
-
-const validationAddPost = () => {
-  alert("Post has been created successfully");
-  location.href = "../userpage/userpage.html";
-};
-getCategories();
-getStyles();
