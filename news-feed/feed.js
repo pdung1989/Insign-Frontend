@@ -10,86 +10,19 @@ myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`
 const favoritesBtn = document.querySelector('#favorites');
 favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
-//Get query parameter
-const getQParam = (param) => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  console.log(urlParams.get(param));
-  return urlParams.get(param);
-};
-
 const createPostCard = (posts) => {
-  const blogs = document.querySelector(".leftcolumn");
-  blogs.setAttribute("class", "leftcolumn");
+  //const feed = document.querySelector(".main-feed");
 
   posts.forEach((post) => {
-    const postDiv = document.createElement("div");
-    postDiv.setAttribute("class", "card");
-    const title = document.createElement("h2");
-    title.setAttribute("id", "title");
-    const author = document.createElement("h5");
-    author.setAttribute("class", "author");
-    const a = document.createElement("a");
-    const postImg = document.createElement("div");
-    postImg.setAttribute("class", "postImg");
-    const img = document.createElement("img");
-    img.setAttribute("class", "feed-img")
-    
-    const postDescription = document.createElement("p");
 
-    title.innerHTML = post.title;
-    author.innerHTML = post.author;
-    img.src = url + '/uploads/' + post.image;
-    postDescription.innerHTML = post.description;
-
-    console.log(`set img src: ${img.src}`);
-
-    postImg.appendChild(img);
-    a.appendChild(postImg);
-    postDiv.appendChild(title);
-    postDiv.appendChild(author);
-    postDiv.appendChild(a);
-    postDiv.appendChild(postDescription);
-    blogs.appendChild(postDiv);
   });
 };
 
-const createRandomPosts = (randomPosts) => {
-  const randomPostsDiv = document.querySelector("#proPost");
-  randomPostsDiv.setAttribute("class", "proUserCard");
+const createProfessionalPosts = (professionalPosts) => {
+  //const professionalPostsDiv = document.querySelector(".pro-feed");
 
-  randomPosts.forEach((randomPost) => {
-    const card = document.createElement("div");
-    card.setAttribute("class", "procard");
-    const title = document.createElement("h2");
-    title.setAttribute("id", "rightTitle");
-    const author = document.createElement("h5");
-    author.setAttribute("id", "pro-user");
-    const postImg = document.createElement("div");
-    postImg.setAttribute("class", "postImg");
-    const a = document.createElement("a");
-    const img = document.createElement("img");
-    img.setAttribute("class", "pro-img");
+  professionalPosts.forEach((professionalPost) => {
 
-    const link = document.createElement("a");
-    link.setAttribute("href", "See More")
-    link.setAttribute("id", "toProPost");
-
-    title.innerHTML = randomPost.title;
-    img.src = randomPost.image;
-    author.innerHTML = randomPost.author;
-   
-    console.log(`set random img src: ${img.src}`);
-    
-    //append elements
-    postImg.appendChild(img);
-    a.appendChild(postImg);
-    card.appendChild(title);
-    card.appendChild(a);
-    card.appendChild(author);
-    card.appendChild(postImg);
-    card.appendChild(link);
-    randomPostsDiv.appendChild(card);
   });
 };
 
@@ -105,12 +38,12 @@ const getPosts = async () => {
     const posts = await response.json();
     createPostCard(posts);
 
-    const randomPostResponse = await fetch(url + "/post?limit=2", fetchOptions);
-    const randomPosts = await randomPostResponse.json();
-    console.log("call random");
-    createRandomPosts(randomPosts);
+    const professionalPostResponse = await fetch(url + "/post?limit=2", fetchOptions);
+    const professionalPosts = await professionalPostResponse.json();
+    console.log("call professional posts");
+    createProfessionalPosts(professionalPosts);
   } catch (e) {
     console.log(e.message);
   }
 };
-getPosts(getQParam());
+getPosts();
