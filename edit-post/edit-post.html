@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../add-post/add-post.css" />
+    <link rel="stylesheet" href="edit-post.css" />
+    <title>Edit Post</title>
+</head>
+
+<body>
+<button class="light-border-button back-button" onclick="history.back()">< Go back</button>
+<div class="forms">
+    <div class="form-wrapper">
+        <p class="upload-title">Edit post</p>
+        <form id="editPostForm">
+            <div class="form-field">
+                <p>Title</p>
+                <input id="title-fill" class="light-border" type="text" required minlength="3" name="title" placeholder="Title">
+            </div>
+            <div class="form-field">
+                <p>Description</p>
+                <textarea id="description-fill" class="light-border" type="text" required name="description" placeholder="add description here"></textarea>
+            </div>
+            <div class="form-field">
+                <p>Style</p>
+                <select id="style-fill" class="light-border add-style" required name="style_id">
+                    <option value="" selected disabled hidden>choose a style</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <p>Category</p>
+                <select id="category-fill" class="light-border add-category" required name="category_id">
+                    <option value="" selected disabled hidden>choose a category</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <p>Location</p>
+                <input id="location-fill" class="light-border" type="text" required minlength="3" name="location" placeholder="Location">
+            </div>
+            <div class="submit-button">
+                <button class="light-border-button" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script src="edit-post.js"></script>
+</html>

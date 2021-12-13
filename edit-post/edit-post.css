@@ -1,0 +1,9 @@
+#editPostForm button {
+    margin-top: 10px;
+    float: right;
+}
+
+.form-field textarea{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}

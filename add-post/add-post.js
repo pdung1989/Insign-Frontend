@@ -72,15 +72,19 @@ imgInp.onchange = evt => {
 addPostForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const fd = new FormData(addPostForm);
-  const fetchOptions = {
-    method: 'POST',
-    headers: {
-      Authorization: "Bearer " + sessionStorage.getItem("token"),
-    },
-    body: fd,
-  };
-  const response = await fetch(url + '/post', fetchOptions);
-  const json = await response.json();
-  alert('Post uploaded successfully!');
-  location.href = `../userpage/userpage.html?id=${user.user_id}`;
+  try {
+      const fetchOptions = {
+          method: 'POST',
+          headers: {
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
+          },
+          body: fd,
+      };
+      const response = await fetch(url + '/post', fetchOptions);
+      const json = await response.json();
+      alert('Post uploaded successfully!');
+      location.href = `../userpage/userpage.html?id=${user.user_id}`;
+  } catch(e) {
+      console.log(e);
+  }
 });

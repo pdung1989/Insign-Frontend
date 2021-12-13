@@ -86,7 +86,7 @@ const createPost = (post) => {
 
     if(post.author === user.user_id) {
         postActionButtonsDiv.innerHTML = `<button class="post-delete-btn"><a>DELETE</a></button>
-                                            <button class="post-edit-btn"><a>EDIT</a></button>`;
+                                            <button class="post-edit-btn"><a href="../edit-post/edit-post.html?id=${post_id}">EDIT</a></button>`;
     }
 
 }

@@ -138,8 +138,6 @@ body {
   }
 
   .form-field textarea{
-    min-width: 79%;
-    max-width: 79%;
     min-height: 60px;
     max-height: 150px;
   }
