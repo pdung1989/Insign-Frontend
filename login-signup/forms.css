@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  height: 80vh;
   margin: -20px 0 80px;
 }
 .form-header {
@@ -33,8 +33,11 @@ h1 {
 }
 
 h2 {
-  text-align: center;
-  margin: 0 auto;
+ 
+    position: absolute;
+    top: 10%;
+    transform: translateX(60%);
+ 
 }
 
 p {
@@ -230,7 +233,7 @@ input {
 }
 
 footer {
-  background-color: #252525;
+  background-color: #938c7f;
   color: #fcfcfc;
   font-size: 14px;
   bottom: 0;
@@ -250,12 +253,7 @@ footer p {
   top: 20px;
   left: 20px;
 }
-.main-container h2 {
-  position: absolute;
-  top: 5em;
-  
-  transform: translateX(60%);
-}
+
 .main-container {
   padding-top: 15%;
   margin: auto;
