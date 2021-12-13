@@ -47,6 +47,9 @@ const createPost = (post) => {
             <img src="../assets/pin.svg">
             <p>${post.location}</p>
             </div>
+            <div class="post-actions">
+                <!--- EDIT/DELETE WITH PERMISSION --->
+            </div>
             <div class="image">
                 <img src="${url + '/uploads/' + post.image}">
             </div>
@@ -65,6 +68,17 @@ const createPost = (post) => {
                     <p class="description-text">${post.description}</p>
                 </div>
             </div>`
+
+    const postActionButtonsDiv = document.querySelector('.post-actions');
+    if(user.role_id === 0) {
+        postActionButtonsDiv.innerHTML += `<button class="post-delete-btn"><a>DELETE</a></button>`;
+    }
+
+    if(post.author === user.user_id) {
+        postActionButtonsDiv.innerHTML = `<button class="post-delete-btn"><a>DELETE</a></button>
+                                            <button class="post-edit-btn"><a>EDIT</a></button>`;
+    }
+
 }
 
 //Create author div
@@ -186,20 +200,23 @@ const createComments = (comments) => {
         comments.forEach((comment) =>  {
             if(user.user_id === comment.user_id || user.role_id === 0) {
                 document.getElementById(`delete${comment.comment_id}`).addEventListener('click', async (evt) => {
-                    const commentId = evt.target.id.replace(/\D/g, "");
-                    const fetchOptions = {
-                        method: 'DELETE',
-                        headers: {
-                            Authorization: "Bearer " + sessionStorage.getItem("token"),
-                        },
-                    };
-                    try {
-                        const response = await fetch(url + '/comment/' + commentId, fetchOptions);
-                        const json = await response.json();
-                        alert('Comment deleted successfully!');
-                        location.reload();
-                    } catch (e) {
-                        console.log(e.message);
+                    const answer = window.confirm("Are you sure you'd like to delete this comment?");
+                    if(answer){
+                        const commentId = evt.target.id.replace(/\D/g, "");
+                        const fetchOptions = {
+                            method: 'DELETE',
+                            headers: {
+                                Authorization: "Bearer " + sessionStorage.getItem("token"),
+                            },
+                        };
+                        try {
+                            const response = await fetch(url + '/comment/' + commentId, fetchOptions);
+                            const json = await response.json();
+                            alert('Comment deleted successfully!');
+                            location.reload();
+                        } catch (e) {
+                            console.log(e.message);
+                        }
                     }
                 })
             }
@@ -316,6 +333,36 @@ const favoriteUnfavorite = (() => {
     })
 })
 
+const editDeletePost = ((post_id, author) => {
+    if(user.user_id === author.user_id) {
+        document.querySelector('.post-edit-btn').addEventListener('click', (() => {
+            //TODO - edit post page
+        }))
+    }
+
+    if(user.user_id === author.user_id || user.role_id === 0){
+        document.querySelector('.post-delete-btn').addEventListener('click', (async () => {
+            const answer = confirm("Are you sure you'd like to delete this post?");
+            if(answer){
+                try {
+                    const fetchOptions = {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: "Bearer " + sessionStorage.getItem("token"),
+                        },
+                    };
+                    const response = await fetch(url + "/post/" + post_id, fetchOptions);
+                    const deleted = await response.json();
+                    window.location.replace(`../userpage/userpage.html?id=${user.user_id}`);
+                } catch (e) {
+                    console.log(e.message);
+                    alert('Error deleting post');
+                }
+            }
+        }))
+    }
+})
+
 // AJAX calls
 const getPost = async (post_id) => {
     try {
@@ -340,6 +387,7 @@ const getPost = async (post_id) => {
         addCommentForm();
         likeUnlike();
         favoriteUnfavorite();
+        editDeletePost(post_id, author);
     } catch (e) {
         console.log(e.message);
     }

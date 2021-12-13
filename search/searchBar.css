@@ -51,28 +51,20 @@
 }
 .foundPost {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding-bottom: 0em;
+  padding-bottom: 1em;
   align-items: center;
-  width: 60%;
+  width: 400px;
   background-color: #fcfcfc;
   height: fit-content;
 }
 .row {
   display: flex;
-
-  width: 100%;
   margin: auto 20px;
   padding: 20px;
   text-align: center;
   justify-content: space-evenly;
 }
-.postDesc {
-  padding-top: 10px;
-  margin-bottom: 30px;
-  display: inline-block;
-  height: fit-content;
-  width: fit-content;
-}
+
 
 /* If post not found*/
 #not-found {

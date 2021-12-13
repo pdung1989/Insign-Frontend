@@ -273,7 +273,7 @@ p {
     word-break: break-word;
 }
 
-.comment-add-btn, button[class^='comment-edit-btn'] {
+.comment-add-btn, button[class^='comment-edit-btn'], .post-edit-btn, .post-delete-btn {
     background-color: #938c7f;
     border: #938c7f 3px solid;
     border-radius: 15px;
@@ -284,15 +284,23 @@ p {
     float: right;
 }
 
-.comment-add-btn:hover, button[class^='comment-edit-btn']:hover {
+.post-edit-btn, .post-delete-btn {
+    padding-bottom: 0;
+}
+
+.comment-add-btn:hover, button[class^='comment-edit-btn']:hover, .post-edit-btn:hover, .post-delete-btn:hover {
     cursor: pointer;
     background-color: #5d5850;
     border: #5d5850 3px solid;
 }
 
-.comment-add-btn a, button[class^='comment-edit-btn'] a {
+.comment-add-btn a, button[class^='comment-edit-btn'] a, .post-edit-btn a, .post-delete-btn a {
     font-size: 20px;
     color: #fcfcfc;
+}
+
+.post-edit-btn {
+    margin-right: 5px;
 }
 
 /* The Modal (background) */
@@ -448,7 +456,7 @@ textarea[class^='edit-comment-area'] {
         font-size: 22px;
     }
 
-    .follow-btn a, .comment-add-btn, .comment-edit-btn {
+    .follow-btn a, .comment-add-btn, .comment-edit-btn, .post-edit-btn, .post-delete-btn {
         font-size: 15px;
     }
 

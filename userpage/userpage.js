@@ -74,36 +74,74 @@ const addUserData = (userProfile) => {
                     <p class="username">${userProfile.username}</p>
                 </div>
                 <div class="profile-stats">
-                    <p class="profile-follower-count"><span class="follower-count">${userProfile.followerCount ? 'TODO' : 0}</span> followers</p>
-                    <p class="profile-following-count"><span class="following-count">${userProfile.followingCount ? 'TODO' : 0}</span> following</p>
+                    <p class="profile-follower-count"><span class="follower-count">${userProfile.num_follower}</span> followers</p>
+                    <p class="profile-following-count"><span class="following-count">${userProfile.num_following}</span> following</p>
                 </div>
                 <div class="description">
                     <p>${userProfile.bio ? userProfile.bio : ''}</p>
                 </div>
             </div>`;
 
+
+}
+
+const addFollowOrEditButtons = ((userProfile) => {
     const userFollowBtn = document.querySelector('.user-follow');
     if(user.user_id === userProfile.user_id){
         //TODO - add href
         userFollowBtn.innerHTML += `<button class="follow-btn"><a>Edit Profile</a></button>`;
     } else {
+
         userFollowBtn.innerHTML += `<button class="follow-btn"><a>Follow</a></button>`;
 
-        //Follow button logic
+
         const followBtn = document.querySelector('.follow-btn');
         const followBtnText = document.querySelector('.follow-btn a');
 
-        followBtn.addEventListener('click', () => {
-            if(followBtn.classList.contains('unfollow')){
-                followBtn.classList.remove('unfollow');
-                followBtnText.textContent = "Follow";
-                return;
-            }
+        if(userProfile.is_followed === 1){
             followBtn.classList.add('unfollow');
             followBtnText.textContent = "Unfollow";
+        }
+
+        followBtn.addEventListener('click', async () => {
+            if(followBtn.classList.contains('unfollow')){
+                //Unfollow user, remove from db
+                try {
+                    const fetchOptions = {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: "Bearer " + sessionStorage.getItem("token"),
+                        },
+                    };
+                    const response = await fetch(url + '/user/following/' + userProfile.user_id , fetchOptions);
+                    const unFollowed = await response.json();
+                    followBtn.classList.remove('unfollow');
+                    followBtnText.textContent = "Follow";
+                } catch (e) {
+                    console.log(e.message);
+                    alert("Couldn't unfollow user");
+                }
+                return;
+            }
+            //Follow user, add to db
+            try {
+                const fetchOptions = {
+                    method: 'POST',
+                    headers: {
+                        Authorization: "Bearer " + sessionStorage.getItem("token"),
+                    },
+                };
+                const response = await fetch(url + '/user/following/' + userProfile.user_id, fetchOptions);
+                const followed = await response.json();
+                followBtn.classList.add('unfollow');
+                followBtnText.textContent = "Unfollow";
+            } catch (e) {
+                console.log(e.message);
+                alert("Couldn't follow user");
+            }
         });
     }
-}
+})
 
 // AJAX calls
 const getPosts = async (id) => {
@@ -130,8 +168,9 @@ const getUserData = async (id) => {
             },
         };
         const response = await fetch(url + '/user/' + id, fetchOptions);
-        const user = await response.json();
-        addUserData(user);
+        const userData = await response.json();
+        addUserData(userData);
+        addFollowOrEditButtons(userData);
     } catch (e) {
         console.log(e.message);
     }

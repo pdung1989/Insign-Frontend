@@ -44,17 +44,17 @@ const createSearchCards = (post) => {
   img.setAttribute("class", "searchImg");
   const title = document.createElement("h3");
   title.setAttribute("id", "searchTitle");
-  const description = document.createElement("p");
-  description.setAttribute("class", "postDesc");
+  // const description = document.createElement("p");
+  // description.setAttribute("class", "postDesc");
   img.src = url + '/uploads/' + post.image;
   title.innerHTML = post.title;
 
-  description.innerHTML = post.description;
+  // description.innerHTML = post.description;
 
   a.appendChild(img);
   displaySearchedPost.appendChild(title);
   displaySearchedPost.appendChild(a);
-  displaySearchedPost.appendChild(description);
+  // displaySearchedPost.appendChild(description);
   row.appendChild(displaySearchedPost);
 
   searchedPost.appendChild(row);
