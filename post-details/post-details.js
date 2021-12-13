@@ -69,9 +69,13 @@ const createPost = (post) => {
                 </div>
             </div>`
 
+    const postActionButtonsDiv = document.querySelector('.post-actions');
+    if(user.role_id === 0) {
+        postActionButtonsDiv.innerHTML += `<button class="post-delete-btn"><a>DELETE</a></button>`;
+    }
+
     if(post.author === user.user_id) {
-        const postActionButtonsDiv = document.querySelector('.post-actions');
-        postActionButtonsDiv.innerHTML += `<button class="post-delete-btn"><a>DELETE</a></button>
+        postActionButtonsDiv.innerHTML = `<button class="post-delete-btn"><a>DELETE</a></button>
                                             <button class="post-edit-btn"><a>EDIT</a></button>`;
     }
 
@@ -334,7 +338,9 @@ const editDeletePost = ((post_id, author) => {
         document.querySelector('.post-edit-btn').addEventListener('click', (() => {
             //TODO - edit post page
         }))
+    }
 
+    if(user.user_id === author.user_id || user.role_id === 0){
         document.querySelector('.post-delete-btn').addEventListener('click', (async () => {
             const answer = confirm("Are you sure you'd like to delete this post?");
             if(answer){
