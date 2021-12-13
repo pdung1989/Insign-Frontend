@@ -67,6 +67,16 @@ const createPost = (post) => {
                     <p class="description-title">Description</p>
                     <p class="description-text">${post.description}</p>
                 </div>
+            </div>
+            <div class="post-style-category">
+                <div class="style">
+                    <p class="style-title">Style</p>
+                    <p>${post.style_name}</p>
+                </div>
+                <div class="category">
+                    <p class="category-title">Category</p>
+                    <p>${post.category_name}</p>
+                </div>
             </div>`
 
     const postActionButtonsDiv = document.querySelector('.post-actions');
