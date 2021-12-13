@@ -55,7 +55,7 @@ const getRandomPosts = async () => {
         Authorization: "Bearer " + sessionStorage.getItem("token"),
       },
     };
-    const response = await fetch(url + "/post?limit=9", fetchOptions);
+    const response = await fetch(url + "/post?limit=15", fetchOptions);
     const posts = await response.json();
     createPostCard(posts);
   } catch (e) {
