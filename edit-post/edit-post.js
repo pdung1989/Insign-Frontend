@@ -71,6 +71,10 @@ const getCategories = async () => {
     }
 };
 
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+}
+
 // AJAX calls
 const getPost = async () => {
     try {
@@ -81,7 +85,7 @@ const getPost = async () => {
         };
         const response = await fetch(url +'/post/' +  id, fetchOptions);
         const post = await response.json();
-
+        await delay(50);
         fillOutFields(post);
     } catch (e) {
         console.log(e.message);
