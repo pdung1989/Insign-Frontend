@@ -89,12 +89,12 @@ main {
 }
 
 .description-title, .author-title {
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
 .comments-title {
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
@@ -479,6 +479,10 @@ textarea[class^='edit-comment-area'] {
 
     .follow-btn a, .comment-add-btn, .comment-edit-btn, .post-edit-btn, .post-delete-btn {
         font-size: 15px;
+    }
+
+    .style, .category {
+        font-size: 17px;
     }
 
     .post-favorite img {
