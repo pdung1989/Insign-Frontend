@@ -9,7 +9,7 @@ submitRegistration.addEventListener("click", () => {
   const pw1 = document.getElementById("pw1").value;
   const pw2 = document.getElementById("pw2").value;
   //check empty confirm password field
-  if (pw2 == "") {
+  if (pw1 == "" || pw2 == "") {
     document.getElementById("message2").innerHTML =
       "**Enter the password please!";
     return false;
@@ -18,6 +18,7 @@ submitRegistration.addEventListener("click", () => {
     document.getElementById("message2").innerHTML = "Passwords do not match";
     return false;
   }
+
 });
 // submit register form
 signUpForm.addEventListener("submit", async (evt) => {
