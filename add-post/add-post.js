@@ -49,6 +49,7 @@ const getCategories = async () => {
     };
     const response = await fetch(url + '/category', fetchOptions);
     const categories = await response.json();
+    console.log(categories);
     createCategoryOptions(categories);
   } catch (e) {
     console.log(e.message);

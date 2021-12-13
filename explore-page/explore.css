@@ -2,81 +2,121 @@
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
 }
-#name {
-  padding-left: 40%;
-  padding-top: 10%;
-  padding-bottom: 40%;
-  padding-right: 20%;
-  font-size: xx-large;
-}
-a{
+
+/* link to post */
+a {
   padding-bottom: 10%;
 }
-.column {
-  display: flex;
-  float: left;
-  justify-content: space-evenly ;
-  width: 33%;
-  padding: 5px 5px;
-}
+/* post title */
 .title h1 {
   text-align: center;
 }
 #title {
   text-align: center;
-  margin-top: 25em;
+  margin-top: 24em;
   position: absolute;
- 
+  height: fit-content;
+  display: inline-block;
+  width: 25%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
-.blog {
-  margin: 0 -5px;
-}
-.blog:after {
-  content: "";
-  display: table;
-  clear: both;
+
+/* card/post holder*/
+.column {
+  display: flex;
+  float: left;
+  width: 33%;
+  height: 600px;
+  justify-content: space-evenly;
+  padding: 5px 5px;
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 18px;
-  margin-left: 2em;
+  margin-left: 1rem;
   display: flex;
+  width: 100%;
   justify-content: space-around;
   text-align: center;
   background-color: #fcfcfc;
   margin-bottom: 4em;
 }
+.img {
+  object-fit: cover;
+  width: 350px;
+  height: 400px;
+  padding-top: 1rem;
+}
+
+.blogs {
+  width: 100%;
+  margin: auto;
+}
+
+/* responsive at 800px*/
+@media only screen and (max-width: 800px) {
+  .blogs {
+    width: 90%;
+    margin: auto;
+  }
+  .card {
+    margin-bottom: 30px;
+  }
+  .column {
+    height: 500px;
+    justify-content: space-around;
+    padding: 5px 5px;
+  }
+  #title {
+    align-items: center;
+    margin-top: 22em;
+    font-size: 18px;
+  }
+  .img {
+    object-fit: cover;
+    width: 180px;
+    height: 350px;
+    padding-top: 1rem;
+  }
+}
+/* responsive at 600px*/
 @media screen and (max-width: 600px) {
-  .title{
-    padding-top: 20%;
+  #title {
+    margin-top: 16em;
+    align-items: center;
+    font-size: 20px;
+  }
+  .blogs {
+    margin-left: 1em;
+    align-items: center;
+  }
+  .card {
+    margin-top: 10px;
+    height: 400px;
+    width: 100%;
+  }
+  .img {
+    object-fit: cover;
+    width: 200px;
+    height: 250px;
+    padding-top: 1rem;
   }
   .column {
     flex-direction: column;
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
+    justify-content: space-evenly;
+    margin: auto;
+    width: 90%;
+    height: 60%;
+    padding: 10px 10px;
   }
- 
-}
-.about {
-  
-  text-align: center;
-  margin-top: 15%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
-
-#about {
- 
-  text-align: center;
-  font-size: x-large;
-}
-
-#pic {
-  border-radius: 50%;
-  position: relative;
-  
- 
+  .img {
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+    margin: auto;
+  }
 }
 
 footer {

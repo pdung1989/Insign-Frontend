@@ -36,7 +36,7 @@ const createPosts = (posts) => {
         if(post.self_like === 1) {
             isLiked = 'liked';
         }
-
+       
         postsDiv.innerHTML += `<div class="single-post ${side}">
                     <div class="post-photo">
                         <a href="../post-details/post-details.html?id=${post.post_id}">

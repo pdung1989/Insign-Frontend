@@ -1,0 +1,144 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "username": "dtran",
+        "email": "dtran@email.com",
+        "password": "123456",
+        "bio": "description",
+        "profileUrl": "https://media.istockphoto.com/vectors/user-profile-icon-vector-avatar-portrait-symbol-flat-shape-person-vector-id1270368615?k=20&m=1270368615&s=170667a&w=0&h=qpvA8Z6L164ZcKfIyOl-E8fKnfmRZ09Tks7WEoiLawA="
+      },
+      {
+        "id": 2,
+        "username": "dtran123",
+        "email": "dtran123@email.com",
+        "password": "123456",
+        "bio": "description123",
+        "profileUrl": "https://media.istockphoto.com/vectors/user-profile-icon-vector-avatar-portrait-symbol-flat-shape-person-vector-id1270368615?k=20&m=1270368615&s=170667a&w=0&h=qpvA8Z6L164ZcKfIyOl-E8fKnfmRZ09Tks7WEoiLawA="
+      }
+    ],
+    "styles": [
+      {
+        "id": 1,
+        "name": "Modern"
+      },
+      {
+        "id": 2,
+        "name": "Classic"
+      }
+    ],
+    "posts": [
+      {
+        "id": 1,
+        "userId": 1,
+        "title": "Title 1",
+        "descritpion": "Desription 1",
+        "image":     "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
+        "styleId": 1,
+        "location": ""
+      },
+      {
+        "id": 2,
+        "userId": 1,
+        "title": "Title 2",
+        "descritpion": "Desription 2",
+        "image": "https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80",
+        "styleId": 2,
+        "location": ""
+      },
+      {
+        "id": 3,
+        "userId": 2,
+        "title": "Title 3",
+        "descritpion": "Desription 3",
+        "image":     "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+        "styleId": 1,
+        "location": ""
+      },
+      {
+        "id": 4,
+        "userId": 1,
+        "title": "Title 4",
+        "descritpion": "Desription 4",
+        "image":  "https://images.unsplash.com/photo-1513161455079-7dc1de15ef3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=988&q=80",
+        "styleId": 2,
+        "location": ""
+      },
+      {
+        "id": 5,
+        "userId": 1,
+        "title": "Title 5",
+        "descritpion": "Desription 5",
+        "image":     "https://images.unsplash.com/photo-1567016376408-0226e4d0c1ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"        ,
+        "styleId": 2,
+        "location": ""
+      },
+      {
+        "id": 6,
+        "userId": 1,
+        "title": "Title 6",
+        "descritpion": "Desription 4",
+        "image":     "https://images.unsplash.com/photo-1586893133130-a763a570686e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60"        ,
+        "styleId": 2,
+        "location": ""
+      },
+      {
+        "id": 7,
+        "userId": 1,
+        "title": "Title 7",
+        "descritpion": "Desription 7",
+        "image":     "https://images.unsplash.com/photo-1617198998854-81717988fe4b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60"        ,
+        "styleId": 2,
+        "location": ""
+      },
+      {
+        "id": 8,
+        "userId": 1,
+        "title": "Title 7",
+        "descritpion": "Desription 7",
+        "image":     "https://images.unsplash.com/photo-1583135630256-a25ea659d1d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=900&q=60"        ,
+        "styleId": 2,
+        "location": ""
+      },
+   
+      {
+        "id": 9,
+        "userId": 1,
+        "title": "Title 9",
+        "descritpion": "Desription 9",
+        "image":     "https://images.unsplash.com/photo-1574348882011-0029b2f4ab9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60"        ,
+        "styleId": 2,
+        "location": ""
+      }
+    ],
+    "comments": [
+      {
+        "id": 1,
+        "userId": 1,
+        "postId": 1,
+        "content": "Comment user1-post1"
+      },
+      {
+        "id": 2,
+        "userId": 2,
+        "postId": 2,
+        "content": "Comment user2-post2"
+      },
+      {
+        "id": 3,
+        "userId": 1,
+        "postId": 2,
+        "content": "Comment user1-post2"
+      }
+    ],
+    "likes": [
+      {
+        "userId": 1,
+        "postId": 1
+      },
+      {
+        "userId": 2,
+        "postId": 1
+      }
+    ]
+  }

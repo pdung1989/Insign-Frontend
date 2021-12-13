@@ -9,8 +9,14 @@
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
     <link rel="stylesheet" href="explore.css" />
     <link rel="stylesheet" href="../nav-user/nav-user-stylesheet.css" />
+    <link rel="stylesheet" href="../search/searchBar.css">
   </head>
   <body>
     <header>
@@ -41,19 +47,40 @@
     </header>
     <div class="title">
       <br />
+      <div class="search">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search Post"
+          value=""
+          name="search"
+        />
+        <button type="submit" id="searchBtn">
+          <span class="button-text">SEARCH</span>
+          <i class="fa fa-search"></i>
+        </button>
+        
+      </div>
+      <br />
 
-      <h1>Explore posts</h1>
+      <h1>Explore</h1>
 
       <br />
     </div>
-
+   
     <!-- post card -->
-    <div class="blogs"></div>
-
+    <div id="blogs" class="blogs"></div>
+    <div id="searched_posts_area">
+      
+      <!-- Searched cards go here -->
+  </div>
+  <p id="not-found"></p>
     <footer>
       <p>Created by Insign Team - Tamas Kralusz, Dung Tran, An Huynh</p>
     </footer>
+    <script src="explore.js"></script>
+    <script src="../search/search.js"></script>
+    <script src="../nav-user/nav-user.js"></script>
   </body>
-  <script src="explore.js"></script>
-  <script src="../nav-user/nav-user.js"></script>
+ 
 </html>
