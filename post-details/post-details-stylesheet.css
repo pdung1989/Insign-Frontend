@@ -89,12 +89,12 @@ main {
 }
 
 .description-title, .author-title {
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
 .comments-title {
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
@@ -102,6 +102,27 @@ main {
     text-align: justify;
     margin-bottom: 10px;
     line-height: 1.2;
+}
+
+.post-style-category {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(248,248,248,1) 25%, rgba(255,255,255,1) 50%, rgba(248,248,248,1) 75%, rgba(255,255,255,1) 100%);
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.style, .category {
+    width: 350px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.style-title, .category-title {
+    font-weight: bold;
+    margin-bottom: 2px;
 }
 
 .author {
@@ -458,6 +479,10 @@ textarea[class^='edit-comment-area'] {
 
     .follow-btn a, .comment-add-btn, .comment-edit-btn, .post-edit-btn, .post-delete-btn {
         font-size: 15px;
+    }
+
+    .style, .category {
+        font-size: 17px;
     }
 
     .post-favorite img {
