@@ -86,7 +86,7 @@ const addAuthor = (author) => {
     postDiv.innerHTML += `<p class="author-title">Author</p>
                 <div class="author">
                 <a href="../userpage/userpage.html?id=${author.user_id}">
-                    <img src="${author.profile_picture}">
+                    <img src="${url + '/uploads/' + author.profile_picture}" alt="${author.username}'s profile picture">
                 </a>
                 <div class="author-details">
                     <a class="username" href="../userpage/userpage.html?id=${author.user_id}">${author.username}</a>
@@ -116,7 +116,7 @@ const createComments = (comments) => {
             postDiv.innerHTML += `<div class="single-comment">
                                     <div class="comment-image">
                                         <a href="../userpage/userpage.html?id=${comment.user_id}">
-                                        <img src="${comment.profile_picture}">
+                                        <img src="${url + '/uploads/' + comment.profile_picture}" alt="${comment.username}'s profile picture">
                                         </a>
                                     </div>
                                     <div class="comment-details${comment.comment_id}">
