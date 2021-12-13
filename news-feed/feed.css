@@ -198,6 +198,14 @@ main {
   margin-top: 5px;
 }
 
+.unliked {
+  content: url("../assets/heart-icon-off.svg");
+}
+
+.liked {
+  content: url("../assets/heart-icon-full.svg");
+}
+
 @media only screen and (max-width: 1100px) {
   .side {
     display: none;
