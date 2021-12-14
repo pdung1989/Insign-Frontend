@@ -8,7 +8,7 @@ const roleList = document.querySelector(".add-role");
 //get user role for selection
 const createRoleSelection = (roles) => {
   let roleArray = [];
-  for (let i = 1; i< roles.length; i++) {
+  for (let i = 1; i < roles.length; i++) {
     roleList.innerHTML += `<option value="${roles[i].role_id}">${roles[i].role_name}</option>`;
     roleArray.push(roles[i]);
   }
@@ -27,7 +27,6 @@ const getRoles = async () => {
   }
 };
 getRoles();
-
 
 //validation form
 submitRegistration.addEventListener("click", () => {
@@ -49,30 +48,19 @@ signUpForm.addEventListener("submit", async (evt) => {
   evt.preventDefault();
   const data = new FormData(signUpForm);
   const fetchOptions = {
-    method: 'POST', 
+    method: "POST",
     body: data,
   };
   const response = await fetch(url + "/auth/register", fetchOptions);
   const json = await response.json();
-  //alert(json.message);
-  alert('Account created successfully!');
-  location.href = "../explore-page/explore.html";
-  if (json.token && json.user) {
+  if (!json.user) {
+    alert(json.message);
+  } else {
     // save token
     sessionStorage.setItem("token", json.token);
     sessionStorage.setItem("user", JSON.stringify(json.user));
+
+    alert("Account created successfully!");
     location.href = "../explore-page/explore.html";
-    return;
   }
-  if (json.length > 0) {
-    let errors = '';
-    json.forEach((err) => (errors += `${err.msg}\n`));
-    alert(errors);
-    return false;
-  }
-
-  alert(json.message);
-  return false;
- 
 });
-
