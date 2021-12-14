@@ -92,12 +92,35 @@ button.noshow {
 form {
   background-color: #fcfcfc;
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0 50px;
+  padding: 0 40px;
   height: 100%;
-  text-align: center;
+  align-items: center;
+  
+
+  /* text-align: center; */
+}
+.profile-picture{
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  padding-left: 10px;
+}
+
+.select-role{
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  padding-left: 10px;
+}
+
+.img-form {
+  display: flex;
+  align-items: center;
+  width: 350px;
+  margin: auto;
+  padding: 0 5px;
 }
 
 input {
@@ -107,7 +130,14 @@ input {
   margin: 8px 0;
   width: 100%;
 }
-
+.light-border {
+  width: 300px;
+  height: 30px;
+  padding: 5px;
+  margin-top: 30px;
+  border-radius: 15px;
+  
+}
 .container {
   background-color: #fff;
   border-radius: 10px;
@@ -276,6 +306,8 @@ button {
 #signUpForm h1 {
   margin-top: 7em;
 }
+
+
 
 /* responsive at 700px*/
 @media all and (max-width: 700px) {

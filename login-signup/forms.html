@@ -47,15 +47,20 @@
               value=""
               required
             />
-            <p>Upload an image</p>
+            <div class="profile-picture">
+            <p>Profile picture</p>
           <div class="img-form">
+            
             <input id="imgInp" type="file" required name="image" accept="image/*" placeholder="Choose file">
-            <img id="show-img" src="#" alt=""/>
+            
           </div>
-            <p>user or professionals</p>
-            <select class="light-border add-category" required name="role_id">
+        </div>
+        <div class="select-role">
+            <p>Choose role</p>
+            <select class="light-border add-role" required name="role_id">
               <option value="" selected disabled hidden>Select</option>
             </select>
+          </div>
             <br />
             <span id="message2" style="color: red"> </span><br />
             <button type="submit" id="submitRegistration">Sign Up</button>
