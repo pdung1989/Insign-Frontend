@@ -10,7 +10,7 @@ const getQParam = (param) => {
     return urlParams.get(param);
 };
 
-// get user data
+//Get user data
 const user = JSON.parse(sessionStorage.getItem("user"));
 
 const myAccountBtn = document.querySelector('#myaccount a');
@@ -18,6 +18,7 @@ myAccountBtn.setAttribute("href", `userpage.html?id=${user.user_id}`);
 const favoritesBtn = document.querySelector('#favorites');
 favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
+//Create cards for all posts
 const createPosts = (posts) => {
     const postsDiv = document.querySelector('.posts');
 
@@ -58,11 +59,11 @@ const createPosts = (posts) => {
                             </div>
                         </div>
                     </div>
-                </div>`
+                </div>`;
     });
-}
+};
 
-//TODO - add followers and following count to backend
+//Show user data below posts
 const addUserData = (userProfile) => {
     const profileDiv = document.querySelector('.profile');
 
@@ -81,10 +82,9 @@ const addUserData = (userProfile) => {
                     <p>${userProfile.bio ? userProfile.bio : ''}</p>
                 </div>
             </div>`;
+};
 
-
-}
-
+//Add follow button if the user visited someone else's page -> add "edit profile" button if it's the user's own page
 const addFollowOrEditButtons = ((userProfile) => {
     const userFollowBtn = document.querySelector('.user-follow');
     if(user.user_id === userProfile.user_id){
@@ -141,7 +141,7 @@ const addFollowOrEditButtons = ((userProfile) => {
             }
         });
     }
-})
+});
 
 // AJAX calls
 const getPosts = async (id) => {

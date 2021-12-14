@@ -5,7 +5,7 @@ const styleList = document.querySelector('.add-style');
 const categoryList = document.querySelector('.add-category');
 const editPostForm = document.querySelector('#editPostForm');
 
-// get user data
+//Get user data
 const user = JSON.parse(sessionStorage.getItem("user"));
 
 //Get query parameter
@@ -46,7 +46,7 @@ const getStyles = async () => {
     }
 };
 
-//Create style options to <select>
+//Create category options to <select>
 const createCategoryOptions = (categories) => {
     categoryFill = categories;
 
@@ -55,7 +55,7 @@ const createCategoryOptions = (categories) => {
     });
 };
 
-//Get styles to form options
+//Get categories to form options
 const getCategories = async () => {
     try {
         const fetchOptions = {
@@ -71,6 +71,7 @@ const getCategories = async () => {
     }
 };
 
+//Adding delay
 function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
 }
@@ -109,7 +110,7 @@ const fillOutFields = ((post) => {
     location.defaultValue = post.location;
     style.selectedIndex = styleObject.style_id;
     category.selectedIndex = categoryObject.category_id;
-})
+});
 
 getStyles();
 getCategories();

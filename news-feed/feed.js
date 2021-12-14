@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 const url = "http://localhost:3000"; // change url when uploading to server
 
-// get user data
+//Get user data
 const user = JSON.parse(sessionStorage.getItem("user"));
 
 const myAccountBtn = document.querySelector('#myaccount a');
@@ -10,12 +10,10 @@ myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`
 const favoritesBtn = document.querySelector('#favorites');
 favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
+//Create cards for all posts
 const createPostCard = (posts) => {
   const feed = document.querySelector(".main-feed");
 
-
-
-  //TODO - add author + img + username href, author profile photo, like and comment count
   posts.forEach((post) => {
 
       let isLiked = 'unliked';
@@ -52,10 +50,11 @@ const createPostCard = (posts) => {
               </div>
             </div>
           </div>
-        </div>`
+        </div>`;
   });
 };
 
+//Create cards for posts to show on the side (desktop view only)
 const createProfessionalPosts = (professionalPosts) => {
   const professionalPostsDiv = document.querySelector(".pro-feed");
 
@@ -75,7 +74,7 @@ const createProfessionalPosts = (professionalPosts) => {
                 <p class="pro-title">${professionalPosts[1].title}</p>
             </a>
             
-          </div>`
+          </div>`;
 };
 
 // AJAX calls
