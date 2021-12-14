@@ -1,0 +1,33 @@
+#editProfileForm button {
+    margin-top: 10px;
+    float: right;
+}
+
+#editProfileForm div {
+    margin-bottom: 10px;
+}
+
+.form-wrapper {
+    margin-bottom: 20px;
+}
+
+.upload-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#email-fill:hover {
+    cursor: not-allowed;
+}
+
+@media only screen and (max-width: 800px) {
+    .upload-title {
+        margin-top: 100px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .form-field p{
+        margin-bottom: 5px;
+    }
+}
