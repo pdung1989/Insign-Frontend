@@ -18,16 +18,16 @@
       <div id="background"></div>
       
     <div class="main-container" id="main-container">
+      
       <h2>Log in/Sign up to see full content</h2>
-
       <a href="../home/home.html" id="btn"><button class="return-btn">< Go back to homepage</button></a>
       <div class="container" id="container">
         <div class="form-container sign-up-container">
           
           <form id="signUpForm" action="http://localhost:3000/auth/register" method="post">
             <h1 class="form-header">Create Account</h1>
-            <input type="text" required minlength="5" placeholder="Name" />
-            <input type="email" required name="username" placeholder="Email" />
+            <input type="text" required name="username" minlength="3" placeholder="Name" />
+            <input type="email" required name="email" placeholder="Email" />
             <input
               id="pw1"
               type="password"
@@ -42,11 +42,29 @@
               id="pw2"
               type="password"
               title="Re-type your password"
-              name="repeat-password"
+              name="password"
               placeholder="Re-type password"
               value=""
               required
             />
+            <div class="profile-picture">
+            <p>Profile picture</p>
+          <div class="img-form">
+            
+            <input id="imgInp" type="file" required name="profile_picture" accept="image/*" placeholder="Choose file">
+            
+          </div>
+        </div>
+        <div class="bio">
+          <p>About</p>
+          <textarea class="light-border" name="bio" id="bio" cols="20" rows="3"></textarea>
+        </div>
+        <div class="select-role">
+            <p>Choose role</p>
+            <select class="light-border add-role" required title="Select a role" name="role_id">
+              <option value="" selected disabled hidden>Select</option>
+            </select>
+          </div>
             <br />
             <span id="message2" style="color: red"> </span><br />
             <button type="submit" id="submitRegistration">Sign Up</button>
@@ -58,7 +76,7 @@
             <input type="email" required title= "Enter your email" placeholder="Email" name="username" />
             <input
               type="password"
-              name="password"
+              name="passwordC"
               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
               placeholder="Password"
               required
@@ -87,8 +105,11 @@
     <footer>
       <p>Created by Insign Team - Tamas Kralusz, Dung Tran, An Huynh</p>
     </footer>
-    <script src="login.js"></script>
-  <script src="serialize.js"></script>
+  </body>
+  
+  <script src="./js/login.js"></script>
+  <script src="./js/serialize.js"></script>
+  <script src="./js/signup.js"></script>
   <script src="../nav-anon/nav-anon.js"></script>
   </body>
   
