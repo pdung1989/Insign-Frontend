@@ -14,6 +14,13 @@ favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id
 const createPostCard = (posts) => {
   const feed = document.querySelector(".main-feed");
 
+  if(posts.length === 0){
+    feed.innerHTML += `<div id="empty-feed" class="single-post">
+          <p>Your feed is empty. <br> Click the button below to browse our explore page and follow some people</p>
+          <a class="browse-button" href="../explore-page/explore.html">Browse posts ></a>
+        </div>`;
+  }
+
   posts.forEach((post) => {
 
       let isLiked = 'unliked';

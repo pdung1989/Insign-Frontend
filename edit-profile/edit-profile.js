@@ -19,13 +19,11 @@ const fillOutFields = ((user) => {
     const email = document.querySelector('#email-fill');
     const role_id = document.querySelector('#role-fill');
     const bio = document.querySelector('#bio-fill');
-    //const profile_picture_img = document.querySelector('#show-img');
 
     username.defaultValue = user.username;
     email.defaultValue = user.email;
     bio.defaultValue = user.bio || '';
     role_id.selectedIndex = user.category_id;
-    //profile_picture_img.src = url + '/uploads/' + user.profile_picture;
 });
 
 //Show photo when user uploads or replaces it
@@ -38,6 +36,7 @@ imgInp.onchange = () => {
     }
 };
 
+//Submit edit profile picture form
 editProfilePictureForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     const fd = new FormData(editProfilePictureForm);
@@ -49,8 +48,8 @@ editProfilePictureForm.addEventListener('submit', async (evt) => {
                 },
                 body: fd
             };
-            //const response = await fetch(url + '/user/', fetchOptions);
-            //const json = await response.json();
+            const response = await fetch(url + '/user/', fetchOptions);
+            const json = await response.json();
             alert('Profile picture updated successfully!');
             location.reload();
         } catch(e) {
@@ -58,7 +57,7 @@ editProfilePictureForm.addEventListener('submit', async (evt) => {
         }
 });
 
-//Submit add post form
+//Submit edit profile data form
 editProfileForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     const fd = new FormData(editProfileForm);
