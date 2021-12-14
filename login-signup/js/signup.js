@@ -27,6 +27,8 @@ const getRoles = async () => {
   }
 };
 getRoles();
+
+
 //validation form
 submitRegistration.addEventListener("click", () => {
   const pw1 = document.getElementById("pw1").value;
@@ -45,31 +47,22 @@ submitRegistration.addEventListener("click", () => {
 // submit register form
 signUpForm.addEventListener("submit", async (evt) => {
   evt.preventDefault();
-  const data = serializeJson(signUpForm);
+  const data = new FormData(signUpForm);
   const fetchOptions = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
+    method: 'POST', 
+    body: data,
   };
   const response = await fetch(url + "/auth/register", fetchOptions);
   const json = await response.json();
-  alert(json.message);
-
+  //alert(json.message);
+  alert('Account created successfully!');
+  location.href = "../explore-page/explore.html";
   if (json.token && json.user) {
     // save token
     sessionStorage.setItem("token", json.token);
     sessionStorage.setItem("user", JSON.stringify(json.user));
     location.href = "../explore-page/explore.html";
     return;
-  }
-
-  if (json.length > 0) {
-    let errors = "";
-    json.forEach((err) => (errors += `${err.msg}\n`));
-    alert(errors);
-    return false;
   }
   alert(json.message);
   return false;
