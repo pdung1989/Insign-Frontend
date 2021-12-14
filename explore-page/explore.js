@@ -1,23 +1,6 @@
 "use strict";
 const url = "http://localhost:3000";
 
-
-//Get query parameter
-const getQParam = (param) => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  console.log(urlParams.get(param));
-  return urlParams.get(param);
-};
-
-// get user data
-const user = JSON.parse(sessionStorage.getItem("user"));
-
-const myAccountBtn = document.querySelector('#myaccount a');
-myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`);
-const favoritesBtn = document.querySelector('#favorites');
-favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
-
 const createPostCard = (posts) => {
   const blogs = document.querySelector(".blogs");
   blogs.setAttribute("class", "blogs");
@@ -54,29 +37,12 @@ const getRandomPosts = async () => {
       headers: {
         Authorization: "Bearer " + sessionStorage.getItem("token"),
       },
-    };
+    }
     const response = await fetch(url + "/post?limit=15", fetchOptions);
     const posts = await response.json();
     createPostCard(posts);
   } catch (e) {
     console.log(e.message);
   }
-};
+}
 getRandomPosts();
-
-const getPost = async (postId) => {
-  try {
-    const fetchOptions = {
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-      },
-    };
-    const response = await fetch(url + "/posts/" + postId, fetchOptions);
-    const posts = await response.json();
-    createPostCard(posts);
-   
-  } catch (e) {
-    console.log(e.message);
-  }
-};
-getPost(getQParam('postId'));

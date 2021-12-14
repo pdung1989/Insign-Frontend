@@ -1,7 +1,7 @@
 'use strict';
 const url = 'https://localhost:3000'; // change url when uploading to server
 
-(async () => {
+const signOut = (async () => {
   try {
     const response = await fetch(url + '/auth/logout');
     const json = await response.json();
@@ -10,7 +10,7 @@ const url = 'https://localhost:3000'; // change url when uploading to server
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
     alert('You have logged out');
-    location.href = 'login.html';
+    location.href = '../home/home.html';
   } catch (e) {
     console.log(e.message);
   }
