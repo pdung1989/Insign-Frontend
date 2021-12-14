@@ -17,6 +17,20 @@ main {
     margin-right: auto;
 }
 
+.user-not-found {
+    display: none;
+    width: 700px;
+    height: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.user-not-found p {
+    margin-bottom: 10px;
+}
+
 /* PROFILE */
 .profile, .posts {
     display: flex;
@@ -60,7 +74,8 @@ main {
     flex-wrap: wrap;
 }
 
-.follow-btn, .empty-favorites button, .edit-profile-btn {
+.follow-btn, .empty-favorites button, .edit-profile-btn, .user-not-found a {
+    color: #fcfcfc;
     background-color: #938c7f;
     border: #938c7f 3px solid;
     border-radius: 15px;
@@ -68,7 +83,7 @@ main {
     margin-bottom: 15px;
 }
 
-.follow-btn:hover, .empty-favorites button:hover, .edit-profile-btn:hover {
+.follow-btn:hover, .empty-favorites button:hover, .edit-profile-btn:hover, .user-not-found a:hover {
     cursor: pointer;
     background-color: #5d5850;
     border: #5d5850 3px solid;
@@ -255,11 +270,11 @@ main {
 
 /* Tablet version */
 @media only screen and (max-width: 800px) {
-    .profile, .posts, .line, .single-post, .post-photo, .post-photo img, .fav {
+    .profile, .posts, .line, .single-post, .post-photo, .post-photo img, .fav, .user-not-found {
         width: 570px;
     }
 
-    .profile, .fav {
+    .profile, .fav, .user-not-found {
         margin-top: 100px;
     }
 
@@ -279,7 +294,7 @@ main {
 
 /* Mobile Version */
 @media only screen and (max-width: 600px) {
-    .profile, .posts, .line, .fav {
+    .profile, .posts, .line, .fav, .user-not-found {
         width: 90%;
     }
 

@@ -393,13 +393,18 @@ const getPost = async (post_id) => {
         const response_c = await fetch(url +'/post/' +  post_id + '/comment', fetchOptions);
         const comments = await response_c.json();
 
-        createPost(post);
-        addAuthor(author);
-        createComments(comments);
-        addCommentForm();
-        likeUnlike();
-        favoriteUnfavorite();
-        deletePostListener(post_id, author);
+        if(post.post_id === undefined){
+            const empty = document.querySelector('.post-not-found');
+            empty.style.display = 'flex';
+        } else{
+            createPost(post);
+            addAuthor(author);
+            createComments(comments);
+            addCommentForm();
+            likeUnlike();
+            favoriteUnfavorite();
+            deletePostListener(post_id, author);
+        }
     } catch (e) {
         console.log(e.message);
     }

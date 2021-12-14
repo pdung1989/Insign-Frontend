@@ -169,8 +169,15 @@ const getUserData = async (id) => {
         };
         const response = await fetch(url + '/user/' + id, fetchOptions);
         const userData = await response.json();
-        addUserData(userData);
-        addFollowOrEditButtons(userData);
+        if(userData.user_id === undefined) {
+            const empty = document.querySelector('.user-not-found');
+            const line = document.querySelector('.line');
+            empty.style.display = 'flex';
+            line.style.display = 'none';
+        } else {
+            addUserData(userData);
+            addFollowOrEditButtons(userData);
+        }
     } catch (e) {
         console.log(e.message);
     }
