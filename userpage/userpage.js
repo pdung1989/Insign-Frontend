@@ -14,7 +14,7 @@ const getQParam = (param) => {
 const user = JSON.parse(sessionStorage.getItem("user"));
 
 const myAccountBtn = document.querySelector('#myaccount a');
-myAccountBtn.setAttribute("href", `userpage.html?id=${user.user_id}`);
+myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`);
 const favoritesBtn = document.querySelector('#favorites');
 favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
@@ -89,7 +89,7 @@ const addFollowOrEditButtons = ((userProfile) => {
     const userFollowBtn = document.querySelector('.user-follow');
     if(user.user_id === userProfile.user_id){
         //TODO - add href
-        userFollowBtn.innerHTML += `<button class="follow-btn"><a>Edit Profile</a></button>`;
+        userFollowBtn.innerHTML += `<button class="follow-btn"><a href="../edit-profile/edit-profile.html">Edit Profile</a></button>`;
     } else {
 
         userFollowBtn.innerHTML += `<button class="follow-btn"><a>Follow</a></button>`;
