@@ -10,7 +10,7 @@
   background-attachment: fixed;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 120%;
   background-size: cover;
   filter: blur(5px);
 }
@@ -22,10 +22,12 @@
   align-items: center;
   flex-direction: column;
   height: 80vh;
+
   margin: -20px 0 80px;
 }
 .form-header {
   color: #252525;
+  margin-bottom: 10px;
 }
 h1 {
   font-weight: bold;
@@ -33,11 +35,13 @@ h1 {
 }
 
 h2 {
- 
-    position: absolute;
-    top: 10%;
-    transform: translateX(60%);
- 
+  /* position: absolute;
+    top: 30px;
+    transform: translateX(70%); */
+  transform: translateX(70%);
+  top: 50px;
+  position: fixed;
+  text-align: center;
 }
 
 p {
@@ -110,7 +114,7 @@ input {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
   overflow: hidden;
-  width: 768px;
+  width: 850px;
   max-width: 100%;
   min-height: 480px;
   display: flex;
@@ -142,7 +146,11 @@ input {
   width: 50%;
   opacity: 0;
   z-index: 1;
-  padding-bottom: 5em;
+}
+#signUpForm {
+  font-size: 14px;
+
+  overflow: scroll;
 }
 
 .container.panel-active .sign-up-container {
@@ -266,9 +274,12 @@ button {
   margin-top: 1em;
 }
 #signUpForm h1 {
-  margin-top: 2em;
+  margin-top: 7em;
 }
+
+/* responsive at 700px*/
 @media all and (max-width: 700px) {
+  /* form change */
   .main-container {
     margin-top: 0;
     max-width: 70%;
@@ -277,40 +288,23 @@ button {
     flex-shrink: 0;
   }
   .forms {
-   
     margin-bottom: 7em;
   }
+
   .container {
     max-width: 100%;
     height: 650px;
     margin: auto;
     margin-top: 30px;
-    margin-bottom:30px;
+    margin-bottom: 30px;
   }
   #submitRegistration {
     margin-top: -15px;
     margin-bottom: 50px;
-    
-  }
-  #btn {
-    display: flex;
-  }
-  .return-btn {
-   align-self: center;
-    z-index: 999;
-    position: relative;
-    left: 0;
-    margin-bottom: 15px;
-    margin-top: 5rem; 
   }
 
-  footer {
-    display: none;
-  }
-  .main-container h2 {
-   
-    display: none;
-  }
+
+  /* form container size and margin change */
   .sign-in-container {
     margin-bottom: 15px;
     width: 100%;
@@ -318,9 +312,8 @@ button {
   }
   .sign-up-container {
     width: 100%;
-   height: 50%;
+    height: 50%;
     top: 0;
-   
   }
   .main-container .form-container {
     max-height: 60%;
@@ -341,19 +334,46 @@ button {
   .overlay-panel {
     height: 50%;
   }
-  /*smaller fonts*/
-  .overlay-panel h1,
-  p {
-    font-size: medium;
+
+
+  /* btn display change */
+  #btn {
+    display: flex;
   }
+  .return-btn {
+    align-self: center;
+    z-index: 999;
+    position: relative;
+    left: 0;
+    margin-bottom: 15px;
+    margin-top: 5rem;
+  }
+
+  /* hide footer */
+  footer {
+    display: none;
+  }
+
+  /* hide h2 */
+  .main-container h2 {
+    display: none;
+  }
+
+  /*smaller fonts*/
   #signUpForm h1 {
     font-size: medium;
-    margin-top: 40%;
+    margin-top: 100%;
   }
   #logInForm h1 {
     font-size: medium;
   }
 
+  .overlay-panel h1,
+  p {
+    font-size: medium;
+  }
+
+  /* overlay position and change position for the two forms, copyright: Ulla Sederlöf */
   .overlay-left {
     top: 0;
     width: 100%;
