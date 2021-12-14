@@ -67,6 +67,16 @@ const createPost = (post) => {
                     <p class="description-title">Description</p>
                     <p class="description-text">${post.description}</p>
                 </div>
+            </div>
+            <div class="post-style-category">
+                <div class="style">
+                    <p class="style-title">Style</p>
+                    <p>${post.style_name}</p>
+                </div>
+                <div class="category">
+                    <p class="category-title">Category</p>
+                    <p>${post.category_name}</p>
+                </div>
             </div>`
 
     const postActionButtonsDiv = document.querySelector('.post-actions');
@@ -86,7 +96,7 @@ const addAuthor = (author) => {
     postDiv.innerHTML += `<p class="author-title">Author</p>
                 <div class="author">
                 <a href="../userpage/userpage.html?id=${author.user_id}">
-                    <img src="${author.profile_picture}">
+                    <img src="${url + '/uploads/' + author.profile_picture}" alt="${author.username}'s profile picture">
                 </a>
                 <div class="author-details">
                     <a class="username" href="../userpage/userpage.html?id=${author.user_id}">${author.username}</a>
@@ -116,7 +126,7 @@ const createComments = (comments) => {
             postDiv.innerHTML += `<div class="single-comment">
                                     <div class="comment-image">
                                         <a href="../userpage/userpage.html?id=${comment.user_id}">
-                                        <img src="${comment.profile_picture}">
+                                        <img src="${url + '/uploads/' + comment.profile_picture}" alt="${comment.username}'s profile picture">
                                         </a>
                                     </div>
                                     <div class="comment-details${comment.comment_id}">

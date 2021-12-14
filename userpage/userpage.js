@@ -67,7 +67,7 @@ const addUserData = (userProfile) => {
     const profileDiv = document.querySelector('.profile');
 
     profileDiv.innerHTML += `<div class="profile-photo">
-                <img class="profile-photo" src="${userProfile.profile_picture}">
+                <img class="profile-photo" src="${url + '/uploads/' + userProfile.profile_picture}">
             </div>
             <div class="profile-data">
                 <div class="user-follow">
