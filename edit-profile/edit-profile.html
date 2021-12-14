@@ -39,17 +39,28 @@
     </nav>
 </header>
 
+<div class="forms">
+    <div class="form-wrapper">
+        <p class="upload-title">Change your profile picture</p>
+        <form id="editProfilePictureForm">
+            <div class="form-field">
+
+                <div class="img-form">
+                    <input id="imgInp" type="file" name="profile_picture" required accept="image/*" placeholder="Choose file">
+                    <img id="show-img" src="#" alt=""/>
+                </div>
+            </div>
+            <div class="submit-button">
+                <button id="editProfilePictureButton" class="light-border-button" type="submit">Change profile picture</button>
+            </div>
+        </form>
+    </div>
+</div>
+
     <div class="forms">
         <div class="form-wrapper">
             <p class="upload-title">Edit your profile</p>
             <form id="editProfileForm">
-                <div class="form-field">
-                    <p>Profile picture</p>
-                    <div class="img-form">
-                        <input id="imgInp" type="file" name="profile_picture" accept="image/*" placeholder="Choose file">
-                        <img id="show-img" src="#" alt=""/>
-                    </div>
-                </div>
                 <div class="form-field">
                     <p>Username</p>
                     <input id="username-fill" class="light-border" type="text" required minlength="3" name="username" placeholder="username">

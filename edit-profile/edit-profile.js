@@ -2,6 +2,7 @@
 const url = "http://localhost:3000"; //TODO: change url to server
 
 const editProfileForm = document.querySelector('#editProfileForm');
+const editProfilePictureForm = document.querySelector('#editProfilePictureForm');
 
 //Get user data
 const user = JSON.parse(sessionStorage.getItem("user"));
@@ -18,13 +19,13 @@ const fillOutFields = ((user) => {
     const email = document.querySelector('#email-fill');
     const role_id = document.querySelector('#role-fill');
     const bio = document.querySelector('#bio-fill');
-    const profile_picture_img = document.querySelector('#show-img');
+    //const profile_picture_img = document.querySelector('#show-img');
 
     username.defaultValue = user.username;
     email.defaultValue = user.email;
     bio.defaultValue = user.bio || '';
     role_id.selectedIndex = user.category_id;
-    profile_picture_img.src = url + '/uploads/' + user.profile_picture;
+    //profile_picture_img.src = url + '/uploads/' + user.profile_picture;
 });
 
 //Show photo when user uploads or replaces it
@@ -36,6 +37,26 @@ imgInp.onchange = () => {
         showImg.src = URL.createObjectURL(file);
     }
 };
+
+editProfilePictureForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    const fd = new FormData(editProfilePictureForm);
+        try {
+            const fetchOptions = {
+                method: 'PUT',
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem("token"),
+                },
+                body: fd
+            };
+            //const response = await fetch(url + '/user/', fetchOptions);
+            //const json = await response.json();
+            alert('Profile picture updated successfully!');
+            location.reload();
+        } catch(e) {
+            console.log(e);
+        }
+});
 
 //Submit add post form
 editProfileForm.addEventListener('submit', async (evt) => {
