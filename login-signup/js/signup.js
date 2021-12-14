@@ -64,6 +64,15 @@ signUpForm.addEventListener("submit", async (evt) => {
     location.href = "../explore-page/explore.html";
     return;
   }
+  if (json.length > 0) {
+    let errors = '';
+    json.forEach((err) => (errors += `${err.msg}\n`));
+    alert(errors);
+    return false;
+  }
+
   alert(json.message);
   return false;
+ 
 });
+

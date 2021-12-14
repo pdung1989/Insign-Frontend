@@ -7,8 +7,11 @@ const myAccount = document.querySelector('#myaccount');
 
 const logOut = document.querySelector('#logout');
 logOut.addEventListener('click', () => {
+    sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
+    alert('You have logged out');
     window.location.replace("../login-signup/forms.html");
+   
 })
 
 const toggleNav = () => {

@@ -12,6 +12,7 @@ const getSearchPost = async (searchInput) => {
       headers: {
         Authorization: "Bearer " + sessionStorage.getItem("token"),
       },
+     
     };
     const response = await fetch(
       url + "/post/search?title=" + searchInput,
