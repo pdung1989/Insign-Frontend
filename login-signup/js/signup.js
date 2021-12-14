@@ -32,12 +32,7 @@ getRoles();
 submitRegistration.addEventListener("click", () => {
   const pw1 = document.getElementById("pw1").value;
   const pw2 = document.getElementById("pw2").value;
-  //check empty confirm password field
-  // if (pw1 == "" || pw2 == "") {
-  //   document.getElementById("message2").innerHTML =
-  //     "**Please enter password!";
-  //   return false;
-  // }
+
   if (pw1 != pw2) {
     document.getElementById("message2").innerHTML = "Passwords do not match";
     return false;
@@ -61,6 +56,6 @@ signUpForm.addEventListener("submit", async (evt) => {
     sessionStorage.setItem("user", JSON.stringify(json.user));
 
     alert("Account created successfully!");
-    location.href = "../explore-page/explore.html";
+    location.href = "../login-signup/forms.html";
   }
 });
