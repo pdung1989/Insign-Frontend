@@ -61,13 +61,20 @@ main {
 .user-follow, .profile-stats {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+
 }
 
 .username {
     font-size: 25px;
     padding-top: 10px;
     padding-right: 10px;
+}
+
+.user-follow img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-top: 10px;
 }
 
 .user-follow {

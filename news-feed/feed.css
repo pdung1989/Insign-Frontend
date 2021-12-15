@@ -114,6 +114,8 @@ main {
   flex-direction: column;
 }
 
+
+
 .post-stats {
   display: flex;
   margin-top: 5px;
@@ -170,6 +172,11 @@ main {
   margin-right: 10px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+img[id^='isVerified'] {
+  width: 24px;
+  height: 24px;
 }
 
 .author-details {

@@ -85,6 +85,12 @@ const addUserData = (userProfile) => {
                     <p>${userProfile.bio ? userProfile.bio : ''}</p>
                 </div>
             </div>`;
+
+    if(userProfile.role_id === 2){
+        const userDiv = document.querySelector('.user-follow');
+        userDiv.innerHTML += `<img src="../assets/green-checkmark.svg">`;
+    }
+
 };
 
 //Add follow button if the user visited someone else's page -> add "edit profile" button if it's the user's own page

@@ -38,6 +38,7 @@ const createPostCard = (posts) => {
             </a>
             <div class="author-details">
               <a class="username" href="../userpage/userpage.html?id=${post.author}">${post.username}</a>
+              <img id="isVerified${post.post_id}">
             </div>
           </div>
           <div class="post-photo">
@@ -58,6 +59,13 @@ const createPostCard = (posts) => {
             </div>
           </div>
         </div>`;
+
+      const userDiv = document.querySelector(`#isVerified${post.post_id}`);
+      if(post.role_id === 2){
+        userDiv.setAttribute('src', '../assets/green-checkmark.svg');
+      } else{
+        userDiv.remove();
+      }
   });
 };
 

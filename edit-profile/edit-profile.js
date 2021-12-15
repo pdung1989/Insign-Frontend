@@ -66,6 +66,9 @@ editProfileForm.addEventListener('submit', async (evt) => {
         alert("Passwords don't match");
     } else {
         fd.delete('password2');
+        for(let pair of fd.entries()) {
+            console.log(pair[0]+ ', '+ pair[1]);
+        }
         try {
             const fetchOptions = {
                 method: 'PUT',

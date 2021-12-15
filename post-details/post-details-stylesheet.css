@@ -171,6 +171,11 @@ main {
     margin-right: 10px;
 }
 
+.author-details img {
+    width: 24px;
+    height: 24px;
+}
+
 .follow-btn {
     background-color: #938c7f;
     border: #938c7f 3px solid;

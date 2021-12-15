@@ -106,6 +106,11 @@ const addAuthor = (author) => {
                     <a class="username" href="../userpage/userpage.html?id=${author.user_id}">${author.username}</a>
                 </div>
             </div>`;
+
+    if(author.role_id === 2){
+        const userDiv = document.querySelector('.author-details');
+        userDiv.innerHTML += `<img src="../assets/green-checkmark.svg">`;
+    }
 };
 
 //Add comments to the UI
