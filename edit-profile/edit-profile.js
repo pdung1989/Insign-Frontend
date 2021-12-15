@@ -13,17 +13,17 @@ const favoritesBtn = document.querySelector('#favorites');
 favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
 //Fill out the field with the data from the original post
-const fillOutFields = ((user) => {
+const fillOutFields = ((userData) => {
 
     const username = document.querySelector('#username-fill');
     const email = document.querySelector('#email-fill');
-    const role_id = document.querySelector('#role-fill');
+    const role = document.querySelector('#role-fill');
     const bio = document.querySelector('#bio-fill');
 
-    username.defaultValue = user.username;
-    email.defaultValue = user.email;
-    bio.defaultValue = user.bio || '';
-    role_id.selectedIndex = user.category_id;
+    username.defaultValue = userData.username;
+    email.defaultValue = userData.email;
+    bio.defaultValue = userData.bio || '';
+    role.selectedIndex = userData.role_id;
 });
 
 //Show photo when user uploads or replaces it
@@ -93,7 +93,7 @@ editProfileForm.addEventListener('submit', async (evt) => {
     }
 });
 
-const getUserData = async (id) => {
+const getUserData = async () => {
     try {
         const fetchOptions = {
             headers: {
@@ -107,4 +107,4 @@ const getUserData = async (id) => {
         console.log(e.message);
     }
 };
-getUserData(user.user_id);
+getUserData();
