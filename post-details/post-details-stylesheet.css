@@ -122,6 +122,8 @@ main {
     text-align: justify;
     margin-bottom: 10px;
     line-height: 1.2;
+    word-break: break-all;
+    white-space: normal;
 }
 
 .post-style-category {
