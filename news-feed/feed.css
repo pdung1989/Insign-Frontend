@@ -275,7 +275,7 @@ img[id^='isVerified'] {
 
 /* Mobile Version */
 @media only screen and (max-width: 600px) {
-  .posts {
+  .posts, .main-feed {
     width: 100%;
   }
 
