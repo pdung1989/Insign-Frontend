@@ -48,7 +48,7 @@ editProfilePictureForm.addEventListener('submit', async (evt) => {
                 },
                 body: fd
             };
-            const response = await fetch(url + '/user/', fetchOptions);
+            const response = await fetch(url + '/user/profilePicture', fetchOptions);
             const json = await response.json();
             alert('Profile picture updated successfully!');
             location.reload();
@@ -72,7 +72,13 @@ editProfileForm.addEventListener('submit', async (evt) => {
                 headers: {
                     Authorization: "Bearer " + sessionStorage.getItem("token"),
                 },
-                body: fd
+                body: new URLSearchParams({
+                    'username': fd.get('username'),
+                    'email': fd.get('email'),
+                    'password': fd.get('password'),
+                    'bio': fd.get('bio') || null,
+                    'role_id': fd.get('role_id'),
+                })
             };
             const response = await fetch(url + '/user/', fetchOptions);
             const json = await response.json();
