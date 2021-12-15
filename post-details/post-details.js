@@ -11,7 +11,7 @@ const getQParam = (param) => {
     return urlParams.get(param);
 };
 
-// get user data
+//Get user data
 const user = JSON.parse(sessionStorage.getItem("user"));
 
 const myAccountBtn = document.querySelector('#myaccount a');
@@ -19,7 +19,7 @@ myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`
 const favoritesBtn = document.querySelector('#favorites');
 favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
-const post_id = getQParam('id')
+const post_id = getQParam('id');
 
 const postDiv = document.querySelector('.post');
 const modal = document.getElementById("myModal");
@@ -77,19 +77,23 @@ const createPost = (post) => {
                     <p class="category-title">Category</p>
                     <p>${post.category_name}</p>
                 </div>
-            </div>`
+            </div>`;
+
 
     const postActionButtonsDiv = document.querySelector('.post-actions');
+
+    //Add delete button for post, if the user is admin
     if(user.role_id === 0) {
         postActionButtonsDiv.innerHTML += `<button class="post-delete-btn"><a>DELETE</a></button>`;
     }
 
+    //Add edit + delete button for post, if the user is the post's author
     if(post.author === user.user_id) {
         postActionButtonsDiv.innerHTML = `<button class="post-delete-btn"><a>DELETE</a></button>
                                             <button class="post-edit-btn"><a href="../edit-post/edit-post.html?id=${post_id}">EDIT</a></button>`;
     }
 
-}
+};
 
 //Create author div
 const addAuthor = (author) => {
@@ -101,8 +105,13 @@ const addAuthor = (author) => {
                 <div class="author-details">
                     <a class="username" href="../userpage/userpage.html?id=${author.user_id}">${author.username}</a>
                 </div>
-            </div>`
-}
+            </div>`;
+
+    if(author.role_id === 2){
+        const userDiv = document.querySelector('.author-details');
+        userDiv.innerHTML += `<img src="../assets/green-checkmark.svg">`;
+    }
+};
 
 //Add comments to the UI
 const createComments = (comments) => {
@@ -141,10 +150,12 @@ const createComments = (comments) => {
             postDiv.innerHTML += `<div class="comment-buttons${comment.comment_id}"></div>`;
             const commentButtonsDiv = document.querySelector(`.comment-buttons${comment.comment_id}`);
 
+            //Add delete button for comment, if the user is admin
             if(user.role_id === 0){
                 commentButtonsDiv.innerHTML = `<button class="comment-delete" id="delete${comment.comment_id}">Delete</button>`;
             }
 
+            //Add edit + delete button for comment, if the user is the comment's author
             if(user.user_id === comment.user_id){
                 commentButtonsDiv.innerHTML = `<button class="comment-edit" id="edit${comment.comment_id}">Edit</button>
                                     <button class="comment-delete" id="delete${comment.comment_id}">Delete</button>`;
@@ -154,10 +165,10 @@ const createComments = (comments) => {
             const commentDetailsDiv = document.querySelector(`.comment-details${comment.comment_id}`);
             if (comment.edited_date !== null) {
                 const commentEditDate = comment.edited_date.slice(0, -5).replace('T', ' ');
-                commentDetailsDiv.innerHTML += `<p class="comment-edit-date">(edited ${commentEditDate})</p>`
+                commentDetailsDiv.innerHTML += `<p class="comment-edit-date">(edited ${commentEditDate})</p>`;
             }
 
-        })
+        });
 
         //Open modal to edit comment when Edit button is clicked
         comments.forEach((comment) => {
@@ -171,13 +182,13 @@ const createComments = (comments) => {
                         <input type="hidden" name="comment_id" value='${comment.comment_id}'>
                         <button class="comment-edit-btn${comment.comment_id}" type="submit"><a>></a></button>
                     </form>
-                </div>`
+                </div>`;
 
                     modal.style.display = "flex";
 
                     //Edit comment in db
                     document.getElementById('editCommentForm').addEventListener('submit', async(event) => {
-                        event.preventDefault()
+                        event.preventDefault();
                         const editCommentForm = document.querySelector('#editCommentForm');
                         const fd = new FormData(editCommentForm);
                         const fetchOptions = {
@@ -197,14 +208,14 @@ const createComments = (comments) => {
                         } catch (e) {
                             console.log(e.message);
                         }
-                    })
+                    });
 
                     document.getElementsByClassName("edit-close")[0].addEventListener('click', () => {
                         modal.style.display = "none";
-                    })
-                })
+                    });
+                });
             }
-        })
+        });
 
         //Delete comment from database when the Delete button is clicked
         comments.forEach((comment) =>  {
@@ -228,16 +239,16 @@ const createComments = (comments) => {
                             console.log(e.message);
                         }
                     }
-                })
+                });
             }
-        })
+        });
     }
-}
+};
 
 //Add comment to database, when the add button is clicked
 const addCommentForm = (() => {
     const addCommentForm = document.querySelector('#addCommentForm');
-    // AddComment
+
     addCommentForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         const fd = new FormData(addCommentForm);
@@ -256,7 +267,7 @@ const addCommentForm = (() => {
         alert('Your comment was added successfully!');
         location.reload();
     });
-})
+});
 
 //Check when the user likes/unlikes a post
 const likeUnlike = (() => {
@@ -301,8 +312,8 @@ const likeUnlike = (() => {
                 console.log(e.message);
             }
         }
-    })
-})
+    });
+});
 
 //Check when the user favorites/unfavorites a post
 const favoriteUnfavorite = (() => {
@@ -310,7 +321,7 @@ const favoriteUnfavorite = (() => {
     favoriteButton.addEventListener('click', async () => {
 
         if(favoriteButton.className === 'unfavorite'){
-            favoriteButton.setAttribute('class', 'favorite')
+            favoriteButton.setAttribute('class', 'favorite');
 
             try {
                 const fetchOptions = {
@@ -343,12 +354,8 @@ const favoriteUnfavorite = (() => {
     })
 })
 
-const editDeletePost = ((post_id, author) => {
-    if(user.user_id === author.user_id) {
-        document.querySelector('.post-edit-btn').addEventListener('click', (() => {
-            //TODO - edit post page
-        }))
-    }
+//Add listener to delete post
+const deletePostListener = ((post_id, author) => {
 
     if(user.user_id === author.user_id || user.role_id === 0){
         document.querySelector('.post-delete-btn').addEventListener('click', (async () => {
@@ -369,9 +376,9 @@ const editDeletePost = ((post_id, author) => {
                     alert('Error deleting post');
                 }
             }
-        }))
+        }));
     }
-})
+});
 
 // AJAX calls
 const getPost = async (post_id) => {
@@ -391,13 +398,18 @@ const getPost = async (post_id) => {
         const response_c = await fetch(url +'/post/' +  post_id + '/comment', fetchOptions);
         const comments = await response_c.json();
 
-        createPost(post);
-        addAuthor(author);
-        createComments(comments);
-        addCommentForm();
-        likeUnlike();
-        favoriteUnfavorite();
-        editDeletePost(post_id, author);
+        if(post.post_id === undefined){
+            const empty = document.querySelector('.post-not-found');
+            empty.style.display = 'flex';
+        } else{
+            createPost(post);
+            addAuthor(author);
+            createComments(comments);
+            addCommentForm();
+            likeUnlike();
+            favoriteUnfavorite();
+            deletePostListener(post_id, author);
+        }
     } catch (e) {
         console.log(e.message);
     }

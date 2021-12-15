@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insign</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../add-post/add-post.css">
+    <link rel="stylesheet" href="edit-profile.css">
+    <link rel="stylesheet" href="../nav-user/nav-user-stylesheet.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul class="menu">
+            <li class="logo"><a href="../news-feed/feed.html">INSIGN</a></li>
+            <li class="item hover-underline-animation" id="home"><a href="../news-feed/feed.html">Home</a></li>
+            <li class="item hover-underline-animation" id="explore"><a href="../explore-page/explore.html">Explore</a></li>
+            <li class="item nav-button" id="upload"><a href="../add-post/add-post.html">Upload</a></li>
+            <li class="item nav-button drop" id="myaccount">
+                <a href="#">My Account</a>
+                <div class="dropdown-menu">
+                    <p><a class="dropdown-item" id="drop-top" href="#">Edit Profile</a></p>
+                    <p><a class="dropdown-item" id="favorites">Favorites</a></p>
+                    <p><a class="dropdown-item" id="logout" href="#">Log out</a></p>
+                </div>
+            </li>
+            <li class="toggle">
+                <div class="hamburger-icon"></div>
+            </li>
+            <li class="upload-mobile">
+                <a href="../add-post/add-post.html">
+                    <div class="plus-icon"></div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="forms">
+    <div class="form-wrapper">
+        <p class="upload-title">Change your profile picture</p>
+        <form id="editProfilePictureForm">
+            <div class="form-field">
+
+                <div class="img-form">
+                    <input id="imgInp" type="file" name="profile_picture" required accept="image/*">
+                    <img id="show-img" src="#" alt=""/>
+                </div>
+            </div>
+            <div class="submit-button">
+                <button id="editProfilePictureButton" class="light-border-button" type="submit">Change profile picture</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <div class="forms">
+        <div class="form-wrapper">
+            <p class="upload-title">Edit your profile</p>
+            <form id="editProfileForm">
+                <div class="form-field">
+                    <p>Username</p>
+                    <input id="username-fill" class="light-border" type="text" required minlength="3" name="username" placeholder="username">
+                </div>
+                <div class="form-field">
+                    <p>Email address</p>
+                    <input id="email-fill" class="light-border" readonly type="text" name="email" placeholder="email address">
+                </div>
+                <div class="form-field">
+                    <p>Bio</p>
+                    <textarea id="bio-fill" class="light-border" MAXLENGTH="500" name="bio" placeholder="add bio"></textarea>
+                </div>
+                <div class="form-field">
+                    <p>Role</p>
+                    <select id="role-fill" class="light-border add-style" required name="role_id">
+                        <option value="" selected disabled hidden>choose a role</option>
+                        <option value="1">user</option>
+                        <option value="2">professional/designer</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <p>Password</p>
+                    <input class="light-border" type="password" required pattern="(?=.*[A-Z]).{8,}" name="password" placeholder="type your password">
+                </div>
+                <div class="form-field">
+                    <p>Confirm password</p>
+                    <input class="light-border" type="password" required pattern="(?=.*[A-Z]).{8,}" name="password2" placeholder="confirm your password">
+                </div>
+                <div class="submit-button">
+                    <button class="light-border-button" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="edit-profile.js"></script>
+    <script src="../nav-user/nav-user.js"></script>
+</body>
+</html>

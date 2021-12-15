@@ -10,12 +10,13 @@ const getQParam = (param) => {
     return urlParams.get(param);
 };
 
-// get user data
+//Get user data
 const user = JSON.parse(sessionStorage.getItem("user"));
 
 const myAccountBtn = document.querySelector('#myaccount a');
 myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`);
 
+//Create post cards
 const createPosts = (posts) => {
     const postsDiv = document.querySelector('.posts');
 
@@ -56,9 +57,9 @@ const createPosts = (posts) => {
                             </div>
                         </div>
                     </div>
-                </div>`
+                </div>`;
     });
-}
+};
 
 // AJAX calls
 const getPosts = async (id) => {
