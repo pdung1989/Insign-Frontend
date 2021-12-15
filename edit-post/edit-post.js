@@ -86,7 +86,7 @@ const getPost = async () => {
         };
         const response = await fetch(url +'/post/' +  id, fetchOptions);
         const post = await response.json();
-        await delay(50);
+        await delay(100);
         fillOutFields(post);
     } catch (e) {
         console.log(e.message);
