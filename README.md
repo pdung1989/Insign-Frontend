@@ -1,6 +1,6 @@
 # Insign-Frontend
 ## Overview
-Welcome to Insign! This is a home decoration and interior design web platform where people can seek inspirations or communicate your ideas with everyone involved. Insign is readily available and user friendly for people who are dreaming up a perfect home to be their own interior designer.
+Welcome to Insign! This is a home decoration and interior design web platform where people can seek inspirations or communicate their ideas with everyone involved. Insign is readily available and user friendly for people who are dreaming up a perfect home to be their own interior designer.
 > See the good in yourself and in others.
 
 ## Who is Insign for?
