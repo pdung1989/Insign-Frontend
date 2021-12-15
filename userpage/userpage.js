@@ -52,11 +52,11 @@ const createPosts = (posts) => {
                         </div>
                         <div class="post-stats">
                             <div class="post-likes">
-                                <img class="${isLiked}" alt="like button">
+                                <img class="${isLiked}" alt="like button" src="">
                                 <p>${post.num_likes}</p>
                             </div>
                             <div class="post-comments">
-                                <img src="../assets/comment-icon.svg" alt="comments">
+                                <img src="../assets/comment-icon.svg" alt="comments" src="">
                                 <p>${post.num_comments}</p>
                             </div>
                         </div>
@@ -98,16 +98,15 @@ const addFollowOrEditButtons = ((userProfile) => {
     const userFollowBtn = document.querySelector('.user-follow');
     if(user.user_id === userProfile.user_id){
         //TODO - add href
-        userFollowBtn.innerHTML += `<button class="follow-btn"><a href="../edit-profile/edit-profile.html">Edit Profile</a></button>`;
+        userFollowBtn.innerHTML += `<a class="follow-btn" href="../edit-profile/edit-profile.html">Edit Profile</a>`;
     } else {
-        userFollowBtn.innerHTML += `<button class="follow-btn"><a>Follow</a></button>`;
+        userFollowBtn.innerHTML += `<a class="follow-btn">Follow</a>`;
 
         const followBtn = document.querySelector('.follow-btn');
-        const followBtnText = document.querySelector('.follow-btn a');
 
         if(userProfile.is_followed === 1){
             followBtn.classList.add('unfollow');
-            followBtnText.textContent = "Unfollow";
+            followBtn.textContent = "Unfollow";
         }
 
         const followerDiv = document.querySelector('.follower-count');
@@ -125,7 +124,7 @@ const addFollowOrEditButtons = ((userProfile) => {
                     const response = await fetch(url + '/user/following/' + userProfile.user_id , fetchOptions);
                     const unFollowed = await response.json();
                     followBtn.classList.remove('unfollow');
-                    followBtnText.textContent = "Follow";
+                    followBtn.textContent = "Follow";
                     followerCount--;
                     followerDiv.innerHTML = followerCount;
                 } catch (e) {
@@ -145,7 +144,7 @@ const addFollowOrEditButtons = ((userProfile) => {
                 const response = await fetch(url + '/user/following/' + userProfile.user_id, fetchOptions);
                 const followed = await response.json();
                 followBtn.classList.add('unfollow');
-                followBtnText.textContent = "Unfollow";
+                followBtn.textContent = "Unfollow";
                 followerCount++;
                 followerDiv.innerHTML = followerCount;
             } catch (e) {

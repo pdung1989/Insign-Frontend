@@ -79,6 +79,12 @@ main {
     cursor: pointer;
 }
 
+.comment-add-btn {
+    color: #fcfcfc;
+    font-size: 17px;
+    padding-top: 5px;
+}
+
 .location {
     align-items: center;
     margin-bottom: 10px;
@@ -322,10 +328,11 @@ p {
     padding-right: 15px;
     padding-left: 15px;
     float: right;
+    color: #fcfcfc;
 }
 
 .post-edit-btn, .post-delete-btn {
-    padding-bottom: 0;
+    padding: 7px 5px;
 }
 
 .comment-add-btn:hover, button[class^='comment-edit-btn']:hover, .post-edit-btn:hover, .post-delete-btn:hover {
@@ -448,6 +455,12 @@ textarea[class^='edit-comment-area'] {
         min-width: 100%;
     }
 
+
+    .comment-add-btn {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
     .single-comment, .add-comment-content, div[class^='comment-buttons'] {
         width: 100%;
         font-size: 15px;
@@ -511,10 +524,6 @@ textarea[class^='edit-comment-area'] {
 
     .post-favorite img {
         width: 25px;
-    }
-
-    .comment-add-btn {
-        padding-bottom: 0;
     }
 
     .comment-edit-date {

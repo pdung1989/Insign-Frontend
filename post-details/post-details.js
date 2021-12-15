@@ -51,15 +51,15 @@ const createPost = (post) => {
                 <!--- EDIT/DELETE WITH PERMISSION --->
             </div>
             <div class="image">
-                <img src="${url + '/uploads/' + post.image}">
+                <img src="${url + '/uploads/' + post.image}" alt="post image">
             </div>
             <div class="post-data">
                 <div class="post-likes">
-                       <img class="${isLiked}" alt="like button">
+                       <img class="${isLiked}" alt="like button" src="">
                     <p>${post.num_likes}</p>
                 </div>
                 <div class="post-favorite">
-                    <img class="${isFavorite}" alt="favorite button">
+                    <img class="${isFavorite}" alt="favorite button" src="">
                 </div>
             </div>
             <div class="description-with-decor">
@@ -84,13 +84,13 @@ const createPost = (post) => {
 
     //Add delete button for post, if the user is admin
     if(user.role_id === 0) {
-        postActionButtonsDiv.innerHTML += `<button class="post-delete-btn"><a>DELETE</a></button>`;
+        postActionButtonsDiv.innerHTML += `<a class="post-delete-btn">DELETE</a>`;
     }
 
     //Add edit + delete button for post, if the user is the post's author
     if(post.author === user.user_id) {
-        postActionButtonsDiv.innerHTML = `<button class="post-delete-btn"><a>DELETE</a></button>
-                                            <button class="post-edit-btn"><a href="../edit-post/edit-post.html?id=${post_id}">EDIT</a></button>`;
+        postActionButtonsDiv.innerHTML = `<a class="post-delete-btn">DELETE</a>
+                                            <a class="post-edit-btn" href="../edit-post/edit-post.html?id=${post_id}">EDIT</a>`;
     }
 
 };
@@ -123,7 +123,7 @@ const createComments = (comments) => {
                     <textarea rows="10" cols="10" class="add-comment-content" required minlength="4" maxlength="500" name="content" placeholder="write your comment here"></textarea>
                     <input type="hidden" name="post_id" value='${post_id}'>
                     <input type="hidden" name="user_id" value="2">
-                    <button class="comment-add-btn" type="submit"><a>></a></button>
+                    <button class="comment-add-btn" type="submit">Add</button>
                 </form>
             </div>`;
 

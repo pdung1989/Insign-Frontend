@@ -50,11 +50,11 @@ const createPosts = (posts) => {
                         </div>
                         <div class="post-stats">
                             <div class="post-likes">
-                                <img class="${isLiked}">
+                                <img class="${isLiked}" alt="like button" src="">
                                 <p>${post.num_likes}</p>
                             </div>
                             <div class="post-comments">
-                                <img src="../assets/comment-icon.svg">
+                                <img src="../assets/comment-icon.svg" alt="comment button">
                                 <p>${post.num_comments}</p>
                             </div>
                         </div>
@@ -74,7 +74,7 @@ const getPosts = async (id) => {
         const response = await fetch(url + '/user/' + id + '/favorites', fetchOptions);
         const posts = await response.json();
 
-        if(posts.message === 'Favorite Posts not found') {
+        if(posts.message === undefined) {
             document.querySelector('.empty-favorites').style.display = 'flex';
             return;
         }

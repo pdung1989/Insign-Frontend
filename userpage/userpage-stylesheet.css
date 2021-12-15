@@ -80,7 +80,7 @@ main {
     flex-wrap: wrap;
 }
 
-.follow-btn, .empty-favorites button, .edit-profile-btn, .user-not-found a {
+.follow-btn, .empty-favorites a, .edit-profile-btn, .user-not-found a {
     color: #fcfcfc;
     background-color: #938c7f;
     border: #938c7f 3px solid;
@@ -90,34 +90,36 @@ main {
 }
 
 .follow-btn {
-    padding: 5px 0;
+    padding: 10px 5px;
 }
 
-.follow-btn:hover, .empty-favorites button:hover, .edit-profile-btn:hover, .user-not-found a:hover {
+.follow-btn:hover, .empty-favorites a:hover, .edit-profile-btn:hover, .user-not-found a:hover {
     cursor: pointer;
     background-color: #5d5850;
     border: #5d5850 3px solid;
 }
 
-.follow-btn a, .empty-favorites button a, .edit-profile-btn a {
+.follow-btn a, .empty-favorites a, .edit-profile-btn a {
     font-size: 20px;
     color: #fcfcfc;
     text-decoration: none;
     margin: 20px;
 }
 
+.empty-favorites a{
+    padding: 7px 5px;
+}
+
 .unfollow {
     background-color: #fcfcfc;
     border: #5d5850 3px solid;
-}
-
-.unfollow a {
     color: #252525;
 }
 
 .unfollow:hover {
     background-color: #5d5850;
     border: #5d5850 3px solid;
+    color: #fcfcfc;
 }
 
 .unfollow:hover a{

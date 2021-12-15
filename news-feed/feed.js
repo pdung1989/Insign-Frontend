@@ -38,7 +38,7 @@ const createPostCard = (posts) => {
             </a>
             <div class="author-details">
               <a class="username" href="../userpage/userpage.html?id=${post.author}">${post.username}</a>
-              <img id="isVerified${post.post_id}">
+              <img id="isVerified${post.post_id}" alt="verified">
             </div>
           </div>
           <div class="post-photo">
@@ -49,11 +49,11 @@ const createPostCard = (posts) => {
           <div class="post-details">
             <div class="post-stats">
               <div class="post-likes">
-                <img class="${isLiked}">
+                <img class="${isLiked}" alt="like-button" src="">
                 <p>${post.num_likes}</p>
               </div>
               <div class="post-comments">
-                <img src="../assets/comment-icon.svg">
+                <img src="../assets/comment-icon.svg" alt="comment-button">
                 <p>${post.num_comments}</p>
               </div>
             </div>
