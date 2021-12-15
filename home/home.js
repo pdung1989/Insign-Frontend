@@ -16,7 +16,7 @@ const createPosts = (posts) => {
         console.log('foreach');
         postsDiv.innerHTML += `
                 <div class="mySlides fade">
-                    <img src="${post.image}" style="width:100%">
+                    <img src="${url + '/uploads/' + post.image}" style="width:100%">
                     <div class="text">${post.title}</div>
                 </div>`;
     });
