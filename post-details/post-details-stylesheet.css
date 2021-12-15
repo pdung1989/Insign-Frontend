@@ -475,6 +475,11 @@ textarea[class^='edit-comment-area'] {
         height: 70px;
     }
 
+    .author-details img {
+        width: 24px;
+        height: 24px;
+    }
+
     .post-likes img, .post-favorite img {
         width: 25px;
 
