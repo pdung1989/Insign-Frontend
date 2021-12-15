@@ -18,6 +18,8 @@ myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`
 const favoritesBtn = document.querySelector('#favorites');
 favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
+let followerCount = 0;
+
 //Create cards for all posts
 const createPosts = (posts) => {
     const postsDiv = document.querySelector('.posts');
@@ -66,6 +68,7 @@ const createPosts = (posts) => {
 //Show user data below posts
 const addUserData = (userProfile) => {
     const profileDiv = document.querySelector('.profile');
+    followerCount = userProfile.num_follower;
 
     profileDiv.innerHTML += `<div class="profile-photo">
                 <img class="profile-photo" src="${url + '/uploads/' + userProfile.profile_picture}">
@@ -75,7 +78,7 @@ const addUserData = (userProfile) => {
                     <p class="username">${userProfile.username}</p>
                 </div>
                 <div class="profile-stats">
-                    <p class="profile-follower-count"><span class="follower-count">${userProfile.num_follower}</span> followers</p>
+                    <p class="profile-follower-count"><span class="follower-count">${followerCount}</span> followers</p>
                     <p class="profile-following-count"><span class="following-count">${userProfile.num_following}</span> following</p>
                 </div>
                 <div class="description">
@@ -91,9 +94,7 @@ const addFollowOrEditButtons = ((userProfile) => {
         //TODO - add href
         userFollowBtn.innerHTML += `<button class="follow-btn"><a href="../edit-profile/edit-profile.html">Edit Profile</a></button>`;
     } else {
-
         userFollowBtn.innerHTML += `<button class="follow-btn"><a>Follow</a></button>`;
-
 
         const followBtn = document.querySelector('.follow-btn');
         const followBtnText = document.querySelector('.follow-btn a');
@@ -102,6 +103,8 @@ const addFollowOrEditButtons = ((userProfile) => {
             followBtn.classList.add('unfollow');
             followBtnText.textContent = "Unfollow";
         }
+
+        const followerDiv = document.querySelector('.follower-count');
 
         followBtn.addEventListener('click', async () => {
             if(followBtn.classList.contains('unfollow')){
@@ -117,6 +120,8 @@ const addFollowOrEditButtons = ((userProfile) => {
                     const unFollowed = await response.json();
                     followBtn.classList.remove('unfollow');
                     followBtnText.textContent = "Follow";
+                    followerCount--;
+                    followerDiv.innerHTML = followerCount;
                 } catch (e) {
                     console.log(e.message);
                     alert("Couldn't unfollow user");
@@ -135,6 +140,8 @@ const addFollowOrEditButtons = ((userProfile) => {
                 const followed = await response.json();
                 followBtn.classList.add('unfollow');
                 followBtnText.textContent = "Unfollow";
+                followerCount++;
+                followerDiv.innerHTML = followerCount;
             } catch (e) {
                 console.log(e.message);
                 alert("Couldn't follow user");
