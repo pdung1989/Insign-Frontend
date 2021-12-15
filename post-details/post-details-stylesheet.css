@@ -17,6 +17,20 @@ main {
     margin-right: auto;
 }
 
+.post-not-found {
+    display: none;
+    width: 700px;
+    height: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.post-not-found p {
+    margin-bottom: 10px;
+}
+
 .title {
     font-size: 30px;
     margin-bottom: 10px;
@@ -61,7 +75,7 @@ main {
     margin-left: 5px;
 }
 
-.post-likes img:hover, .post-favorite img:hover, div[class^='comment-buttons'] button:hover {
+.post-likes img:hover, .post-favorite img:hover, div[class^='comment-buttons'] button:hover, .user-not-found a:hover {
     cursor: pointer;
 }
 
@@ -157,6 +171,11 @@ main {
     margin-right: 10px;
 }
 
+.author-details img {
+    width: 24px;
+    height: 24px;
+}
+
 .follow-btn {
     background-color: #938c7f;
     border: #938c7f 3px solid;
@@ -218,7 +237,7 @@ div[class^='comment-buttons'] {
     margin-bottom: 10px;
 }
 
-div[class^='comment-buttons'] button {
+div[class^='comment-buttons'] button, .post-not-found a {
     margin-right: 10px;
     background-color: #938c7f;
     padding: 7px 10px;
@@ -226,7 +245,7 @@ div[class^='comment-buttons'] button {
     color: #fcfcfc;
 }
 
-div[class^='comment-buttons'] button:hover {
+div[class^='comment-buttons'] button:hover, .post-not-found a:hover {
     background-color: #5d5850;
 }
 

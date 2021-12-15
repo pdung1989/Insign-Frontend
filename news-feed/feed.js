@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 const url = "http://localhost:3000"; // change url when uploading to server
 
-// get user data
+//Get user data
 const user = JSON.parse(sessionStorage.getItem("user"));
 
 const myAccountBtn = document.querySelector('#myaccount a');
@@ -10,12 +10,17 @@ myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`
 const favoritesBtn = document.querySelector('#favorites');
 favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id}`);
 
+//Create cards for all posts
 const createPostCard = (posts) => {
   const feed = document.querySelector(".main-feed");
 
+  if(posts.length === 0){
+    feed.innerHTML += `<div id="empty-feed" class="single-post">
+          <p>Your feed is empty. <br> Click the button below to browse our explore page and follow some people</p>
+          <a class="browse-button" href="../explore-page/explore.html">Browse posts ></a>
+        </div>`;
+  }
 
-
-  //TODO - add author + img + username href, author profile photo, like and comment count
   posts.forEach((post) => {
 
       let isLiked = 'unliked';
@@ -33,6 +38,7 @@ const createPostCard = (posts) => {
             </a>
             <div class="author-details">
               <a class="username" href="../userpage/userpage.html?id=${post.author}">${post.username}</a>
+              <img id="isVerified${post.post_id}">
             </div>
           </div>
           <div class="post-photo">
@@ -52,10 +58,18 @@ const createPostCard = (posts) => {
               </div>
             </div>
           </div>
-        </div>`
+        </div>`;
+
+      const userDiv = document.querySelector(`#isVerified${post.post_id}`);
+      if(post.role_id === 2){
+        userDiv.setAttribute('src', '../assets/green-checkmark.svg');
+      } else{
+        userDiv.remove();
+      }
   });
 };
 
+//Create cards for posts to show on the side (desktop view only)
 const createProfessionalPosts = (professionalPosts) => {
   const professionalPostsDiv = document.querySelector(".pro-feed");
 
@@ -75,7 +89,7 @@ const createProfessionalPosts = (professionalPosts) => {
                 <p class="pro-title">${professionalPosts[1].title}</p>
             </a>
             
-          </div>`
+          </div>`;
 };
 
 // AJAX calls

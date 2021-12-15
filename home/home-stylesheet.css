@@ -40,18 +40,19 @@ body {
 
 .content p {
     color: #fcfcfc;
+    margin-bottom: 20px;
 }
 
-.content button {
+.register-button {
     color: #606061;
     padding: 7px 20px 7px 20px;
     border: #fcfcfc 3px solid;
     border-radius: 15px;
     background-color: #fcfcfc;
-    margin-top: 20px;
+
 }
 
-.content button:hover{
+.register-button:hover{
     cursor: pointer;
     background-color: #606061;
     border: #fcfcfc 3px solid;

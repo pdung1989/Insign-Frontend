@@ -5,12 +5,11 @@ const styleList = document.querySelector('.add-style');
 const categoryList = document.querySelector('.add-category');
 const addPostForm = document.querySelector('#addPostForm');
 
-// get user data
+//Get user data
 const user = JSON.parse(sessionStorage.getItem("user"));
 
 //Create style options to <select>
 const createStyleOptions = (styles) => {
-    //styleList.innerHTML = '';
     styles.forEach((style) => {
         styleList.innerHTML += `<option value="${style.style_id}">${style.style_name}</option>`;
     });
@@ -32,14 +31,14 @@ const getStyles = async () => {
     }
 };
 
-//Create style options to <select>
+//Create category options to <select>
 const createCategoryOptions = (categories) => {
   categories.forEach((category) => {
     categoryList.innerHTML += `<option value="${category.category_id}">${category.category_name}</option>`;
   });
 };
 
-//Get styles to form options
+//Get categories to form options
 const getCategories = async () => {
   try {
     const fetchOptions = {
@@ -59,16 +58,17 @@ const getCategories = async () => {
 getStyles();
 getCategories();
 
+//Show photo when user uploads or replaces it
 const imgInp = document.querySelector('#imgInp');
 const showImg = document.querySelector('#show-img');
-imgInp.onchange = evt => {
-    const [file] = imgInp.files
+imgInp.onchange = () => {
+    const [file] = imgInp.files;
     if (file) {
-        showImg.src = URL.createObjectURL(file)
+        showImg.src = URL.createObjectURL(file);
     }
-}
+};
 
-//Submit add cat form
+//Submit add post form
 addPostForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const fd = new FormData(addPostForm);
