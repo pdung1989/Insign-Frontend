@@ -79,7 +79,7 @@ editProfileForm.addEventListener('submit', async (evt) => {
                     'username': fd.get('username'),
                     'email': fd.get('email'),
                     'password': fd.get('password'),
-                    'bio': fd.get('bio') || null,
+                    'bio': fd.get('bio') || "",
                     'role_id': fd.get('role_id'),
                 })
             };
