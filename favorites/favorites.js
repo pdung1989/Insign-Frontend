@@ -12,6 +12,7 @@ const getQParam = (param) => {
 
 //Get user data
 const user = JSON.parse(sessionStorage.getItem("user"));
+const user_id = user.user_id;
 
 const myAccountBtn = document.querySelector('#myaccount a');
 myAccountBtn.setAttribute("href", `../userpage/userpage.html?id=${user.user_id}`);
@@ -74,7 +75,7 @@ const getPosts = async (id) => {
         const response = await fetch(url + '/user/' + id + '/favorites', fetchOptions);
         const posts = await response.json();
 
-        if(posts.message === undefined) {
+        if(posts.length === 0) {
             document.querySelector('.empty-favorites').style.display = 'flex';
             return;
         }
@@ -83,4 +84,4 @@ const getPosts = async (id) => {
         console.log(e.message);
     }
 };
-getPosts(getQParam('id'));
+getPosts(user_id);
