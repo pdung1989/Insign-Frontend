@@ -44,7 +44,7 @@ const createPost = (post) => {
                 <p>${post.title}</p>
             </div>
             <div class="location">
-            <img src="../assets/pin.svg">
+            <img src="../assets/pin.svg" alt="location pin">
             <p>${post.location}</p>
             </div>
             <div class="post-actions">
@@ -55,11 +55,11 @@ const createPost = (post) => {
             </div>
             <div class="post-data">
                 <div class="post-likes">
-                       <img class="${isLiked}">
+                       <img class="${isLiked}" alt="like button">
                     <p>${post.num_likes}</p>
                 </div>
                 <div class="post-favorite">
-                    <img class="${isFavorite}"">
+                    <img class="${isFavorite}" alt="favorite button">
                 </div>
             </div>
             <div class="description-with-decor">
@@ -109,7 +109,7 @@ const addAuthor = (author) => {
 
     if(author.role_id === 2){
         const userDiv = document.querySelector('.author-details');
-        userDiv.innerHTML += `<img src="../assets/green-checkmark.svg">`;
+        userDiv.innerHTML += `<img src="../assets/green-checkmark.svg" alt="verified">`;
     }
 };
 

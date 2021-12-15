@@ -52,11 +52,11 @@ const createPosts = (posts) => {
                         </div>
                         <div class="post-stats">
                             <div class="post-likes">
-                                <img class="${isLiked}">
+                                <img class="${isLiked}" alt="like button">
                                 <p>${post.num_likes}</p>
                             </div>
                             <div class="post-comments">
-                                <img src="../assets/comment-icon.svg">
+                                <img src="../assets/comment-icon.svg" alt="comments">
                                 <p>${post.num_comments}</p>
                             </div>
                         </div>
@@ -71,7 +71,7 @@ const addUserData = (userProfile) => {
     followerCount = userProfile.num_follower;
 
     profileDiv.innerHTML += `<div class="profile-photo">
-                <img class="profile-photo" src="${url + '/uploads/' + userProfile.profile_picture}">
+                <img class="profile-photo" src="${url + '/uploads/' + userProfile.profile_picture}" alt="profile photo">
             </div>
             <div class="profile-data">
                 <div class="user-follow">
@@ -88,7 +88,7 @@ const addUserData = (userProfile) => {
 
     if(userProfile.role_id === 2){
         const userDiv = document.querySelector('.user-follow');
-        userDiv.innerHTML += `<img src="../assets/green-checkmark.svg">`;
+        userDiv.innerHTML += `<img src="../assets/green-checkmark.svg" alt="verified">`;
     }
 
 };

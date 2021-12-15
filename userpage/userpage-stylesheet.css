@@ -61,7 +61,6 @@ main {
 .user-follow, .profile-stats {
     display: flex;
     flex-direction: row;
-
 }
 
 .username {
@@ -86,8 +85,12 @@ main {
     background-color: #938c7f;
     border: #938c7f 3px solid;
     border-radius: 15px;
-    padding: 5px 0;
+    padding: 10px 5px;
     margin-bottom: 15px;
+}
+
+.follow-btn {
+    padding: 5px 0;
 }
 
 .follow-btn:hover, .empty-favorites button:hover, .edit-profile-btn:hover, .user-not-found a:hover {
