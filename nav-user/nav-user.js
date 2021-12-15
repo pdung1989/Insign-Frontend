@@ -5,8 +5,10 @@ const home = document.querySelector('#home');
 const explore = document.querySelector('#explore');
 const myAccount = document.querySelector('#myaccount');
 
+//Handle log out
 const logOut = document.querySelector('#logout');
-logOut.addEventListener('click', () => {
+logOut.addEventListener('click', async () => {
+    
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
     alert('You have logged out');

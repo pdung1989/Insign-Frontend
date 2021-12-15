@@ -34,13 +34,6 @@ h1 {
   margin: 0;
 }
 
-h2 {
- 
-  margin-left: 20%;
-  top: 10%;
-  position: fixed;
-  
-}
 
 p {
   font-size: 14px;
@@ -96,7 +89,7 @@ form {
   height: 100%;
   align-items: center;
 }
-.profile-picture{
+.profile-picture {
   display: flex;
   flex-direction: row;
   width: 350px;
@@ -109,12 +102,12 @@ form {
   padding-left: 10px;
   margin-top: -10px;
 }
-.bio textarea{
+.bio textarea {
   margin-left: 30px;
   width: 300px;
   height: 80px;
 }
-.select-role{
+.select-role {
   display: flex;
   flex-direction: row;
   width: 350px;
@@ -142,7 +135,6 @@ input {
   padding: 5px;
   margin-top: 30px;
   border-radius: 15px;
-  
 }
 .container {
   background-color: #fff;
@@ -299,7 +291,7 @@ footer p {
 }
 
 .main-container {
-  padding-top: 15%;
+  padding-top: 10%;
   margin: auto;
 }
 button {
@@ -312,8 +304,6 @@ button {
 #signUpForm h1 {
   margin-top: 7em;
 }
-
-
 
 /* responsive at 700px*/
 @media all and (max-width: 800px) {
@@ -340,7 +330,6 @@ button {
     margin-top: -15px;
     margin-bottom: 50px;
   }
-
 
   /* form container size and margin change */
   .sign-in-container {
@@ -373,27 +362,19 @@ button {
     height: 50%;
   }
 
-
   /* btn display change */
-  #btn {
-    display: flex;
-  }
+
   .return-btn {
     align-self: center;
     z-index: 999;
     position: relative;
     left: 0;
-    margin-bottom: 15px;
-    margin-top: 300px;
+    margin-bottom: 25px;
+    margin-top: 100px;
   }
 
   /* hide footer */
   footer {
-    display: none;
-  }
-
-  /* hide h2 */
-  .main-container h2 {
     display: none;
   }
 
@@ -407,20 +388,16 @@ button {
   }
 
   /* select profile pic and role*/
-  .profile-picture{
-   
+  .profile-picture {
     width: 100%;
     padding-left: 2px;
   }
-  
-  .select-role{
-   
+
+  .select-role {
     width: 100%;
     margin-left: -12px;
   }
-  
 
-  
   .overlay-panel h1,
   p {
     font-size: medium;
@@ -470,4 +447,3 @@ button {
     transform: translateX(0%);
   }
 }
-
