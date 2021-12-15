@@ -3,6 +3,7 @@ const url = "http://localhost:3000"; //TODO: change url to server
 
 const editProfileForm = document.querySelector('#editProfileForm');
 const editProfilePictureForm = document.querySelector('#editProfilePictureForm');
+const editPasswordForm = document.querySelector('#editPasswordForm');
 
 //Get user data
 const user = JSON.parse(sessionStorage.getItem("user"));
@@ -61,14 +62,6 @@ editProfilePictureForm.addEventListener('submit', async (evt) => {
 editProfileForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     const fd = new FormData(editProfileForm);
-
-    if(fd.get('password') !== fd.get('password2')){
-        alert("Passwords don't match");
-    } else {
-        fd.delete('password2');
-        for(let pair of fd.entries()) {
-            console.log(pair[0]+ ', '+ pair[1]);
-        }
         try {
             const fetchOptions = {
                 method: 'PUT',
@@ -78,7 +71,6 @@ editProfileForm.addEventListener('submit', async (evt) => {
                 body: new URLSearchParams({
                     'username': fd.get('username'),
                     'email': fd.get('email'),
-                    'password': fd.get('password'),
                     'bio': fd.get('bio') || "",
                     'role_id': fd.get('role_id'),
                 })
@@ -88,6 +80,33 @@ editProfileForm.addEventListener('submit', async (evt) => {
             alert('Profile updated successfully!');
             location.href = `../userpage/userpage.html?id=${user.user_id}`;
         } catch(e) {
+            console.log(e);
+        }
+});
+
+//Submit edit profile data form
+editPasswordForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    const fd = new FormData(editPasswordForm);
+    if(fd.get('password') !== fd.get('password2')){
+        alert("Passwords don't match");
+    } else {
+        try {
+            const fetchOptions = {
+                method: 'PUT',
+                headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem("token"),
+                },
+                body: new URLSearchParams({
+                    'password': fd.get('password'),
+                    'password2': fd.get('password2'),
+                })
+            };
+            const response = await fetch(url + '/user/password', fetchOptions);
+            const json = await response.json();
+            alert('Password updated successfully!');
+            location.href = `../userpage/userpage.html?id=${user.user_id}`;
+        } catch (e) {
             console.log(e);
         }
     }
@@ -107,4 +126,5 @@ const getUserData = async () => {
         console.log(e.message);
     }
 };
+
 getUserData();

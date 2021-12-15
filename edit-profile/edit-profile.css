@@ -3,7 +3,7 @@ button {
     float: right;
 }
 
-#editProfileForm div {
+#editProfileForm div, #editPasswordForm div {
     margin-bottom: 10px;
 }
 
