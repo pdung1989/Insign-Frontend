@@ -1,5 +1,6 @@
 "use strict";
-const url = "http://localhost:3000";
+
+const url = 'http://10.114.32.129/app'; // change url when uploading to a different server
 
 //Get user data
 const user = JSON.parse(sessionStorage.getItem("user"));

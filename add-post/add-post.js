@@ -1,5 +1,5 @@
 'use strict';
-const url = "http://localhost:3000"; //TODO: change url to server
+const url = 'http://10.114.32.129/app'; // change url when uploading to a different server
 
 const styleList = document.querySelector('.add-style');
 const categoryList = document.querySelector('.add-category');
