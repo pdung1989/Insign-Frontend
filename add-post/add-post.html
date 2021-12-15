@@ -12,7 +12,7 @@
   </head>
 
   <body>
-  <button class="light-border-button back-button" onclick="history.back()">< Go back</button>
+  <button class="light-border-button back-button" onclick="history.back()">Go back</button>
   <div class="forms">
     <div class="form-wrapper">
       <p class="upload-title">Upload post</p>
@@ -23,12 +23,12 @@
         </div>
         <div class="form-field">
           <p>Description</p>
-          <textarea class="light-border" type="text" required name="description" placeholder="add description here"></textarea>
+          <textarea class="light-border" required name="description" placeholder="add description here"></textarea>
         </div>
         <div class="form-field">
           <p>Upload an image</p>
           <div class="img-form">
-            <input id="imgInp" type="file" required name="image" accept="image/*" placeholder="Choose file">
+            <input id="imgInp" type="file" required name="image" accept="image/*">
             <img id="show-img" src="#" alt=""/>
           </div>
         </div>
@@ -52,6 +52,6 @@
       </form>
     </div>
   </div>
-  </body>
   <script src="add-post.js"></script>
+  </body>
 </html>
