@@ -15,7 +15,6 @@ favoritesBtn.setAttribute("href", `../favorites/favorites.html?id=${user.user_id
 
 //Fill out the field with the data from the original post
 const fillOutFields = ((userData) => {
-
     const username = document.querySelector('#username-fill');
     const email = document.querySelector('#email-fill');
     const role = document.querySelector('#role-fill');
@@ -54,7 +53,7 @@ editProfilePictureForm.addEventListener('submit', async (evt) => {
             alert('Profile picture updated successfully!');
             location.reload();
         } catch(e) {
-            console.log(e);
+            console.log(e.message);
         }
 });
 
@@ -80,7 +79,7 @@ editProfileForm.addEventListener('submit', async (evt) => {
             alert('Profile updated successfully!');
             location.href = `../userpage/userpage.html?id=${user.user_id}`;
         } catch(e) {
-            console.log(e);
+            console.log(e.message);
         }
 });
 
@@ -107,7 +106,7 @@ editPasswordForm.addEventListener('submit', async (evt) => {
             alert('Password updated successfully!');
             location.href = `../userpage/userpage.html?id=${user.user_id}`;
         } catch (e) {
-            console.log(e);
+            console.log(e.message);
         }
     }
 });

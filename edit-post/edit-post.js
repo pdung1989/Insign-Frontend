@@ -12,7 +12,6 @@ const user = JSON.parse(sessionStorage.getItem("user"));
 const getQParam = (param) => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    console.log(urlParams.get(param));
     return urlParams.get(param);
 };
 
@@ -102,14 +101,14 @@ const fillOutFields = ((post) => {
     const category = document.querySelector('#category-fill');
     const location = document.querySelector('#location-fill');
 
-    let styleObject = styleFill.find(o => o.style_name === `${post.style_name}`);
-    let categoryObject = categoryFill.find(o => o.category_name === `${post.category_name}`);
+    const styleObject = styleFill.find(o => o.style_name === `${post.style_name}`);
+    const categoryObject = categoryFill.find(o => o.category_name === `${post.category_name}`);
 
     title.defaultValue = post.title;
     description.defaultValue = post.description;
     location.defaultValue = post.location;
-    style.selectedIndex = styleObject.style_id;
-    category.selectedIndex = categoryObject.category_id;
+    style.selectedIndex = 10 - styleObject.style_id;
+    category.selectedIndex = 4 - categoryObject.category_id;
 });
 
 getStyles();

@@ -88,7 +88,6 @@ const createProfessionalPosts = (professionalPosts) => {
             <a href="../post-details/post-details.html?id=${professionalPosts[1].post_id}">
                 <p class="pro-title">${professionalPosts[1].title}</p>
             </a>
-            
           </div>`;
 };
 
@@ -106,10 +105,10 @@ const getPosts = async () => {
 
     const professionalPostResponse = await fetch(url + "/post/professional", fetchOptions);
     const professionalPosts = await professionalPostResponse.json();
-    console.log("call professional posts");
     createProfessionalPosts(professionalPosts);
   } catch (e) {
     console.log(e.message);
   }
 };
+
 getPosts();

@@ -48,7 +48,7 @@ body {
   align-items: baseline;
 }
 
-.form-field p{
+.form-field p {
   width: 150px;
 }
 
@@ -107,7 +107,7 @@ body {
   height: auto;
 }
 
-.form-field textarea{
+.form-field textarea {
   min-width: 550px;
   max-width: 550px;
   min-height: 80px;
@@ -137,7 +137,7 @@ body {
     height: auto;
   }
 
-  .form-field textarea{
+  .form-field textarea {
     min-height: 60px;
     max-height: 150px;
   }
@@ -156,7 +156,7 @@ body {
     width: 100%;
   }
 
-  .form-field textarea{
+  .form-field textarea {
     min-width: 100%;
     max-width: 100%;
     min-height: 60px;
