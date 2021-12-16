@@ -1,5 +1,6 @@
 "use strict";
 const blogs = document.getElementById('blogs');
+const searchForm = document.querySelector('#searchForm');
 const searchedPost = document.getElementById('searched_posts_area');
 const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
@@ -57,8 +58,8 @@ const createSearchCards = (post) => {
 };
 
 const search = (search) => {
-  whenEntered();
-  searchBtn.addEventListener('click', () => {
+  searchForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
     searchedPost.innerHTML = '';
     const userInput = document.getElementById('searchInput').value;
     let searchedPostArray = [];
@@ -80,13 +81,5 @@ const search = (search) => {
       }
     }
     searchInput.value = '';
-  });
-};
-
-const whenEntered = () => {
-  searchInput.addEventListener('change', (evt) => {
-    evt.preventDefault();
-    searchedPost.innerHTML = '';
-    searchBtn.click();
   });
 };
