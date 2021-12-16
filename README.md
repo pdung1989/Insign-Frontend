@@ -11,7 +11,7 @@ Insign mainly targets three groups of user and divides its features accordingly.
 
 ## Presentation
 A first look to Insign
-<!-- Add a screenshot of a working app with some nice post display from databasr -->
+<!-- Add a screenshot of a working app with some nice post display from database -->
 ## Installation
 
 This is a project, which is uploaded in two separate GitHub repositories. You can find the [backend here](https://github.com/pdung1989/Insign-Backend) and you will also need a MySQL server in order to properly run Insign.
@@ -22,7 +22,7 @@ This is a project, which is uploaded in two separate GitHub repositories. You ca
 ```bash
 npm i
 ```
-4. Open the tables.txt file in the backend and paste all the content into the MySQL server's input field(CHANGE LATER, IDK WHAT TO WRITE HERE)
+4. Open the tables.txt file in the backend and paste all the content into the MySQL server's input field **(CHANGE LATER, IDK WHAT TO WRITE HERE)**
 5. Add a .env file to the backend folder and fill out the empty fields (to connect your backend to the MySQL database
 ```bash
 DB_HOST=
