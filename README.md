@@ -11,7 +11,7 @@ Insign mainly targets three groups of user and divides its features accordingly.
 
 ## Presentation
 A first look to Insign
-![Mobile version](/assets/Insign demo.png)
+![Mobile version](/assets/Insign-demo.png)
 ## Stacks, tools, libraries:
 1. Front-end: using AJAX, HTML5, CSS, responsive design
 2. Back-end: 
