@@ -7,7 +7,6 @@ let likeCount = 0;
 const getQParam = (param) => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    console.log(urlParams.get(param));
     return urlParams.get(param);
 };
 
@@ -107,7 +106,7 @@ const addAuthor = (author) => {
                 </div>
             </div>`;
 
-    if(author.role_id === 2){
+    if(author.role_id === 2) {
         const userDiv = document.querySelector('.author-details');
         userDiv.innerHTML += `<img src="../assets/green-checkmark.svg" alt="verified">`;
     }
@@ -151,12 +150,12 @@ const createComments = (comments) => {
             const commentButtonsDiv = document.querySelector(`.comment-buttons${comment.comment_id}`);
 
             //Add delete button for comment, if the user is admin
-            if(user.role_id === 0){
+            if(user.role_id === 0) {
                 commentButtonsDiv.innerHTML = `<button class="comment-delete" id="delete${comment.comment_id}">Delete</button>`;
             }
 
             //Add edit + delete button for comment, if the user is the comment's author
-            if(user.user_id === comment.user_id){
+            if(user.user_id === comment.user_id) {
                 commentButtonsDiv.innerHTML = `<button class="comment-edit" id="edit${comment.comment_id}">Edit</button>
                                     <button class="comment-delete" id="delete${comment.comment_id}">Delete</button>`;
             }
@@ -172,17 +171,17 @@ const createComments = (comments) => {
 
         //Open modal to edit comment when Edit button is clicked
         comments.forEach((comment) => {
-            if(user.user_id === comment.user_id){
+            if(user.user_id === comment.user_id) {
                 document.getElementById(`edit${comment.comment_id}`).addEventListener('click', async() => {
 
                     modalContent.innerHTML = `<span class="edit-close">&times;</span>
-                    <div class="form-wrapper" id="editForm">
-                    <form id="editCommentForm">
-                        <textarea class="edit-comment-area${comment.comment_id}" rows="10" cols="10" required minlength="4" maxlength="500" name="content" placeholder="write your comment here">${comment.content}</textarea>
-                        <input type="hidden" name="comment_id" value='${comment.comment_id}'>
-                        <button class="comment-edit-btn${comment.comment_id}" type="submit"><a>></a></button>
-                    </form>
-                </div>`;
+                                                <div class="form-wrapper" id="editForm">
+                                                    <form id="editCommentForm">
+                                                        <textarea class="edit-comment-area${comment.comment_id}" rows="10" cols="10" required minlength="4" maxlength="500" name="content" placeholder="write your comment here">${comment.content}</textarea>
+                                                        <input type="hidden" name="comment_id" value='${comment.comment_id}'>
+                                                        <button class="comment-edit-btn${comment.comment_id}" type="submit"><a>></a></button>
+                                                    </form>
+                                                </div>`;
 
                     modal.style.display = "flex";
 
@@ -275,7 +274,7 @@ const likeUnlike = (() => {
     likeButton.addEventListener('click', async () => {
         const likeCountP = document.querySelector('.post-likes p');
 
-        if(likeButton.className === 'unliked'){
+        if(likeButton.className === 'unliked') {
             likeButton.setAttribute('class', 'liked')
 
             try {
@@ -320,7 +319,7 @@ const favoriteUnfavorite = (() => {
     const favoriteButton = document.querySelector('.post-favorite img');
     favoriteButton.addEventListener('click', async () => {
 
-        if(favoriteButton.className === 'unfavorite'){
+        if(favoriteButton.className === 'unfavorite') {
             favoriteButton.setAttribute('class', 'favorite');
 
             try {
@@ -360,7 +359,7 @@ const deletePostListener = ((post_id, author) => {
     if(user.user_id === author.user_id || user.role_id === 0){
         document.querySelector('.post-delete-btn').addEventListener('click', (async () => {
             const answer = confirm("Are you sure you'd like to delete this post?");
-            if(answer){
+            if(answer) {
                 try {
                     const fetchOptions = {
                         method: 'DELETE',
@@ -398,10 +397,10 @@ const getPost = async (post_id) => {
         const response_c = await fetch(url +'/post/' +  post_id + '/comment', fetchOptions);
         const comments = await response_c.json();
 
-        if(post.post_id === undefined){
+        if(post.post_id === undefined) {
             const empty = document.querySelector('.post-not-found');
             empty.style.display = 'flex';
-        } else{
+        } else {
             createPost(post);
             addAuthor(author);
             createComments(comments);

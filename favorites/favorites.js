@@ -6,7 +6,6 @@ const url = 'http://10.114.32.129/app'; // change url when uploading to a differ
 const getQParam = (param) => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    console.log(urlParams.get(param));
     return urlParams.get(param);
 };
 

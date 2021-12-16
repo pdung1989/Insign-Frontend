@@ -13,7 +13,6 @@ const createPosts = (posts) => {
     const postsDiv = document.querySelector('.random-posts');
 
     posts.forEach( (post) => {
-        console.log('foreach');
         postsDiv.innerHTML += `
                 <div class="mySlides fade">
                     <img src="${url + '/uploads/' + post.image}" style="width:100%">
@@ -31,7 +30,6 @@ const getPosts = async () => {
     try {
         const response = await fetch(url + '/home');
         const posts = await response.json();
-        console.log(posts);
         await createPosts(posts);
     } catch (e) {
         console.log(e.message);

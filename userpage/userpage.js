@@ -6,7 +6,6 @@ const url = 'http://10.114.32.129/app'; // change url when uploading to a differ
 const getQParam = (param) => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    console.log(urlParams.get(param));
     return urlParams.get(param);
 };
 
@@ -86,7 +85,7 @@ const addUserData = (userProfile) => {
                 </div>
             </div>`;
 
-    if(userProfile.role_id === 2){
+    if(userProfile.role_id === 2) {
         const userDiv = document.querySelector('.user-follow');
         userDiv.innerHTML += `<img src="../assets/green-checkmark.svg" alt="verified">`;
     }
@@ -96,7 +95,7 @@ const addUserData = (userProfile) => {
 //Add follow button if the user visited someone else's page -> add "edit profile" button if it's the user's own page
 const addFollowOrEditButtons = ((userProfile) => {
     const userFollowBtn = document.querySelector('.user-follow');
-    if(user.user_id === userProfile.user_id){
+    if(user.user_id === userProfile.user_id) {
         //TODO - add href
         userFollowBtn.innerHTML += `<a class="follow-btn" href="../edit-profile/edit-profile.html">Edit Profile</a>`;
     } else {
@@ -104,7 +103,7 @@ const addFollowOrEditButtons = ((userProfile) => {
 
         const followBtn = document.querySelector('.follow-btn');
 
-        if(userProfile.is_followed === 1){
+        if(userProfile.is_followed === 1) {
             followBtn.classList.add('unfollow');
             followBtn.textContent = "Unfollow";
         }

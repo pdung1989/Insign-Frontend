@@ -31,7 +31,6 @@ body {
     padding-left: 10%;
     font-size: 2em;
     align-items: center;
-
 }
 
 .content {
@@ -49,7 +48,6 @@ body {
     border: #fcfcfc 3px solid;
     border-radius: 15px;
     background-color: #fcfcfc;
-
 }
 
 .register-button:hover{

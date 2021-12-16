@@ -64,7 +64,7 @@ main {
     align-items: center;
 }
 
-.post-favorite img{
+.post-favorite img {
     height: 30px;
     margin-right: 5px;
 }
@@ -90,12 +90,12 @@ main {
     margin-bottom: 10px;
 }
 
-.location img{
+.location img {
     width: 25px;
     margin-right: 10px;
 }
 
-.post-data p{
+.post-data p {
     font-size: 30px;
 }
 
@@ -219,7 +219,7 @@ main {
     border: #5d5850 3px solid;
 }
 
-.unfollow:hover a{
+.unfollow:hover a {
     color: #fcfcfc;
 }
 
@@ -497,7 +497,6 @@ textarea[class^='edit-comment-area'] {
 
     .post-likes img, .post-favorite img {
         width: 25px;
-
     }
 
     .post-likes img {
@@ -508,7 +507,7 @@ textarea[class^='edit-comment-area'] {
         font-size: 20px;
     }
 
-    .location img{
+    .location img {
         width: 20px;
     }
 
