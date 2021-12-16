@@ -193,6 +193,7 @@ img[id^='isVerified'] {
 
 .pro-feed-title {
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .pro-title {
