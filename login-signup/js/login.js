@@ -7,7 +7,7 @@ const signUpButton = document.getElementById("signUpBtn");
 const signInButton = document.getElementById("signInBtn");
 const container = document.getElementById("container");
 
-/* log in and sign up btn event listener*/
+// log in and sign up btn event listener
 signUpButton.addEventListener("click", () => {
   container.classList.add("panel-active");
 });
