@@ -1,5 +1,6 @@
 'use strict';
 const url = 'http://10.114.32.129/app'; // change url when uploading to a different server
+
 // select existing html elements
 const loginForm = document.querySelector('#logInForm');
 const signUpButton = document.getElementById("signUpBtn");
@@ -11,12 +12,9 @@ signUpButton.addEventListener("click", () => {
   container.classList.add("panel-active");
 });
 
-
 signInButton.addEventListener("click", () => {
   container.classList.remove("panel-active");
 });
-
-
 
 // login
 loginForm.addEventListener('submit', async (evt) => {
