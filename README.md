@@ -53,7 +53,6 @@ DB_HOST=
 DB_USER=
 DB_PASS=
 DB_NAME=
-JWT_SECRET=ewrweokfwdfvljj
 ```
 6. If you're running the backend server on your local machine, change all the 'url' variables in the frontend JS files to localhost (if you're on a virtual machine, make sure that the address points to your active Node.js backend
 ```javascript
