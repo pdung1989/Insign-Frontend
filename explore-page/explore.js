@@ -31,6 +31,7 @@ const createPostCard = (posts) => {
     img.src = url + '/uploads/' + post.image;
     h3.innerHTML = post.title;
 
+
     a.appendChild(img);
     card.appendChild(h3);
     card.appendChild(a);

@@ -54,6 +54,7 @@ signUpForm.addEventListener("submit", async (evt) => {
     // save token
     sessionStorage.setItem("token", json.token);
     sessionStorage.setItem("user", JSON.stringify(json.user));
+
     alert("Account created successfully!");
     location.href = "../login-signup/forms.html";
   }
