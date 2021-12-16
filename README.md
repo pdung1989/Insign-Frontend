@@ -53,7 +53,6 @@ DB_HOST=
 DB_USER=
 DB_PASS=
 DB_NAME=
-JWT_SECRET=ewrweokfwdfvljj
 ```
 6. If you're running the backend server on your local machine, change all the 'url' variables in the frontend JS files to localhost (if you're on a virtual machine, make sure that the address points to your active Node.js backend
 ```javascript
@@ -69,6 +68,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Insign project uses [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 ## Credits
-- Tamas Kralusz
-- Dung Tran
-- An Huynh
+- [Tamas Kralusz](https://github.com/tamaskr)
+- [Dung Tran](https://github.com/pdung1989)
+- [An Huynh](https://github.com/anniehuynh)
