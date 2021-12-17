@@ -25,8 +25,8 @@ A first look to Insign
 ## Server for database, back-end and front-end:
 - Connect to Metropolia Ammattikorkeakoulu VPN
 - Database is running on user metropolia server, (https://users.metropolia.fi/phpMyAdmin)
-- Backend is on remote server of educloud virtual machine, (http://10.114.32.129/app/home)
-- Frontend is on remote server, (http://10.114.32.129/~dtran/Insign-Frontend/home/home.html)
+- Backend is on remote server of educloud virtual machine, (https://10.114.32.129/app/home)
+- Frontend is on remote server, (https://10.114.32.129/~dtran/Insign-Frontend/home/home.html)
 
 ## Production server and deployment:
 - Generate a self-signed certificate for CentOS
