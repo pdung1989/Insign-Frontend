@@ -1,5 +1,5 @@
 'use strict';
-const url = 'http://10.114.32.129/app'; // change url when uploading to a different server
+const url = 'https://10.114.32.129/app'; // change url when uploading to a different server
 
 // select existing html elements
 const loginForm = document.querySelector('#logInForm');
